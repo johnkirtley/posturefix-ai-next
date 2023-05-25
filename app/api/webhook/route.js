@@ -15,7 +15,7 @@ if (process.env.NEXT_PUBLIC_ENV === 'prod') {
     endpointSecret = process.env.NEXT_PUBLIC_STRIPE_WEBHOOK_SECRET;
 }
 
-export const config = { api: { bodyParser: false } };
+export const route = { api: { bodyParser: false } };
 
 async function updateCustomerWithTrial(customerId) {
     const stripe = new Stripe(stripeKey);
