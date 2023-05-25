@@ -1,0 +1,27 @@
+{
+    "extends": ["airbnb-base", "airbnb", "airbnb/hooks", "plugin:react/jsx-runtime"],
+    "ignorePatterns": ["*/styles", "**/*.css", "**/vendor/*.css", "node_modules/*"],
+      "rules": {
+          "consistent-return": 2,
+          "indent"           : [1, 4],
+          "no-else-return"   : 1,
+          "semi"             : [1, "always"],
+          "space-unary-ops"  : 2,
+          "react/jsx-filename-extension": [1, { "extensions": [".js", ".jsx"] }],
+          "react/jsx-props-no-spreading": "off",
+          "react/jsx-indent": "off",
+          "react/jsx-indent-props": "off",
+          "object-curly-spacing": ["error", "always"],
+          "react/jsx-one-expression-per-line": "off",
+          "react/jsx-no-constructed-context-values": "off",
+          "css-modules/no-unused-class": "off",
+          "react/no-array-index-key": "off",
+          "object-curly-newline": ["error", {
+              "ObjectExpression": { "multiline": true, "minProperties": 5 },
+              "ObjectPattern": { "multiline": true, "minProperties": 5 },
+              "ImportDeclaration": { "multiline": true, "minProperties": 5 },
+              "ExportDeclaration": { "multiline": true, "minProperties": 5 }
+          }]
+        }
+  }
+  
