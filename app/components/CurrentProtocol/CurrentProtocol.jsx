@@ -21,11 +21,11 @@ export function CurrentProtocol({ userInfo, showOnboard }) {
     const [showAlert] = useState(false);
     const [showAdvanceModal, setShowAdvanceModal] = useState(false);
     const [completedProgram, setCompletedProgram] = useState(false);
-    const [curProtocol, setCurProtocol] = useState([]);
+    // const [curProtocol, setCurProtocol] = useState([]);
 
     useEffect(() => {
         setCount(userInfo.progressMade);
-        setCurProtocol(userInfo.currentProtocol);
+        // setCurProtocol(userInfo.currentProtocol);
     }, [userInfo]);
 
     const getRoutine = async () => {
@@ -259,7 +259,7 @@ export function CurrentProtocol({ userInfo, showOnboard }) {
         const routine = await getRoutine();
         console.log('routine', routine);
         await updateDoc(userRef, { currentProtocol: [routine] });
-        setCurProtocol([routine]);
+        // setCurProtocol([routine]);
         setTimeout(() => {
             setShowAdvanceModal(false);
             setLoading(false);
@@ -367,8 +367,8 @@ export function CurrentProtocol({ userInfo, showOnboard }) {
                             <div className="badge badge-secondary w-full h-10 text-lg rounded-none">
                             Warmups/Stretches
                             </div>
-                            {curProtocol.length > 0
-        && curProtocol[0].warmup.exercises.map((exercise, idx) => (
+                            {userInfo.currentProtocol.length > 0
+        && userInfo.currentProtocol[0].warmup.exercises.map((exercise, idx) => (
             <div tabIndex={0} className="collapse collapse-plus border border-base-300 bg-base-100 rounded-box w-3/4 m-auto my-4" key={idx}>
                 <div className="collapse-title text-base font-medium">
                     <div>
@@ -391,8 +391,8 @@ export function CurrentProtocol({ userInfo, showOnboard }) {
                             <div className="badge badge-secondary w-full h-10 text-lg rounded-none color-baseFont">
                             Back
                             </div>
-                            {curProtocol.length > 0
-        && curProtocol[0].back.exercises.map((exercise, idx) => (
+                            {userInfo.currentProtocol.length > 0
+        && userInfo.currentProtocol[0].back.exercises.map((exercise, idx) => (
             <div tabIndex={0} className="collapse collapse-plus border border-base-300 bg-base-100 rounded-box w-3/4 m-auto my-4" key={idx}>
                 <div className="collapse-title text-base font-medium">
                     <div>
@@ -415,8 +415,8 @@ export function CurrentProtocol({ userInfo, showOnboard }) {
                             <div className="badge badge-secondary w-full rounded-none h-10 text-lg">
                             Core
                             </div>
-                            {curProtocol.length > 0
-        && curProtocol[0].core.exercises.map((exercise, idx) => (
+                            {userInfo.currentProtocol.length > 0
+        && userInfo.currentProtocol[0].core.exercises.map((exercise, idx) => (
             <div tabIndex={0} className="collapse collapse-plus border border-base-300 bg-base-100 rounded-box w-3/4 m-auto my-4" key={idx}>
                 <div className="collapse-title text-base font-medium">
                     <div>
@@ -439,8 +439,8 @@ export function CurrentProtocol({ userInfo, showOnboard }) {
                             <div className="badge badge-secondary w-full rounded-none h-10 text-lg">
                             Neck
                             </div>
-                            {curProtocol.length > 0
-        && curProtocol[0].neck.exercises.map((exercise, idx) => (
+                            {userInfo.currentProtocol.length > 0
+        && userInfo.currentProtocol[0].neck.exercises.map((exercise, idx) => (
             <div tabIndex={0} className="collapse collapse-plus border border-base-300 bg-base-100 rounded-box w-3/4 m-auto my-4" key={idx}>
                 <div className="collapse-title text-base font-medium">
                     <div>
