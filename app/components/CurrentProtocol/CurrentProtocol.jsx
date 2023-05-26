@@ -266,7 +266,7 @@ export function CurrentProtocol({ userInfo, showOnboard }) {
             setGenerateLoading(false);
             if (typeof window !== 'undefined') {
                 // eslint-disable-next-line no-undef
-                // window.location.reload();
+                window.location.reload();
             }
         }, 2000);
     };
@@ -312,9 +312,6 @@ export function CurrentProtocol({ userInfo, showOnboard }) {
                     if (progressMade[2] >= 4) {
                         progressMade[2] += 1;
                         setCount(progressMade);
-
-                        // await updateDoc(userRef, { currentLevel: 3 });
-                        // generateRoutine();
                         handleAdvanceModal();
                         setLoading(false);
                         return;
@@ -360,7 +357,7 @@ export function CurrentProtocol({ userInfo, showOnboard }) {
     };
 
     return (
-        <div className="flex flex-col justify-center items-center text-center">
+        <div className="flex flex-col justify-center items-center text-center lg:w-1/2 lg:m-auto">
             {showOnboard ? ''
                 : (
                     <div className="flex flex-col gap-10 w-full">
