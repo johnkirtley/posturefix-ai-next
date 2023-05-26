@@ -30,11 +30,13 @@ export default function RootLayout({ children }) {
     return (
         <html lang="en">
             <body className={inter.className}>
-                <AuthProvider>
-                    <UserContext.Provider value={{ userInfo, setUserInfo }}>
-                        {children}
-                    </UserContext.Provider>
-                </AuthProvider>
+                <div className="bg-zinc-100 min-h-screen">
+                    <AuthProvider>
+                        <UserContext.Provider value={{ userInfo, setUserInfo }}>
+                            {children}
+                        </UserContext.Provider>
+                    </AuthProvider>
+                </div>
             </body>
         </html>
     );

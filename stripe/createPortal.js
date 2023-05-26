@@ -1,3 +1,4 @@
+/* eslint-disable import/prefer-default-export */
 /* eslint-disable no-undef */
 // import { httpsCallable } from 'firebase/functions';
 // import { firebaseFunctions } from '../firebase/clientApp';
@@ -8,7 +9,7 @@ async function createPortalSession(email) {
         const response = await fetch('/api/create-portal-session', {
             method: 'POST',
             headers: { 'Content-Type': 'application/json' },
-            body: JSON.stringify({ email, returnUrl: window.location.origin }),
+            body: JSON.stringify({ email, returnUrl: `${window.location.origin}/dashboard` }),
         });
 
         data = await response.json();
@@ -18,7 +19,7 @@ async function createPortalSession(email) {
     return data;
 }
 
-const generatePortal = (email) => {
+export const generatePortal = (email) => {
     if (typeof window !== 'undefined') {
         createPortalSession(email).then((res) => {
             const { url } = res;
@@ -26,5 +27,3 @@ const generatePortal = (email) => {
         }).catch((err) => console.log(err));
     }
 };
-
-export default generatePortal;

@@ -11,20 +11,25 @@ import { firestore } from '../../../firebase/clientApp';
 import { exerciseListL1, exerciseListL2, exerciseListL3 } from '../onboarding/exercises';
 import { StatusBar } from './StatusBar';
 import { AdvanceModal } from './AdvanceModal';
+import { Loading } from '../loading';
 
 export function CurrentProtocol({ userInfo, showOnboard }) {
     const { user } = useAuth();
     const [count, setCount] = useState({ 1: 0, 2: 0, 3: 0 });
     const [loading, setLoading] = useState(false);
+    const [generateLoading, setGenerateLoading] = useState(false);
     const [showAlert] = useState(false);
     const [showAdvanceModal, setShowAdvanceModal] = useState(false);
     const [completedProgram, setCompletedProgram] = useState(false);
+    const [curProtocol, setCurProtocol] = useState([]);
 
     useEffect(() => {
         setCount(userInfo.progressMade);
+        setCurProtocol(userInfo.currentProtocol);
     }, [userInfo]);
 
     const getRoutine = async () => {
+        setGenerateLoading(true);
         const q = query(collection(firestore, 'users'), where('email', '==', user.email.toLowerCase()));
         const querySnapshot = await getDocs(q);
         let routine;
@@ -250,19 +255,25 @@ export function CurrentProtocol({ userInfo, showOnboard }) {
             }
         });
 
+        // potentially add timeout here. routine getting generated before level upgrade being detected
         const routine = await getRoutine();
         console.log('routine', routine);
         await updateDoc(userRef, { currentProtocol: [routine] });
-
+        setCurProtocol([routine]);
         setTimeout(() => {
             setShowAdvanceModal(false);
             setLoading(false);
+            setGenerateLoading(false);
             if (typeof window !== 'undefined') {
                 // eslint-disable-next-line no-undef
-                window.location.reload();
+                // window.location.reload();
             }
         }, 2000);
     };
+
+    if (generateLoading) {
+        return <Loading text="Generating New Routine..." />;
+    }
 
     const handleAdvanceModal = () => {
         setShowAdvanceModal(true);
@@ -339,6 +350,10 @@ export function CurrentProtocol({ userInfo, showOnboard }) {
 
                 setTimeout(() => {
                     setLoading(false);
+                    if (typeof window !== 'undefined') {
+                        // eslint-disable-next-line no-undef
+                        window.scrollTo({ top: 0, behavior: 'smooth' });
+                    }
                 }, 1200);
             }
         });
@@ -351,12 +366,12 @@ export function CurrentProtocol({ userInfo, showOnboard }) {
                     <div className="flex flex-col gap-10 w-full">
                         {showAdvanceModal ? <AdvanceModal setCount={setCount} generateRoutine={generateRoutine} showAdvanceModal={showAdvanceModal} setShowAdvanceModal={setShowAdvanceModal} completedProgram={completedProgram} /> : ''}
                         <StatusBar count={count} />
-                        <div className="border-t-4 py-5">
-                            <div className="badge w-52 h-10 text-lg">
+                        <div className="pb-5">
+                            <div className="badge badge-secondary w-full h-10 text-lg rounded-none">
                             Warmups/Stretches
                             </div>
-                            {userInfo.currentProtocol.length > 0
-        && userInfo.currentProtocol[0].warmup.exercises.map((exercise, idx) => (
+                            {curProtocol.length > 0
+        && curProtocol[0].warmup.exercises.map((exercise, idx) => (
             <div tabIndex={0} className="collapse collapse-plus border border-base-300 bg-base-100 rounded-box w-3/4 m-auto my-4" key={idx}>
                 <div className="collapse-title text-base font-medium">
                     <div>
@@ -375,12 +390,12 @@ export function CurrentProtocol({ userInfo, showOnboard }) {
             </div>
         ))}
                         </div>
-                        <div className="border-t-4 py-5">
-                            <div className="badge w-52 h-10 text-lg">
+                        <div className="pb-5">
+                            <div className="badge badge-secondary w-full h-10 text-lg rounded-none color-baseFont">
                             Back
                             </div>
-                            {userInfo.currentProtocol.length > 0
-        && userInfo.currentProtocol[0].back.exercises.map((exercise, idx) => (
+                            {curProtocol.length > 0
+        && curProtocol[0].back.exercises.map((exercise, idx) => (
             <div tabIndex={0} className="collapse collapse-plus border border-base-300 bg-base-100 rounded-box w-3/4 m-auto my-4" key={idx}>
                 <div className="collapse-title text-base font-medium">
                     <div>
@@ -399,12 +414,12 @@ export function CurrentProtocol({ userInfo, showOnboard }) {
             </div>
         ))}
                         </div>
-                        <div className="border-t-4 py-5">
-                            <div className="badge w-52 h-10 text-lg">
+                        <div className="pb-5">
+                            <div className="badge badge-secondary w-full rounded-none h-10 text-lg">
                             Core
                             </div>
-                            {userInfo.currentProtocol.length > 0
-        && userInfo.currentProtocol[0].core.exercises.map((exercise, idx) => (
+                            {curProtocol.length > 0
+        && curProtocol[0].core.exercises.map((exercise, idx) => (
             <div tabIndex={0} className="collapse collapse-plus border border-base-300 bg-base-100 rounded-box w-3/4 m-auto my-4" key={idx}>
                 <div className="collapse-title text-base font-medium">
                     <div>
@@ -423,12 +438,12 @@ export function CurrentProtocol({ userInfo, showOnboard }) {
             </div>
         ))}
                         </div>
-                        <div className="border-t-4 py-5">
-                            <div className="badge w-52 h-10 text-lg">
+                        <div className="pb-5">
+                            <div className="badge badge-secondary w-full rounded-none h-10 text-lg">
                             Neck
                             </div>
-                            {userInfo.currentProtocol.length > 0
-        && userInfo.currentProtocol[0].neck.exercises.map((exercise, idx) => (
+                            {curProtocol.length > 0
+        && curProtocol[0].neck.exercises.map((exercise, idx) => (
             <div tabIndex={0} className="collapse collapse-plus border border-base-300 bg-base-100 rounded-box w-3/4 m-auto my-4" key={idx}>
                 <div className="collapse-title text-base font-medium">
                     <div>

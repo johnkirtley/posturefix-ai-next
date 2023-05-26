@@ -154,7 +154,7 @@ export default function Onboarding({ setLoading, showOnboard, setShowOnboard }) 
 
         setTimeout(() => {
             setLoading(false);
-        }, 2000);
+        }, 3000);
     };
 
     const finishOnboarding = async () => {
@@ -172,7 +172,7 @@ export default function Onboarding({ setLoading, showOnboard, setShowOnboard }) 
         <div>
             {showOnboard ? (
                 <div className="flex flex-col justify-center">
-                    <ul className="steps steps-horizontal">
+                    <ul className="steps steps-horizontal mt-10">
                         {step >= 1 ? <li className="step step-primary">Basic Info</li> : <li className="step ">Basic Info</li> }
                         {step >= 2 ? <li className="step step-primary">Pain Points</li> : <li className="step ">Paint Points</li> }
                         {step >= 3 ? <li className="step step-primary">Posture Type</li> : <li className="step ">Posture Type</li> }

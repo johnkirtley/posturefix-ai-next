@@ -5,6 +5,7 @@ import { signInWithEmailAndPassword } from 'firebase/auth';
 import { useRouter } from 'next/navigation';
 import Link from 'next/link';
 import { firebaseAuth } from '../firebase/clientApp';
+// import { useAuth } from './Context/AuthContext';
 
 const auth = firebaseAuth;
 
@@ -18,6 +19,17 @@ export default function Login() {
     const [showError, setShowError] = useState(false);
     const [loggingIn, setLoggingIn] = useState(false);
     const router = useRouter();
+    // const { user } = useAuth();
+
+    // useEffect(() => {
+    //     if (user) {
+    //         router.push('/dashboard');
+    //     }
+
+    //     if (!user) {
+    //         router.push('/');
+    //     }
+    // }, []);
 
     const signIn = async () => {
         setShowError(false);

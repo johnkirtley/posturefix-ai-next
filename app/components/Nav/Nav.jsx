@@ -6,6 +6,7 @@
 'use client';
 
 import { signOut } from 'firebase/auth';
+import { useRouter } from 'next/navigation';
 import Link from 'next/link';
 import { firebaseAuth } from '../../../firebase/clientApp';
 import { useAuth } from '../../Context/AuthContext';
@@ -14,10 +15,12 @@ import { useFirebase } from '../../hooks/useFirebase';
 export default function Nav() {
     const { user } = useAuth();
     const { userInfo } = useFirebase();
+    const router = useRouter();
 
-    const signOutButton = async () => signOut(firebaseAuth)
+    const signOutButton = () => signOut(firebaseAuth)
         .then(() => {
             console.log('logged out');
+            router.push('/');
         })
         .catch((error) => console.log(error));
 
@@ -26,7 +29,7 @@ export default function Nav() {
             {user
                 ? (
                     <div>
-                        <div className="navbar bg-base-100 p-5">
+                        <div className="navbar bg-neutral p-base pl-8 pr-8 mb-7 text-white">
                             <div className="navbar-start">
                                 <div className="dropdown">
                                     <label tabIndex={0} className="btn btn-ghost btn-circle">
@@ -35,12 +38,12 @@ export default function Nav() {
                                             <p>Menu</p>
                                         </div>
                                     </label>
-                                    <ul tabIndex={0} className="menu menu-compact dropdown-content mt-3 p-2 shadow bg-base-100 rounded-box w-52">
+                                    <ul tabIndex={0} className="menu menu-compact dropdown-content mt-3 p-2 shadow bg-neutral rounded-box w-52">
                                         <li className="my-5">Welcome, {userInfo.name}</li>
                                         <li><Link href="/dashboard">Dashboard</Link></li>
                                         <li><Link href="/exercise-list">Exercise Library{userInfo && userInfo.currentLevel === 1 ? '(Unlocked After Level 1)' : ''}</Link></li>
                                         <li><Link href="/account">Manage Account</Link></li>
-                                        <button type="button" onClick={signOutButton} className="btn btn-ghost btn-outline mt-20">Sign Out</button>
+                                        <button type="button" onClick={signOutButton} className="btn btn-warning mt-20">Sign Out</button>
                                     </ul>
                                 </div>
                             </div>

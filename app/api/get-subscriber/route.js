@@ -11,10 +11,11 @@ if (process.env.NEXT_PUBLIC_ENV === 'prod') {
 
 export async function POST(req) {
     const stripe = new Stripe(stripeKey);
-    const { email } = await req.json();
-
+    const data = await req.json();
+    const { email } = data;
     const customer = await stripe.customers.list({ email });
 
+    console.log('get-subscriber good', customer);
     const sub = await stripe.subscriptions.list({ customer: customer.data[0].id, limit: 1 });
 
     if (sub) {

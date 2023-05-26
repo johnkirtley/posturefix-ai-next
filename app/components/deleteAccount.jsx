@@ -62,8 +62,10 @@ export default function DeleteAccount() {
         }
     };
     return (
-        <button type="button" className="btn btn-warning" onClick={handleUserDelete}>
+        <div className="mt-20">
+            <button type="button" className="btn btn-error" onClick={handleUserDelete}>
             Delete Account
-        </button>
+            </button>
+        </div>
     );
 }

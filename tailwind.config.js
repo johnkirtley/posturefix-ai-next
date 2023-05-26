@@ -6,6 +6,7 @@ module.exports = {
         './components/**/*.{js,ts,jsx,tsx,mdx}',
         './app/**/*.{js,ts,jsx,tsx,mdx}',
     ],
+
     daisyui: {
         styled: true,
         base: true,
@@ -16,15 +17,15 @@ module.exports = {
 
                     primary: '#66CC8A',
 
-                    secondary: '#377CFB',
+                    secondary: '#3b82f6',
 
-                    accent: '#EA5234',
+                    accent: '#f97316',
 
                     neutral: '#333C4D',
 
                     'base-100': '#FFFFFF',
 
-                    info: '#3ABFF8',
+                    info: '#d6e6ff',
 
                     success: '#36D399',
 

@@ -8,8 +8,8 @@ export function StatusBar({ count }) {
     const { currentLevel } = userInfo;
 
     return (
-        <div className="flex flex-col gap-5">
-            <div>
+        <div className="flex flex-col gap-1">
+            <div className="font-bold">
             Level {currentLevel}
             </div>
             <div className="flex flex-col justify-center items-center">

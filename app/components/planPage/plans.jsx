@@ -1,37 +1,22 @@
-/* eslint-disable no-undef */
-/* eslint-disable max-len */
-/* eslint-disable import/no-extraneous-dependencies */
+/* eslint-disable import/prefer-default-export */
 
 'use client';
 
-import { useEffect } from 'react';
-import Link from 'next/link';
-// import { usePostHog } from 'posthog-js/react';
-import usePremiumStatus from '../../../stripe/usePremiumStatus';
+import { useState, useEffect } from 'react';
 import { useAuth } from '../../Context/AuthContext';
-// import logger from '../../utils/logger';
-import generatePortal from '../../../stripe/createPortal';
+import usePremiumStatus from '../../../stripe/usePremiumStatus';
+import { generatePortal } from '../../../stripe/createPortal';
+import { devPlanInfo } from './planInfo';
 
-// import stripeIcon from '../../public/icons/stripe.png';
-
-import { devPlanInfo, prodPlanInfo } from './planInfo';
-// import styles from './plans.module.css';
-
-export default function PlansPage() {
-    // const [planClicked, setPlanClicked] = useState(false);
-    // const [showTrialText, setShowTrialText] = useState(false);
+export function PlanPage() {
+    const [planClicked, setPlanClicked] = useState({
+        0: false,
+        1: false,
+        2: false,
+    });
+    const [showTrialText, setShowTrialText] = useState(false);
     const { user } = useAuth();
-    // const posthog = usePostHog();
-
     const isUserPremium = usePremiumStatus(user.email);
-
-    let planInfo;
-
-    if (process.env.NEXT_PUBLIC_ENV === 'prod') {
-        planInfo = prodPlanInfo;
-    } else {
-        planInfo = devPlanInfo;
-    }
 
     async function getSubscriber(email) {
         const response = await fetch('/api/get-subscriber', {
@@ -41,7 +26,7 @@ export default function PlansPage() {
         });
 
         const data = await response.json();
-        console.log('Customer:', data);
+
         return data;
     }
 
@@ -53,7 +38,10 @@ export default function PlansPage() {
         });
 
         const data = await response.json();
-        const trial = data.customer.data[0].metadata.usedFreeTrial !== 'true';
+        console.log('line 38 works', data);
+
+        const trial = data.data[0].metadata.usedFreeTrial !== 'true';
+
         setShowTrialText(trial);
         return data;
     }
@@ -64,7 +52,8 @@ export default function PlansPage() {
             const response = await fetch('/api/create-checkout-session', {
                 method: 'POST',
                 headers: { 'Content-Type': 'application/json' },
-                body: JSON.stringify({ product, successUrl: window.location.origin, email }),
+                // eslint-disable-next-line no-undef
+                body: JSON.stringify({ product, successUrl: `${window.location.origin}/dashboard`, email }),
             });
 
             // posthog.capture('Checkout Session Created', { user: user.email });
@@ -76,16 +65,24 @@ export default function PlansPage() {
     }
 
     useEffect(() => {
-        getSubscriber(user.email);
-        getCustomer(user.email);
+        if (user) {
+            getSubscriber(user.email);
+            getCustomer(user.email);
+        }
     }, [user]);
 
-    const handleBilling = (planType) => {
-        setPlanClicked(true);
+    const handleBilling = (planType, idx) => {
+        setPlanClicked({
+            ...planClicked,
+            [idx]: true,
+        });
 
-        if (isUserPremium.planName === '') {
+        if (isUserPremium.premiumStatus.planName === '') {
+            console.log('plan type', planType);
+            console.log('email', user.email);
             createCheckoutSessions(planType, user.email).then((res) => {
                 const { url } = res.session;
+                // eslint-disable-next-line no-undef
                 window.location.assign(url);
             });
         } else {
@@ -96,19 +93,21 @@ export default function PlansPage() {
     };
 
     return (
-        <div>
-            <Link href="/">
-                <div className={styles.goHome}>
-                    <p>Go Home</p>
+        <div className="flex flex-col justify-center items-center gap-10 py-5">
+            {devPlanInfo.map((plan, idx) => (
+                <div className="card w-3/4 m-auto bg-base-100 shadow-xl" key={idx}>
+                    <div className="card-body justify-center items-center gap-5 text-center">
+                        <h2 className="card-title">{plan.type}</h2>
+                        {showTrialText ? <p>3 day free trial available</p> : ''}
+                        <p className="text-2xl font-bold">${plan.price}</p>
+                        <p className="text-xs italic">{plan.savings > 0 ? <p><span className="border bg-warning w-full">Save Over {plan.savings}% </span><br /> Compared To Monthly</p> : ''}</p>
+                        <p>If a dog chews shoes whose shoes does he choose?</p>
+                        <div className="card-actions justify-end">
+                            <button type="button" className="btn btn-primary" onClick={() => handleBilling(plan.id, idx)}>{planClicked[idx] ? 'Redirecting to Stripe' : 'Select'}</button>
+                        </div>
+                    </div>
                 </div>
-            </Link>
-            <div className={styles.planGrid}>
-                <div>
-                Plan Page
-                </div>
-                <p>{planInfo}</p>
-                <button type="button" onClick={handleBilling}>Billing</button>
-            </div>
+            ))}
         </div>
     );
 }

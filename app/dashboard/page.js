@@ -6,6 +6,7 @@ import Nav from '../components/Nav/Nav';
 import { CurrentProtocol } from '../components/CurrentProtocol/CurrentProtocol';
 import { useAuth } from '../Context/AuthContext';
 import Onboarding from '../components/onboarding/Onboarding';
+import { Loading } from '../components/loading';
 // import { useFirebase } from '../hooks/useFirebase';
 
 export default function Dashboard() {
@@ -19,7 +20,7 @@ export default function Dashboard() {
             {user ? (
                 <div>
                     {showOnboard || loading ? '' : <Nav />}
-                    {loading ? <p>Generating Routine...</p> : ''}
+                    {loading ? <Loading text="Generating Routine" /> : ''}
                     {showOnboard || loading ? '' : (
                         <CurrentProtocol
                             userInfo={userInfo}

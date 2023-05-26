@@ -8,7 +8,7 @@ async function getSubscriber(email) {
     });
 
     const data = await response.json();
-    console.log('Success:', data.message);
+
     return data;
 }
 
@@ -17,14 +17,15 @@ async function isUserPremium(email) {
 
     let role;
     let planStatus;
-    if (subscriber.sub.data.length > 0) {
-        role = subscriber.sub.data[0].plan.nickname;
-        planStatus = subscriber.sub.data[0].status;
+    if (subscriber.data.length > 0) {
+        role = subscriber.data[0].plan.nickname;
+        planStatus = subscriber.data[0].status;
     } else {
         role = '';
         planStatus = '';
     }
 
+    console.log('isUserPremium', { role, planStatus });
     return { planName: role, status: planStatus };
 }
 

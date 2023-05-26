@@ -1,6 +1,7 @@
+/* eslint-disable import/prefer-default-export */
 /* eslint-disable import/no-extraneous-dependencies */
 import Stripe from 'stripe';
-import { buffer } from 'micro';
+import { headers } from 'next/headers';
 
 // This is your Stripe CLI webhook secret for testing your endpoint locally.
 
@@ -24,13 +25,13 @@ async function updateCustomerWithTrial(customerId) {
 
 export async function POST(request) {
     const stripe = new Stripe(stripeKey);
-    const buf = await buffer(request);
-    const sig = request.headers['stripe-signature'];
+    const sig = headers().get('stripe-signature');
+    const payload = await request.text();
 
     let event;
 
     try {
-        event = stripe.webhooks.constructEvent(buf, sig, endpointSecret);
+        event = stripe.webhooks.constructEvent(payload, sig, endpointSecret);
     } catch (err) {
         return new Response(`Webhook Error: ${err.message}`, { status: 400 });
     }

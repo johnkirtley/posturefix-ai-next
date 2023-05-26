@@ -22,7 +22,7 @@ export function AuthProvider({ children }) {
         const unsubscribe = onAuthStateChanged(firebaseAuth, (user) => {
             if (user) {
                 setUser(user);
-                router.push('/dashboard');
+                // router.push('/dashboard');
                 setLoading(false);
             } else {
                 setLoading(false);

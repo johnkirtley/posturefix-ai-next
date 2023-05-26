@@ -1,24 +1,27 @@
 const devPlanInfo = [
     {
         name: 'Align',
-        type: 'monthly',
+        type: 'Lifetime Deal',
         features: [''],
-        price: '$4.99',
-        id: 'price_1NAzuoIEkyn8v16o2MussXjs',
+        price: 100,
+        savings: 0,
+        id: 'price_1NBrJ5IEkyn8v16oh61IkPJX',
     },
     {
         name: 'Align',
-        type: 'yearly',
+        type: 'Yearly',
         features: [''],
-        price: '$39.99',
-        id: 'price_1NAzvBIEkyn8v16o7CG42rUI',
+        price: 59.99,
+        savings: 25,
+        id: 'price_1NBrIZIEkyn8v16oCqxmmYEZ',
     },
     {
         name: 'Align',
-        type: 'ltd',
+        type: 'Monthly',
         features: [''],
-        price: '$150',
-        id: 'price_1NAzvQIEkyn8v16o479OtUna',
+        price: 6.99,
+        savings: 0,
+        id: 'price_1NBrI4IEkyn8v16oartQ0iug',
     },
 ];
 
