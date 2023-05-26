@@ -1,12 +1,12 @@
 const devPlanInfo = [
-    {
-        name: 'Align',
-        type: 'Lifetime Deal',
-        features: [''],
-        price: 100,
-        savings: 0,
-        id: 'price_1NBrJ5IEkyn8v16oh61IkPJX',
-    },
+    // {
+    //     name: 'Align',
+    //     type: 'Lifetime Deal',
+    //     features: [''],
+    //     price: 100,
+    //     savings: 0,
+    //     id: 'price_1NBrJ5IEkyn8v16oh61IkPJX',
+    // },
     {
         name: 'Align',
         type: 'Yearly',
