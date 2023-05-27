@@ -1,3 +1,5 @@
+/* eslint-disable import/no-extraneous-dependencies */
+/* eslint-disable jsx-a11y/label-has-associated-control */
 /* eslint-disable max-len */
 /* eslint-disable jsx-a11y/no-noninteractive-tabindex */
 /* eslint-disable react/prop-types */
@@ -7,6 +9,7 @@ import {
     updateDoc, doc, query, where, collection, getDocs,
 } from 'firebase/firestore';
 import { useRouter } from 'next/navigation';
+import { Icon } from '@iconify/react';
 import { useAuth } from '../../Context/AuthContext';
 import { firestore } from '../../../firebase/clientApp';
 import { exerciseListL1, exerciseListL2, exerciseListL3 } from '../onboarding/exercises';
@@ -24,6 +27,7 @@ export function CurrentProtocol({ userInfo, showOnboard }) {
     const [showAdvanceModal, setShowAdvanceModal] = useState(false);
     const [completedProgram, setCompletedProgram] = useState(false);
     const { premiumStatus } = usePremiumStatus(user.email);
+    const [selected, setSelected] = useState({});
     const router = useRouter();
     // const [curProtocol, setCurProtocol] = useState([]);
 
@@ -31,6 +35,23 @@ export function CurrentProtocol({ userInfo, showOnboard }) {
         setCount(userInfo.progressMade);
         // setCurProtocol(userInfo.currentProtocol);
     }, [userInfo]);
+
+    // useEffect(() => {
+    //     if (selected) {
+    //         // eslint-disable-next-line no-undef
+    //         const btn = document.getElementById('my-modal');
+    //         btn.checked = true;
+    //         console.log('selected', selected);
+    //     }
+    // }, [selected]);
+
+    const handleShowDetails = (exercise) => {
+        setSelected(exercise);
+        // eslint-disable-next-line no-undef
+        const btn = document.getElementById('my-modal');
+        btn.checked = true;
+        console.log('selected', selected);
+    };
 
     const getRoutine = async () => {
         setGenerateLoading(true);
@@ -42,6 +63,7 @@ export function CurrentProtocol({ userInfo, showOnboard }) {
             if (document.data().email === user.email) {
                 let list;
                 const { currentLevel } = document.data();
+                console.log('current leve line 45', currentLevel);
                 switch (currentLevel) {
                 case 1:
                     list = exerciseListL1;
@@ -234,6 +256,7 @@ export function CurrentProtocol({ userInfo, showOnboard }) {
         querySnapshot.forEach(async (document) => {
             if (document.data().email === user.email) {
                 const { currentLevel } = document.data();
+                console.log('current level', currentLevel);
 
                 if (currentLevel === 1) {
                     await updateDoc(userRef, { currentLevel: 2 });
@@ -364,110 +387,121 @@ export function CurrentProtocol({ userInfo, showOnboard }) {
         <div className="flex flex-col justify-center items-center text-center lg:w-1/2 lg:m-auto">
             {showOnboard ? ''
                 : (
-                    <div className="flex flex-col w-full">
-                        {showAdvanceModal ? <AdvanceModal setCount={setCount} generateRoutine={generateRoutine} showAdvanceModal={showAdvanceModal} setShowAdvanceModal={setShowAdvanceModal} completedProgram={completedProgram} /> : ''}
-                        <StatusBar count={count} />
-                        <div>
-                            <div className="badge badge-secondary w-full h-12 text-lg rounded-none">
+                    <div className="w-full">
+                        <div className="flex justify-center items-center">
+                            <input type="checkbox" id="my-modal" className="modal-toggle" />
+                            <div className="modal justify-center items-center text-center">
+                                <div className="modal-box">
+                                    <h3 className="font-bold text-lg">{selected && selected.name}</h3>
+                                    <p className="py-4">10 reps x 3 sets</p>
+                                    <p className="pt-4"><span className="font-bold">Example:</span></p>
+                                    <p>{selected && selected.image}</p>
+                                    <p className="pt-4"><span className="font-bold">Explanation:</span></p>
+                                    <p>{selected && selected.description}</p>
+                                    <p className="pt-4"><span className="font-bold">Reference Video:</span></p>
+                                    <p>{selected && selected.video}</p>
+                                    <div className="modal-action">
+                                        <label htmlFor="my-modal" className="btn">Close</label>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div className="w-full">
+                            {showAdvanceModal ? <AdvanceModal setCount={setCount} generateRoutine={generateRoutine} showAdvanceModal={showAdvanceModal} setShowAdvanceModal={setShowAdvanceModal} completedProgram={completedProgram} /> : ''}
+                            <StatusBar count={count} />
+                            <div>
+                                <div className="badge badge-secondary w-full h-12 text-lg rounded-none">
                             Warmups/Stretches
-                            </div>
-                            {userInfo.currentProtocol.length > 0
+                                </div>
+                                {userInfo.currentProtocol.length > 0
         && userInfo.currentProtocol[0].warmup.exercises.map((exercise, idx) => (
-            <div tabIndex={0} className="collapse collapse-plus border border-base-300 bg-base-100 rounded-box w-3/4 m-auto my-5 shadow-md" key={idx}>
-                <div className="collapse-title text-base font-medium">
+            <div tabIndex={0} className="cardborder-base-300 bg-base-100 rounded-box w-3/4 m-auto my-5 shadow-md" key={idx}>
+                <div className="text-base font-medium p-5">
                     <div>
                         <p>{exercise.name}</p>
                         <p className="text-sm font-light">10 Reps x 3 Sets</p>
                     </div>
                 </div>
-                <div className="collapse-content">
-                    <ul className="flex flex-col justify-center items-start mt-5 text-sm gap-1">
-                        <li><span className="font-medium">Description:</span></li>
-                        <li><span className="font-medium">Example:</span></li>
-                        <li><span className="font-medium">Recommended Explanation Video:</span> </li>
-                        <li><span className="font-medium">Alternative Exercise:</span></li>
-                    </ul>
-                </div>
+                <button type="button" className="btn btn-neutral my-4 text-xs" onClick={() => handleShowDetails(exercise)}>
+                    <div className="flex justify-center items-center gap-1">
+                        <Icon icon="pepicons-pop:plus" />
+                        <p>Show Exercise Details</p>
+                    </div>
+                </button>
             </div>
         ))}
-                        </div>
-                        <div className="pb-5">
-                            <div className="badge badge-secondary w-full h-10 text-lg rounded-none color-baseFont">
+                            </div>
+                            <div className="pb-5">
+                                <div className="badge badge-secondary w-full h-10 text-lg rounded-none color-baseFont">
                             Back
-                            </div>
-                            {userInfo.currentProtocol.length > 0
+                                </div>
+                                {userInfo.currentProtocol.length > 0
         && userInfo.currentProtocol[0].back.exercises.map((exercise, idx) => (
-            <div tabIndex={0} className="collapse collapse-plus border border-base-300 bg-base-100 rounded-box w-3/4 m-auto my-4 shadow-md" key={idx}>
-                <div className="collapse-title text-base font-medium">
+            <div tabIndex={0} className="cardborder-base-300 bg-base-100 rounded-box w-3/4 m-auto my-5 shadow-md" key={idx}>
+                <div className="text-base font-medium p-5">
                     <div>
                         <p>{exercise.name}</p>
                         <p className="text-sm font-light">10 Reps x 3 Sets</p>
                     </div>
                 </div>
-                <div className="collapse-content">
-                    <ul className="flex flex-col justify-center items-start mt-5 text-sm gap-1">
-                        <li><span className="font-medium">Description:</span></li>
-                        <li><span className="font-medium">Example:</span></li>
-                        <li><span className="font-medium">Recommended Explanation Video:</span> </li>
-                        <li><span className="font-medium">Alternative Exercise:</span></li>
-                    </ul>
-                </div>
+                <button type="button" className="btn btn-neutral my-4 text-xs" onClick={() => handleShowDetails(exercise)}>
+                    <div className="flex justify-center items-center gap-1">
+                        <Icon icon="pepicons-pop:plus" />
+                        <p>Show Exercise Details</p>
+                    </div>
+                </button>
             </div>
         ))}
-                        </div>
-                        <div className="pb-5">
-                            <div className="badge badge-secondary w-full rounded-none h-10 text-lg">
+                            </div>
+                            <div className="pb-5">
+                                <div className="badge badge-secondary w-full rounded-none h-10 text-lg">
                             Core
-                            </div>
-                            {userInfo.currentProtocol.length > 0
+                                </div>
+                                {userInfo.currentProtocol.length > 0
         && userInfo.currentProtocol[0].core.exercises.map((exercise, idx) => (
-            <div tabIndex={0} className="collapse collapse-plus border border-base-300 bg-base-100 rounded-box w-3/4 m-auto my-4 shadow-md" key={idx}>
-                <div className="collapse-title text-base font-medium">
+            <div tabIndex={0} className="cardborder-base-300 bg-base-100 rounded-box w-3/4 m-auto my-5 shadow-md" key={idx}>
+                <div className="text-base font-medium p-5">
                     <div>
                         <p>{exercise.name}</p>
                         <p className="text-sm font-light">10 Reps x 3 Sets</p>
                     </div>
                 </div>
-                <div className="collapse-content">
-                    <ul className="flex flex-col justify-center items-start mt-5 text-sm gap-1">
-                        <li><span className="font-medium">Description:</span></li>
-                        <li><span className="font-medium">Example:</span></li>
-                        <li><span className="font-medium">Recommended Explanation Video:</span> </li>
-                        <li><span className="font-medium">Alternative Exercise:</span></li>
-                    </ul>
-                </div>
+                <button type="button" className="btn btn-neutral my-4 text-xs" onClick={() => handleShowDetails(exercise)}>
+                    <div className="flex justify-center items-center gap-1">
+                        <Icon icon="pepicons-pop:plus" />
+                        <p>Show Exercise Details</p>
+                    </div>
+                </button>
             </div>
         ))}
-                        </div>
-                        <div className="pb-5">
-                            <div className="badge badge-secondary w-full rounded-none h-10 text-lg">
-                            Neck
                             </div>
-                            {userInfo.currentProtocol.length > 0
+                            <div className="pb-5">
+                                <div className="badge badge-secondary w-full rounded-none h-10 text-lg">
+                            Neck
+                                </div>
+                                {userInfo.currentProtocol.length > 0
         && userInfo.currentProtocol[0].neck.exercises.map((exercise, idx) => (
-            <div tabIndex={0} className="collapse collapse-plus border border-base-300 bg-base-100 rounded-box w-3/4 m-auto my-4 shadow-md" key={idx}>
-                <div className="collapse-title text-base font-medium">
+            <div tabIndex={0} className="cardborder-base-300 bg-base-100 rounded-box w-3/4 m-auto my-5 shadow-md" key={idx}>
+                <div className="text-base font-medium p-5">
                     <div>
                         <p>{exercise.name}</p>
                         <p className="text-sm font-light">10 Reps x 3 Sets</p>
                     </div>
                 </div>
-                <div className="collapse-content">
-                    <ul className="flex flex-col justify-center items-start mt-5 text-sm gap-1">
-                        <li><span className="font-medium">Description:</span></li>
-                        <li><span className="font-medium">Example:</span></li>
-                        <li><span className="font-medium">Recommended Explanation Video:</span> </li>
-                        <li><span className="font-medium">Alternative Exercise:</span></li>
-                    </ul>
-                </div>
+                <button type="button" className="btn btn-neutral my-4 text-xs" onClick={() => handleShowDetails(exercise)}>
+                    <div className="flex justify-center items-center gap-1">
+                        <Icon icon="pepicons-pop:plus" />
+                        <p>Show Exercise Details</p>
+                    </div>
+                </button>
             </div>
         ))}
+                            </div>
+                            {premiumStatus.planName === '' ? <button type="button" className="btn btn-warning mt-5 h-20 text-sm w-full" onClick={() => router.push('/plans')}>Please Choose Plan To Log Workout</button>
+                                : <button disabled={!!loading || showAlert} type="button" className="btn btn-success mt-5 h-20 text-lg w-full" onClick={completeWorkout}>{loading ? 'Submitting...' : 'Complete Workout'}</button> }
+
                         </div>
-                        {premiumStatus.planName === '' ? <button type="button" className="btn btn-warning mt-5 h-20 text-sm w-full" onClick={() => router.push('/plans')}>Please Choose Plan To Log Workout</button>
-                            : <button disabled={!!loading || showAlert} type="button" className="btn btn-success mt-5 h-20 text-lg w-full" onClick={completeWorkout}>{loading ? 'Submitting...' : 'Complete Workout'}</button> }
-
                     </div>
-
                 )}
 
         </div>

@@ -38,6 +38,11 @@ export function AdvanceModal({
                 setTimeout(() => {
                     setLoading(false);
                     setShowAdvanceModal(false);
+
+                    if (typeof window !== 'undefined') {
+                        // eslint-disable-next-line no-undef
+                        window.scrollTo({ top: '0', behavior: 'smooth' });
+                    }
                 }, 1200);
             }
         });
@@ -46,7 +51,7 @@ export function AdvanceModal({
     useEffect(() => {
         if (showAdvanceModal) {
             // eslint-disable-next-line no-undef
-            const modalBtn = document.getElementById('my-modal');
+            const modalBtn = document.getElementById('my-modal-complete');
             modalBtn.checked = true;
         }
     }, [showAdvanceModal]);
@@ -57,7 +62,7 @@ export function AdvanceModal({
                 ? (
                     <div>
                         <label htmlFor="my-modal" className="btn">open modal</label>
-                        <input type="checkbox" id="my-modal" className="modal-toggle" />
+                        <input type="checkbox" id="my-modal-complete" className="modal-toggle" />
                         <div className="modal">
                             <div className="modal-box">
                                 {loading ? <p className="py-4">Restarting Current Level...</p> : ''}

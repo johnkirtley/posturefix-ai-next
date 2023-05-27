@@ -8,6 +8,7 @@ import List from './List';
 import usePremiumStatus from '../../../stripe/usePremiumStatus';
 import { useAuth } from '../../Context/AuthContext';
 import { NoPlan } from './noPlan';
+import { useFirebase } from '../../hooks/useFirebase';
 
 export default function ExerciseList() {
     const [view] = useState(1);
@@ -17,11 +18,11 @@ export default function ExerciseList() {
     const [trimExercises, setTrimExercises] = useState([]);
     const [searchVal, setSearchVal] = useState('');
     const [filteredExercises, setFilteredExercises] = useState([]);
+    const { userInfo } = useFirebase();
 
     const handleSearch = (e) => {
         const val = e.target.value;
         setSearchVal(val);
-        console.log('searach', searchVal);
     };
 
     useEffect(() => {
@@ -63,6 +64,10 @@ export default function ExerciseList() {
             console.log('exercise', exercise);
         }
     }, [exercise]);
+
+    if (userInfo.currentLevel === 1) {
+        return <p className="text-center">Section Unlocked After Level 1</p>;
+    }
 
     return (
         <div>

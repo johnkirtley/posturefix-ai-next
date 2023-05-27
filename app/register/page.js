@@ -3,7 +3,7 @@
 
 'use client';
 
-import { useCallback, useState } from 'react';
+import { useCallback, useState, useRef } from 'react';
 import { useRouter } from 'next/navigation';
 import { createUserWithEmailAndPassword } from 'firebase/auth';
 import { collection, doc, setDoc, serverTimestamp } from 'firebase/firestore';
@@ -28,6 +28,7 @@ export default function Register() {
     const [credentials, setCredentials] = useState(defaultCredentials);
     const [errors, setErrors] = useState(errorsDefault);
     const [registerAccount, setRegisterAccount] = useState(false);
+    const registerRef = useRef(null);
     const router = useRouter();
 
     const auth = firebaseAuth;
@@ -102,11 +103,11 @@ export default function Register() {
                     },
                 });
                 createStripeSubscription(user.email).then((res) => {
-                    setRegisterAccount(false);
                     // addToSib(user.email);
                     // posthog.capture('Manual Sign Up', { user: user.email });
                     console.log('success', res);
                     router.push('/dashboard');
+                    setRegisterAccount(false);
                 }).catch((err) => {
                     // posthog.capture('Manual Sign Up', { error: err });
                     console.log(err);
@@ -139,6 +140,12 @@ export default function Register() {
         });
     }, [credentials]);
 
+    const handleKeydown = (e) => {
+        if (e.key === 'Enter') {
+            registerRef.current.click();
+        }
+    };
+
     return (
         <main className="flex min-h-screen flex-col items-center justify-between p-24">
             <div className="flex flex-col gap-20 z-10 w-80 items-center justify-center font-mono text-sm lg:flex">
@@ -154,9 +161,9 @@ export default function Register() {
                     <div>
                         <input name="username" value={credentials.username} onChange={handleChange} className="input input-bordered w-full my-2" placeholder="email" />
                         <input name="password" value={credentials.password} onChange={handleChange} className="input input-bordered w-full my-2" placeholder="password" type="password" />
-                        <input name="confirmPass" value={credentials.confirmPass} onChange={handleChange} className="input input-bordered w-full my-2" placeholder="confirm password" type="password" />
+                        <input name="confirmPass" value={credentials.confirmPass} onChange={handleChange} enterKeyHint="Register" onKeyDown={handleKeydown} className="input input-bordered w-full my-2" placeholder="confirm password" type="password" />
                     </div>
-                    <button type="submit" onClick={signUp} className="btn btn-secondary">{registerAccount ? 'Creating Account...' : 'Register'}</button>
+                    <button ref={registerRef} type="submit" onClick={signUp} className="btn btn-secondary">{registerAccount ? 'Creating Account...' : 'Register'}</button>
                 </div>
                 <div className="text-center">
                     <p>Have an account? <Link href="/" className="link">Login</Link></p>

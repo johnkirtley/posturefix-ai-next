@@ -1,6 +1,6 @@
 'use client';
 
-import { useState } from 'react';
+import { useState, useRef } from 'react';
 import { signInWithEmailAndPassword } from 'firebase/auth';
 import { useRouter } from 'next/navigation';
 import Link from 'next/link';
@@ -18,6 +18,7 @@ export default function Login() {
     const [credentials, setCredentials] = useState(defaultCredentials);
     const [showError, setShowError] = useState(false);
     const [loggingIn, setLoggingIn] = useState(false);
+    const loginRef = useRef(null);
     const router = useRouter();
 
     const signIn = async () => {
@@ -33,9 +34,9 @@ export default function Login() {
         signInWithEmailAndPassword(auth, username, password)
             .then((userCredential) => {
                 console.log('userCredential', userCredential);
-                setLoggingIn(false);
                 // posthog.capture('Manual Sign In Success', { user: user.email });
                 router.push('/dashboard');
+                setLoggingIn(false);
             }).catch((error) => {
                 const errorMessage = error.message;
                 setLoggingIn(false);
@@ -57,6 +58,12 @@ export default function Login() {
         });
     };
 
+    const handleKeydown = (e) => {
+        if (e.key === 'Enter') {
+            loginRef.current.click();
+        }
+    };
+
     return (
         <main className="flex min-h-screen flex-col items-center justify-between p-24">
             <div className="flex flex-col gap-20 z-10 w-80 items-center justify-center font-mono text-sm lg:flex">
@@ -67,9 +74,12 @@ export default function Login() {
                     </div>
                     <div>
                         <input name="username" value={credentials.username} onChange={handleChange} className="input input-bordered w-full my-2" placeholder="email" />
-                        <input name="password" value={credentials.password} onChange={handleChange} className="input input-bordered w-full my-2" placeholder="password" type="password" />
+                        <input name="password" value={credentials.password} onKeyDown={handleKeydown} enterKeyHint="Login" onChange={handleChange} className="input input-bordered w-full my-2" placeholder="password" type="password" />
                     </div>
-                    <button type="submit" onClick={signIn} className="btn btn-primary">{loggingIn ? 'Logging In...' : 'Login'}</button>
+                    <div>
+                        <p>Forgot Password?</p>
+                    </div>
+                    <button ref={loginRef} type="submit" onClick={signIn} className="btn btn-primary">{loggingIn ? 'Logging In...' : 'Login'}</button>
                 </div>
                 <div className="text-center">
                     <p>Need an account? <Link href="/register" className="link">Register</Link></p>
