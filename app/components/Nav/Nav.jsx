@@ -42,7 +42,7 @@ export default function Nav() {
                                         <li className="my-5">Welcome, {userInfo.name}</li>
                                         <li><Link href="/dashboard">Dashboard</Link></li>
                                         <li><Link href="/exercise-library">Exercise Library{userInfo && userInfo.currentLevel === 1 ? '(Unlocked After Level 1)' : ''}</Link></li>
-                                        <li><Link href="/rec-tools">Recommended Tools</Link></li>
+                                        <li><Link href="/rec-tools">Helpful Tools</Link></li>
                                         <li><Link href="/faq">FAQ</Link></li>
                                         <li><Link href="/account">Manage Account</Link></li>
                                         <button type="button" onClick={signOutButton} className="btn btn-warning mt-20">Sign Out</button>

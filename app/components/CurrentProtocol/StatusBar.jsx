@@ -6,15 +6,18 @@ import { UserContext } from '../../Context';
 export function StatusBar({ count }) {
     const { userInfo } = useContext(UserContext);
     const { currentLevel } = userInfo;
+    const totalWorkouts = 5;
 
     return (
-        <div className="flex flex-col gap-1">
+        <div className="flex flex-col gap-1 mb-10">
             <div className="font-bold">
             Level {currentLevel}
             </div>
             <div className="flex flex-col justify-center items-center">
-            Progress To Next Level ({count && currentLevel ? count[currentLevel] : 0}/5)
-                <progress className="progress progress-secondary w-56" value={count && currentLevel ? count[currentLevel] : 0} max="5" />
+                {count && currentLevel ? totalWorkouts - count[currentLevel] : totalWorkouts - 0}
+                {' '}
+                {count && count[currentLevel] === 4 ? 'Workout Until Level Completed' : 'Workouts Until Level Completed'}
+                <progress className="progress progress-success w-56" value={count && currentLevel ? count[currentLevel] : 0} max="5" />
             </div>
         </div>
     );

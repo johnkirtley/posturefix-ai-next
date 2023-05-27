@@ -1,3 +1,4 @@
+/* eslint-disable jsx-a11y/label-has-associated-control */
 /* eslint-disable import/prefer-default-export */
 
 'use client';
@@ -7,16 +8,15 @@ import { useAuth } from '../../Context/AuthContext';
 import usePremiumStatus from '../../../stripe/usePremiumStatus';
 import { generatePortal } from '../../../stripe/createPortal';
 import { devPlanInfo } from './planInfo';
+import Nav from '../Nav/Nav';
 
 export function PlanPage() {
-    const [planClicked, setPlanClicked] = useState({
-        0: false,
-        1: false,
-        2: false,
-    });
+    const [planClicked, setPlanClicked] = useState(false);
     const [showTrialText, setShowTrialText] = useState(false);
     const { user } = useAuth();
     const isUserPremium = usePremiumStatus(user.email);
+    const [clicked, setClicked] = useState(true);
+    const [plan] = useState(devPlanInfo);
 
     async function getSubscriber(email) {
         const response = await fetch('/api/get-subscriber', {
@@ -92,22 +92,40 @@ export function PlanPage() {
         }
     };
 
+    const handleClick = () => {
+        setClicked((prev) => !prev);
+        console.log('clicked', clicked);
+    };
+
     return (
-        <div className="flex flex-col justify-center items-center gap-10 py-5">
-            {devPlanInfo.map((plan, idx) => (
-                <div className="card w-3/4 m-auto bg-base-100 shadow-xl" key={idx}>
+        <div>
+            <Nav />
+            <div className="flex flex-col justify-center items-center gap-5">
+                <p className="text-lg">Choose A Plan</p>
+                <div className="form-control">
+                    <label className="label cursor-pointer flex gap-4">
+                        <span className="label-text font-bold">Monthly</span>
+                        <input type="checkbox" className="toggle toggle-success" onChange={handleClick} checked={clicked} />
+                        <span className="label-text font-bold">Yearly</span>
+                    </label>
+                </div>
+                <div className="card w-11/12 m-auto rounded-md bg-base-100 shadow-xl">
                     <div className="card-body justify-center items-center gap-5 text-center">
-                        <h2 className="card-title">{plan.type}</h2>
+                        <h2 className="card-title text-3xl">{!clicked ? plan[1].name : plan[0].name}</h2>
                         {showTrialText ? <p>3 day free trial available</p> : ''}
-                        <p className="text-2xl font-bold">${plan.price}</p>
-                        <p className="text-xs italic">{plan.savings > 0 ? <p><span className="border bg-warning w-full">Save Over {plan.savings}% </span><br /> Compared To Monthly</p> : ''}</p>
-                        <p>If a dog chews shoes whose shoes does he choose?</p>
+                        <p className="text-2xl font-bold">{!clicked ? `$${plan[1].price}` : `$${plan[0].price}`}</p>
+                        <p className="text-sm italic">{clicked ? <div><p className="border bg-warning w-full rounded-md p-1">Save Over {plan[0].savings}% </p><p>Compared To Monthly</p></div> : ''}</p>
+                        <ul className="list-disc flex flex-col justify-start items-start gap-4">
+                            {plan[0].features.map((feature) => (
+                                <li className="text-left text-sm">{feature}</li>
+                            ))}
+                        </ul>
                         <div className="card-actions justify-end">
-                            <button type="button" className="btn btn-primary" onClick={() => handleBilling(plan.id, idx)}>{planClicked[idx] ? 'Redirecting to Stripe' : 'Select'}</button>
+                            <button type="button" className="btn btn-primary" onClick={!clicked ? () => handleBilling(plan[1].id) : () => handleBilling(plan[0].id)}>{planClicked ? 'Redirecting to Stripe' : 'Select'}</button>
                         </div>
                     </div>
                 </div>
-            ))}
+            </div>
         </div>
     );
 }

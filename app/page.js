@@ -19,17 +19,6 @@ export default function Login() {
     const [showError, setShowError] = useState(false);
     const [loggingIn, setLoggingIn] = useState(false);
     const router = useRouter();
-    // const { user } = useAuth();
-
-    // useEffect(() => {
-    //     if (user) {
-    //         router.push('/dashboard');
-    //     }
-
-    //     if (!user) {
-    //         router.push('/');
-    //     }
-    // }, []);
 
     const signIn = async () => {
         setShowError(false);

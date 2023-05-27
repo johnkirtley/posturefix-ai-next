@@ -6,12 +6,14 @@ import { useState, useEffect } from 'react';
 import {
     updateDoc, doc, query, where, collection, getDocs,
 } from 'firebase/firestore';
+import { useRouter } from 'next/navigation';
 import { useAuth } from '../../Context/AuthContext';
 import { firestore } from '../../../firebase/clientApp';
 import { exerciseListL1, exerciseListL2, exerciseListL3 } from '../onboarding/exercises';
 import { StatusBar } from './StatusBar';
 import { AdvanceModal } from './AdvanceModal';
 import { Loading } from '../loading';
+import usePremiumStatus from '../../../stripe/usePremiumStatus';
 
 export function CurrentProtocol({ userInfo, showOnboard }) {
     const { user } = useAuth();
@@ -21,6 +23,8 @@ export function CurrentProtocol({ userInfo, showOnboard }) {
     const [showAlert] = useState(false);
     const [showAdvanceModal, setShowAdvanceModal] = useState(false);
     const [completedProgram, setCompletedProgram] = useState(false);
+    const { premiumStatus } = usePremiumStatus(user.email);
+    const router = useRouter();
     // const [curProtocol, setCurProtocol] = useState([]);
 
     useEffect(() => {
@@ -360,16 +364,16 @@ export function CurrentProtocol({ userInfo, showOnboard }) {
         <div className="flex flex-col justify-center items-center text-center lg:w-1/2 lg:m-auto">
             {showOnboard ? ''
                 : (
-                    <div className="flex flex-col gap-10 w-full">
+                    <div className="flex flex-col w-full">
                         {showAdvanceModal ? <AdvanceModal setCount={setCount} generateRoutine={generateRoutine} showAdvanceModal={showAdvanceModal} setShowAdvanceModal={setShowAdvanceModal} completedProgram={completedProgram} /> : ''}
                         <StatusBar count={count} />
-                        <div className="pb-5">
-                            <div className="badge badge-secondary w-full h-10 text-lg rounded-none">
+                        <div>
+                            <div className="badge badge-secondary w-full h-12 text-lg rounded-none">
                             Warmups/Stretches
                             </div>
                             {userInfo.currentProtocol.length > 0
         && userInfo.currentProtocol[0].warmup.exercises.map((exercise, idx) => (
-            <div tabIndex={0} className="collapse collapse-plus border border-base-300 bg-base-100 rounded-box w-3/4 m-auto my-4" key={idx}>
+            <div tabIndex={0} className="collapse collapse-plus border border-base-300 bg-base-100 rounded-box w-3/4 m-auto my-5 shadow-md" key={idx}>
                 <div className="collapse-title text-base font-medium">
                     <div>
                         <p>{exercise.name}</p>
@@ -393,7 +397,7 @@ export function CurrentProtocol({ userInfo, showOnboard }) {
                             </div>
                             {userInfo.currentProtocol.length > 0
         && userInfo.currentProtocol[0].back.exercises.map((exercise, idx) => (
-            <div tabIndex={0} className="collapse collapse-plus border border-base-300 bg-base-100 rounded-box w-3/4 m-auto my-4" key={idx}>
+            <div tabIndex={0} className="collapse collapse-plus border border-base-300 bg-base-100 rounded-box w-3/4 m-auto my-4 shadow-md" key={idx}>
                 <div className="collapse-title text-base font-medium">
                     <div>
                         <p>{exercise.name}</p>
@@ -417,7 +421,7 @@ export function CurrentProtocol({ userInfo, showOnboard }) {
                             </div>
                             {userInfo.currentProtocol.length > 0
         && userInfo.currentProtocol[0].core.exercises.map((exercise, idx) => (
-            <div tabIndex={0} className="collapse collapse-plus border border-base-300 bg-base-100 rounded-box w-3/4 m-auto my-4" key={idx}>
+            <div tabIndex={0} className="collapse collapse-plus border border-base-300 bg-base-100 rounded-box w-3/4 m-auto my-4 shadow-md" key={idx}>
                 <div className="collapse-title text-base font-medium">
                     <div>
                         <p>{exercise.name}</p>
@@ -441,7 +445,7 @@ export function CurrentProtocol({ userInfo, showOnboard }) {
                             </div>
                             {userInfo.currentProtocol.length > 0
         && userInfo.currentProtocol[0].neck.exercises.map((exercise, idx) => (
-            <div tabIndex={0} className="collapse collapse-plus border border-base-300 bg-base-100 rounded-box w-3/4 m-auto my-4" key={idx}>
+            <div tabIndex={0} className="collapse collapse-plus border border-base-300 bg-base-100 rounded-box w-3/4 m-auto my-4 shadow-md" key={idx}>
                 <div className="collapse-title text-base font-medium">
                     <div>
                         <p>{exercise.name}</p>
@@ -459,7 +463,8 @@ export function CurrentProtocol({ userInfo, showOnboard }) {
             </div>
         ))}
                         </div>
-                        <button disabled={!!loading || showAlert} type="button" className="btn btn-success mt-5 h-20 text-lg w-full" onClick={completeWorkout}>{loading ? 'Submitting...' : 'Complete Workout'}</button>
+                        {premiumStatus.planName === '' ? <button type="button" className="btn btn-warning mt-5 h-20 text-sm w-full" onClick={() => router.push('/plans')}>Please Choose Plan To Log Workout</button>
+                            : <button disabled={!!loading || showAlert} type="button" className="btn btn-success mt-5 h-20 text-lg w-full" onClick={completeWorkout}>{loading ? 'Submitting...' : 'Complete Workout'}</button> }
 
                     </div>
 
