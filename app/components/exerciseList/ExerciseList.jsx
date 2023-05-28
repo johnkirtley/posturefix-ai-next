@@ -59,7 +59,7 @@ export default function ExerciseList() {
     useEffect(() => {
         if (exercise) {
             // eslint-disable-next-line no-undef
-            const btn = document.getElementById('my-modal');
+            const btn = document.getElementById('my-modal-shuffle');
             btn.checked = true;
             console.log('exercise', exercise);
         }
@@ -75,7 +75,7 @@ export default function ExerciseList() {
                 <div>
                     <div className="flex justify-center items-center">
                         <button type="button" htmlFor="my-modal" className="btn btn-secondary" onClick={selectRandomExercise}>Pick Random Exercise</button>
-                        <input type="checkbox" id="my-modal" className="modal-toggle" />
+                        <input type="checkbox" id="my-modal-shuffle" className="modal-toggle" />
                         <div className="modal justify-center items-center text-center">
                             <div className="modal-box">
                                 <h3 className="font-bold text-lg">{exercise && exercise.name}</h3>
@@ -84,7 +84,7 @@ export default function ExerciseList() {
                                 <p className="py-4">{exercise && exercise.image}</p>
                                 <p className="py-4">{exercise && exercise.video}</p>
                                 <div className="modal-action">
-                                    <label htmlFor="my-modal" className="btn">Done</label>
+                                    <label htmlFor="my-modal-shuffle" className="btn">Done</label>
                                 </div>
                             </div>
                         </div>

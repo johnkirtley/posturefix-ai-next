@@ -1,3 +1,5 @@
+/* eslint-disable max-len */
+
 'use client';
 
 import { useContext, useEffect } from 'react';
@@ -63,9 +65,9 @@ export default function Plans() {
                             <div>
                                 <p>Email: {userInfo.email}</p>
                             </div>
-                            <div>
+                            {/* <div>
                                 <p className="underline text-base-100 hover:text-info">Change Password</p>
-                            </div>
+                            </div> */}
                         </div>
                         <div className="flex flex-col justify-center items-center border rounded-md w-3/4 p-5 m-auto bg-neutral text-info gap-5 mt-4">
                             <div><p className="font-bold">Subscription Information</p></div>

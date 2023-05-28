@@ -1,10 +1,14 @@
+/* eslint-disable jsx-a11y/label-has-associated-control */
+/* eslint-disable no-undef */
+
 'use client';
 
 import { useState, useRef } from 'react';
-import { signInWithEmailAndPassword } from 'firebase/auth';
+import { signInWithEmailAndPassword, getAuth, sendPasswordResetEmail } from 'firebase/auth';
 import { useRouter } from 'next/navigation';
 import Link from 'next/link';
 import { firebaseAuth } from '../firebase/clientApp';
+
 // import { useAuth } from './Context/AuthContext';
 
 const auth = firebaseAuth;
@@ -18,6 +22,10 @@ export default function Login() {
     const [credentials, setCredentials] = useState(defaultCredentials);
     const [showError, setShowError] = useState(false);
     const [loggingIn, setLoggingIn] = useState(false);
+    const [emailSent, setEmailSent] = useState(false);
+    const [sending, setSending] = useState(false);
+    const [forgotEmail, setForgotEmail] = useState('');
+
     const loginRef = useRef(null);
     const router = useRouter();
 
@@ -64,8 +72,51 @@ export default function Login() {
         }
     };
 
+    const handleForgotPassword = () => {
+        console.log('hello');
+        const btn = document.getElementById('my-modal-forgotPassword');
+        btn.checked = true;
+    };
+
+    const handleForgotEmail = (e) => {
+        setForgotEmail(e.target.value);
+        console.log('forgot', forgotEmail);
+    };
+
+    const submitPasswordReset = async () => {
+        setSending(true);
+
+        const firebaseAuthInstance = getAuth();
+
+        try {
+            await sendPasswordResetEmail(firebaseAuthInstance, forgotEmail);
+            setEmailSent(true);
+            setSending(false);
+
+            console.log('Password reset email sent');
+        } catch (error) {
+            setSending(false);
+            setEmailSent(false);
+            console.error('Error sending password reset email:', error.message);
+        }
+    };
+
     return (
         <main className="flex min-h-screen flex-col items-center justify-between p-24">
+            <div>
+                <input type="checkbox" id="my-modal-forgotPassword" className="modal-toggle" />
+                <div className="modal">
+                    <div className="modal-box flex flex-col justify-center items-center gap-5">
+                        <h3 className="font-bold text-lg">Enter Email To Reset Password</h3>
+                        {emailSent ? <p className="py-4">Email Sent! Please Check Your Inbox</p> : ''}
+                        {emailSent ? '' : <input value={forgotEmail} onChange={handleForgotEmail} className="input py-4 input-bordered" placeholder="Enter Email..." />}
+                        <div className="modal-action">
+                            <button type="button" className="btn" onClick={submitPasswordReset}>{sending ? 'Sending Email...' : 'Send Reset Email'}</button>
+                            <label className="btn btn-ghost btn-outline" htmlFor="my-modal-forgotPassword">Close</label>
+                        </div>
+                    </div>
+                </div>
+            </div>
             <div className="flex flex-col gap-20 z-10 w-80 items-center justify-center font-mono text-sm lg:flex">
                 <div className="flex flex-col justify-center items-center card-bordered rounded-lg p-10 gap-10">
                     {showError ? <div className="alert-error">Error, Check Email and Password</div> : ''}
@@ -77,7 +128,7 @@ export default function Login() {
                         <input name="password" value={credentials.password} onKeyDown={handleKeydown} enterKeyHint="Login" onChange={handleChange} className="input input-bordered w-full my-2" placeholder="password" type="password" />
                     </div>
                     <div>
-                        <p>Forgot Password?</p>
+                        <button type="button" onClick={handleForgotPassword}>Forgot Password?</button>
                     </div>
                     <button ref={loginRef} type="submit" onClick={signIn} className="btn btn-primary">{loggingIn ? 'Logging In...' : 'Login'}</button>
                 </div>
