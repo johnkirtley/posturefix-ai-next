@@ -73,14 +73,12 @@ export default function Login() {
     };
 
     const handleForgotPassword = () => {
-        console.log('hello');
         const btn = document.getElementById('my-modal-forgotPassword');
         btn.checked = true;
     };
 
     const handleForgotEmail = (e) => {
         setForgotEmail(e.target.value);
-        console.log('forgot', forgotEmail);
     };
 
     const submitPasswordReset = async () => {
@@ -92,7 +90,6 @@ export default function Login() {
             await sendPasswordResetEmail(firebaseAuthInstance, forgotEmail);
             setEmailSent(true);
             setSending(false);
-
             console.log('Password reset email sent');
         } catch (error) {
             setSending(false);
