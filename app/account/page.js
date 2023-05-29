@@ -5,10 +5,10 @@
 import { useContext } from 'react';
 import { useRouter } from 'next/navigation';
 import Nav from '../components/Nav/Nav';
-import DeleteAccount from '../components/DeleteAccount';
+import DeleteAccount from '../components/deleteAccount';
 import { useAuth } from '../Context/AuthContext';
 import { UserContext } from '../Context';
-import { Loading } from '../components/Loading';
+import { Loading } from '../components/loading';
 import usePremiumStatus from '../../stripe/usePremiumStatus';
 
 export default function Plans() {

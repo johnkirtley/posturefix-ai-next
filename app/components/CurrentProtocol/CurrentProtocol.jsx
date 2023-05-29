@@ -12,10 +12,10 @@ import { useRouter } from 'next/navigation';
 import { Icon } from '@iconify/react';
 import { useAuth } from '../../Context/AuthContext';
 import { firestore } from '../../../firebase/clientApp';
-import { exerciseListL1, exerciseListL2, exerciseListL3 } from '../Onboarding/exercises';
+import { exerciseListL1, exerciseListL2, exerciseListL3 } from '../onboarding/exercises';
 import { StatusBar } from './StatusBar';
 import { AdvanceModal } from './AdvanceModal';
-import { Loading } from '../Loading';
+import { Loading } from '../loading';
 import usePremiumStatus from '../../../stripe/usePremiumStatus';
 
 export function CurrentProtocol({ userInfo, showOnboard }) {
