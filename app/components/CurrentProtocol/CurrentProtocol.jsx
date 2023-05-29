@@ -12,10 +12,10 @@ import { useRouter } from 'next/navigation';
 import { Icon } from '@iconify/react';
 import { useAuth } from '../../Context/AuthContext';
 import { firestore } from '../../../firebase/clientApp';
-import { exerciseListL1, exerciseListL2, exerciseListL3 } from '../onboarding/exercises';
+import { exerciseListL1, exerciseListL2, exerciseListL3 } from '../Onboarding/exercises';
 import { StatusBar } from './StatusBar';
 import { AdvanceModal } from './AdvanceModal';
-import { Loading } from '../loading';
+import { Loading } from '../Loading';
 import usePremiumStatus from '../../../stripe/usePremiumStatus';
 
 export function CurrentProtocol({ userInfo, showOnboard }) {
@@ -33,24 +33,13 @@ export function CurrentProtocol({ userInfo, showOnboard }) {
 
     useEffect(() => {
         setCount(userInfo.progressMade);
-        // setCurProtocol(userInfo.currentProtocol);
     }, [userInfo]);
-
-    // useEffect(() => {
-    //     if (selected) {
-    //         // eslint-disable-next-line no-undef
-    //         const btn = document.getElementById('my-modal');
-    //         btn.checked = true;
-    //         console.log('selected', selected);
-    //     }
-    // }, [selected]);
 
     const handleShowDetails = (exercise) => {
         setSelected(exercise);
         // eslint-disable-next-line no-undef
         const btn = document.getElementById('my-modal');
         btn.checked = true;
-        console.log('selected', selected);
     };
 
     const getRoutine = async () => {
@@ -63,7 +52,6 @@ export function CurrentProtocol({ userInfo, showOnboard }) {
             if (document.data().email === user.email) {
                 let list;
                 const { currentLevel } = document.data();
-                console.log('current leve line 45', currentLevel);
                 switch (currentLevel) {
                 case 1:
                     list = exerciseListL1;
@@ -82,7 +70,6 @@ export function CurrentProtocol({ userInfo, showOnboard }) {
 
                 const userEquipment = userInfo.equipment.filter((item) => item.isChecked);
                 const equipment = userEquipment.map((item) => item.valName);
-                console.log('userEquipment', equipment);
                 routine = {
                     warmup: {
                         exercises: [],
@@ -129,7 +116,7 @@ export function CurrentProtocol({ userInfo, showOnboard }) {
 
                         routine.neck.exercises.push(exercise);
                         routine.neck.count += 1;
-                    } else if (exercise.muscleGroup === 'back' && routine.back.count < 2) {
+                    } else if (exercise.muscleGroup === 'back' && routine.back.count < 3) {
                         if (userEquipment.length > 0 && userEquipment.includes(exercise.equipmentNeeded)) {
                             routine.back.exercises.push(exercise);
                             routine.back.count += 1;
@@ -166,7 +153,6 @@ export function CurrentProtocol({ userInfo, showOnboard }) {
 
                 const userEquipment = userInfo.equipment.filter((item) => item.isChecked);
                 const equipment = userEquipment.map((item) => item.valName);
-                console.log('userEquipment', equipment);
                 routine = {
                     warmup: {
                         exercises: [],
@@ -411,7 +397,7 @@ export function CurrentProtocol({ userInfo, showOnboard }) {
                             <StatusBar count={count} />
                             <div>
                                 <div className="badge badge-secondary w-full h-12 text-lg rounded-none">
-                            Warmups/Stretches
+                            Warmups
                                 </div>
                                 {userInfo.currentProtocol.length > 0
         && userInfo.currentProtocol[0].warmup.exercises.map((exercise, idx) => (
@@ -419,7 +405,7 @@ export function CurrentProtocol({ userInfo, showOnboard }) {
                 <div className="text-base font-medium p-5">
                     <div>
                         <p>{exercise.name}</p>
-                        <p className="text-sm font-light">10 Reps x 3 Sets</p>
+                        <p className="text-sm font-light">{exercise.reps}</p>
                     </div>
                 </div>
                 <button type="button" className="btn btn-neutral my-4 text-xs" onClick={() => handleShowDetails(exercise)}>
@@ -441,7 +427,7 @@ export function CurrentProtocol({ userInfo, showOnboard }) {
                 <div className="text-base font-medium p-5">
                     <div>
                         <p>{exercise.name}</p>
-                        <p className="text-sm font-light">10 Reps x 3 Sets</p>
+                        <p className="text-sm font-light">{exercise.reps}</p>
                     </div>
                 </div>
                 <button type="button" className="btn btn-neutral my-4 text-xs" onClick={() => handleShowDetails(exercise)}>
@@ -463,7 +449,7 @@ export function CurrentProtocol({ userInfo, showOnboard }) {
                 <div className="text-base font-medium p-5">
                     <div>
                         <p>{exercise.name}</p>
-                        <p className="text-sm font-light">10 Reps x 3 Sets</p>
+                        <p className="text-sm font-light">{exercise.reps}</p>
                     </div>
                 </div>
                 <button type="button" className="btn btn-neutral my-4 text-xs" onClick={() => handleShowDetails(exercise)}>
@@ -485,7 +471,7 @@ export function CurrentProtocol({ userInfo, showOnboard }) {
                 <div className="text-base font-medium p-5">
                     <div>
                         <p>{exercise.name}</p>
-                        <p className="text-sm font-light">10 Reps x 3 Sets</p>
+                        <p className="text-sm font-light">{exercise.reps}</p>
                     </div>
                 </div>
                 <button type="button" className="btn btn-neutral my-4 text-xs" onClick={() => handleShowDetails(exercise)}>

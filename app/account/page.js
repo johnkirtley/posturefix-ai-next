@@ -2,13 +2,13 @@
 
 'use client';
 
-import { useContext, useEffect } from 'react';
+import { useContext } from 'react';
 import { useRouter } from 'next/navigation';
 import Nav from '../components/Nav/Nav';
-import DeleteAccount from '../components/deleteAccount';
+import DeleteAccount from '../components/DeleteAccount';
 import { useAuth } from '../Context/AuthContext';
 import { UserContext } from '../Context';
-import { Loading } from '../components/loading';
+import { Loading } from '../components/Loading';
 import usePremiumStatus from '../../stripe/usePremiumStatus';
 
 export default function Plans() {
@@ -16,11 +16,6 @@ export default function Plans() {
     const { userInfo } = useContext(UserContext);
     const { premiumStatus, loading } = usePremiumStatus(user.email);
     const router = useRouter();
-
-    useEffect(() => {
-        console.log('premium', premiumStatus);
-        console.log('loading', loading);
-    }, [premiumStatus, loading]);
 
     async function createPortalSession(email) {
         let data;

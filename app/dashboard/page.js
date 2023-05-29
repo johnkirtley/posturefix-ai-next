@@ -5,8 +5,8 @@ import { UserContext } from '../Context';
 import Nav from '../components/Nav/Nav';
 import { CurrentProtocol } from '../components/CurrentProtocol/CurrentProtocol';
 import { useAuth } from '../Context/AuthContext';
-import Onboarding from '../components/onboarding/Onboarding';
-import { Loading } from '../components/loading';
+import Onboarding from '../components/Onboarding/Onboarding';
+import { Loading } from '../components/Loading';
 // import { useFirebase } from '../hooks/useFirebase';
 
 export default function Dashboard() {

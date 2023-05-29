@@ -113,13 +113,14 @@ export function PlanPage() {
                     <div className="card-body justify-center items-center gap-5 text-center">
                         <h2 className="card-title text-3xl">{!clicked ? plan[1].name : plan[0].name}</h2>
                         {showTrialText ? <p>3 day free trial available</p> : ''}
-                        <p className="text-2xl font-bold">{!clicked ? `$${plan[1].price}` : `$${plan[0].price}`}</p>
+                        <p className="text-2xl font-bold">{!clicked ? `$${plan[1].price}` : `$${plan[0].price}`}{!clicked ? <span className="font-medium">/month</span> : <span className="font-medium">/year</span>}</p>
                         <p className="text-sm italic">{clicked ? <div><p className="border bg-warning w-full rounded-md p-1">Save Over {plan[0].savings}% </p><p>Compared To Monthly</p></div> : ''}</p>
                         <ul className="list-disc flex flex-col justify-start items-start gap-4">
                             {plan[0].features.map((feature) => (
                                 <li className="text-left text-sm">{feature}</li>
                             ))}
                         </ul>
+                        <p className="py-1">+ Access To All New Features</p>
                         <div className="card-actions justify-end">
                             <button type="button" className="btn btn-primary" onClick={!clicked ? () => handleBilling(plan[1].id) : () => handleBilling(plan[0].id)}>{planClicked ? 'Redirecting to Stripe' : 'Select'}</button>
                         </div>

@@ -10,7 +10,7 @@ const devPlanInfo = [
     {
         name: 'Align',
         type: 'Yearly',
-        features: ['3 Levels of Progressive Exercise Difficulty', 'Custom Workout Generation', 'Exercise Library (Unlocked After Level 1)', 'Random Exercise Picker', 'Recommended Tools Section', '+ Access To Any New Feature Releases'],
+        features: ['3 Levels of Progressive Exercise Difficulty', 'Unlimited Custom Workout Generation', 'Exercise Library (Unlocked After Level 1)', 'Random Exercise Picker'],
         price: 59.99,
         savings: 25,
         id: 'price_1NBrIZIEkyn8v16oCqxmmYEZ',
@@ -18,7 +18,7 @@ const devPlanInfo = [
     {
         name: 'Align',
         type: 'Monthly',
-        features: ['3 Levels of Progressive Exercise Difficulty', 'Custom Workout Generation', 'Exercise Library (Unlocked After Level 1)', 'Random Exercise Picker', 'Recommended Tools Section', '+ Access To Any New Feature Releases'],
+        features: ['3 Levels of Progressive Exercise Difficulty', 'Unlimited Custom Workout Generation', 'Exercise Library (Unlocked After Level 1)', 'Random Exercise Picker'],
         price: 6.99,
         savings: 0,
         id: 'price_1NBrI4IEkyn8v16oartQ0iug',
