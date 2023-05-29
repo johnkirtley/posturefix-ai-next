@@ -11,7 +11,7 @@ export function StatusBar({ count }) {
     return (
         <div className="flex flex-col gap-1 mb-10">
             <div className="font-bold">
-            Level {currentLevel}
+                {currentLevel <= 3 ? `Level ${currentLevel}` : 'Maintenance Level'}
             </div>
             <div className="flex flex-col justify-center items-center">
                 {count && currentLevel ? totalWorkouts - count[currentLevel] : totalWorkouts - 0}

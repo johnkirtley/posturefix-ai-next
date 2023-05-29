@@ -100,6 +100,7 @@ export default function Register() {
                         1: 0,
                         2: 0,
                         3: 0,
+                        4: 0,
                     },
                 });
                 createStripeSubscription(user.email).then((res) => {

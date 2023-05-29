@@ -4,36 +4,36 @@
 /* eslint-disable react/prop-types */
 import { useState, useEffect } from 'react';
 import { exerciseInfo } from './exerciseInfo';
-import List from './List';
+// import List from './List';
 import usePremiumStatus from '../../../stripe/usePremiumStatus';
 import { useAuth } from '../../Context/AuthContext';
 import { NoPlan } from './noPlan';
 import { useFirebase } from '../../hooks/useFirebase';
 
 export default function ExerciseList() {
-    const [view] = useState(1);
+    // const [view] = useState(1);
     const [exercise, setExercise] = useState(null);
     const { user } = useAuth();
     const { premiumStatus } = usePremiumStatus(user.email);
-    const [trimExercises, setTrimExercises] = useState([]);
-    const [searchVal, setSearchVal] = useState('');
-    const [filteredExercises, setFilteredExercises] = useState([]);
+    // const [trimExercises, setTrimExercises] = useState([]);
+    // const [searchVal, setSearchVal] = useState('');
+    // const [filteredExercises, setFilteredExercises] = useState([]);
     const { userInfo } = useFirebase();
 
-    const handleSearch = (e) => {
-        const val = e.target.value;
-        setSearchVal(val);
-    };
+    // const handleSearch = (e) => {
+    //     const val = e.target.value;
+    //     setSearchVal(val);
+    // };
 
-    useEffect(() => {
-        const filtered = exerciseInfo.filter((ex) => ex.name.toLowerCase().includes(searchVal.toLowerCase()) || ex.muscleGroup.toLowerCase().includes(searchVal.toLowerCase()));
+    // useEffect(() => {
+    //     const filtered = exerciseInfo.filter((ex) => ex.name.toLowerCase().includes(searchVal.toLowerCase()) || ex.muscleGroup.toLowerCase().includes(searchVal.toLowerCase()));
 
-        if (searchVal.trim() === '') {
-            setFilteredExercises(exerciseInfo);
-        } else {
-            setFilteredExercises(filtered);
-        }
-    }, [searchVal]);
+    //     if (searchVal.trim() === '') {
+    //         setFilteredExercises(exerciseInfo);
+    //     } else {
+    //         setFilteredExercises(filtered);
+    //     }
+    // }, [searchVal]);
 
     const selectRandomExercise = () => {
         const shuffled = exerciseInfo.sort(() => 0.5 - Math.random());
@@ -44,17 +44,17 @@ export default function ExerciseList() {
         console.log('num', premiumStatus);
     };
 
-    useEffect(() => {
-        if (premiumStatus.planName === '') {
-            const exercises = exerciseInfo.slice(0, 4);
-            setTrimExercises(exercises);
-        }
+    // useEffect(() => {
+    //     if (premiumStatus.planName === '') {
+    //         const exercises = exerciseInfo.slice(0, 4);
+    //         setTrimExercises(exercises);
+    //     }
 
-        if (premiumStatus.planName !== '') {
-            const exercises = exerciseInfo;
-            setTrimExercises(exercises);
-        }
-    }, [premiumStatus]);
+    //     if (premiumStatus.planName !== '') {
+    //         const exercises = exerciseInfo;
+    //         setTrimExercises(exercises);
+    //     }
+    // }, [premiumStatus]);
 
     useEffect(() => {
         if (exercise) {
@@ -73,7 +73,8 @@ export default function ExerciseList() {
         <div>
             {premiumStatus.planName !== '' ? (
                 <div>
-                    <div className="flex justify-center items-center">
+                    <div className="flex flex-col justify-center items-center">
+                        <p>Short On Time?</p>
                         <button type="button" htmlFor="my-modal" className="btn btn-secondary" onClick={selectRandomExercise}>Pick Random Exercise</button>
                         <input type="checkbox" id="my-modal-shuffle" className="modal-toggle" />
                         <div className="modal justify-center items-center text-center">
@@ -95,13 +96,17 @@ export default function ExerciseList() {
                 <button type="button" onClick={() => setView(1)} className={`tab tab-bordered ${view === 1 ? 'tab-active' : ''}`}>Exercise List</button>
                 <button type="button" onClick={() => setView(2)} className={`tab tab-bordered ${view === 2 ? 'tab-active' : ''}`}>Saved Workouts</button>
             </div> */}
-                        <div>
+                        {/* <div>
                             <input value={searchVal} className="input w-80" placeholder="Search For An Exercise..." onChange={handleSearch} />
-                        </div>
-                        {view === 1 ? <List exerciseInfo={filteredExercises} /> : ''}
+                        </div> */}
+                        {/* {view === 1 ? <List exerciseInfo={filteredExercises} /> : ''} */}
                     </div>
                 </div>
-            ) : <div><NoPlan /><List exerciseInfo={trimExercises} /></div>}
+            ) : (
+                <div><NoPlan />
+                    {/* <List exerciseInfo={trimExercises} /> */}
+                </div>
+            )}
         </div>
     );
 }

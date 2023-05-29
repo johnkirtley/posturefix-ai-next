@@ -46,12 +46,12 @@ export const exerciseInfo = [
         equipmentNeeded: ['none'],
     },
     {
-        name: 'Chest Stretch 1',
+        name: 'Core Stretch 1',
         description: 'Stand in a doorway with your arms bent at a 90-degree angle, forearms resting on the door frame. Lean forward until you feel a stretch in the front of your shoulders.',
         image: 'https://i.imgur.com/8JjUx9b.png',
         video: 'https://www.youtube.com/watch?v=OxXpWg9lSsE',
         required: true,
-        muscleGroup: 'chest',
+        muscleGroup: 'core',
         equipmentNeeded: ['none'],
     },
     {

@@ -11,7 +11,7 @@ export default function List({ exerciseInfo }) {
     const handleShowDetails = (exercise) => {
         setSelected(exercise);
         // eslint-disable-next-line no-undef
-        const btn = document.getElementById('my-modal-workout');
+        const btn = document.getElementById('my-modal');
         btn.checked = true;
         console.log('selected', selected);
     };
@@ -21,7 +21,7 @@ export default function List({ exerciseInfo }) {
             {exerciseInfo.map((exercise, idx) => (
                 <div>
                     <div className="flex justify-center items-center">
-                        <input type="checkbox" id="my-modal-workout" className="modal-toggle" />
+                        <input type="checkbox" id="my-modal" className="modal-toggle" />
                         <div className="modal justify-center items-center text-center">
                             <div className="modal-box">
                                 <h3 className="font-bold text-lg">{selected && selected.name}</h3>
@@ -33,7 +33,7 @@ export default function List({ exerciseInfo }) {
                                 <p className="pt-4"><span className="font-bold">Reference Video:</span></p>
                                 <p>{selected && selected.video}</p>
                                 <div className="modal-action">
-                                    <label htmlFor="my-modal-workout" className="btn">Close</label>
+                                    <label htmlFor="my-modal" className="btn">Close</label>
                                 </div>
                             </div>
                         </div>

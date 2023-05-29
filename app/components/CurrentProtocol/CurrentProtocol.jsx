@@ -17,10 +17,11 @@ import { StatusBar } from './StatusBar';
 import { AdvanceModal } from './AdvanceModal';
 import { Loading } from '../loading';
 import usePremiumStatus from '../../../stripe/usePremiumStatus';
+import { exerciseInfo } from '../exerciseList/exerciseInfo';
 
 export function CurrentProtocol({ userInfo, showOnboard }) {
     const { user } = useAuth();
-    const [count, setCount] = useState({ 1: 0, 2: 0, 3: 0 });
+    const [count, setCount] = useState({ 1: 0, 2: 0, 3: 0, 4: 0 });
     const [loading, setLoading] = useState(false);
     const [generateLoading, setGenerateLoading] = useState(false);
     const [showAlert] = useState(false);
@@ -61,6 +62,9 @@ export function CurrentProtocol({ userInfo, showOnboard }) {
                     break;
                 case 3:
                     list = exerciseListL3;
+                    break;
+                case 4:
+                    list = exerciseInfo;
                     break;
                 default:
                     break;
@@ -238,7 +242,6 @@ export function CurrentProtocol({ userInfo, showOnboard }) {
         const userRef = doc(firestore, 'users', user.email);
         const q = query(collection(firestore, 'users'), where('email', '==', user.email.toLowerCase()));
         const querySnapshot = await getDocs(q);
-
         querySnapshot.forEach(async (document) => {
             if (document.data().email === user.email) {
                 const { currentLevel } = document.data();
@@ -253,11 +256,15 @@ export function CurrentProtocol({ userInfo, showOnboard }) {
                 }
 
                 if (currentLevel === 3) {
+                    await updateDoc(userRef, { currentLevel: 4 });
+                }
+
+                if (currentLevel === 4) {
                     const progressMade = { ...document.data().progressMade };
-                    progressMade[3] = 0;
+                    progressMade[4] = 0;
 
                     setCount(progressMade);
-                    await updateDoc(userRef, { currentLevel: 3 });
+                    await updateDoc(userRef, { currentLevel: 4 });
                     await updateDoc(userRef, { progressMade });
                 }
 
@@ -342,16 +349,30 @@ export function CurrentProtocol({ userInfo, showOnboard }) {
 
                     if (progressMade[3] >= 4) {
                         progressMade[3] += 1;
+                        setCount(progressMade);
                         handleAdvanceModal();
                         setLoading(false);
-                        setCount(progressMade);
                         setCompletedProgram(true);
-                        await updateDoc(userRef, { progressMade });
                         return;
                     }
 
                     if (progressMade[3] < 4) {
                         progressMade[3] += 1;
+                    }
+                }
+
+                if (currentLevel === 4) {
+                    if (progressMade[4] >= 4) {
+                        progressMade[4] += 1;
+                        setCount(progressMade);
+                        handleAdvanceModal();
+                        setLoading(false);
+                        await updateDoc(userRef, { progressMade });
+                        return;
+                    }
+
+                    if (progressMade[4] < 4) {
+                        progressMade[4] += 1;
                     }
                 }
 

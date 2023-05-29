@@ -40,8 +40,8 @@ export default function Nav() {
                                     </label>
                                     <ul tabIndex={0} className="menu menu-compact dropdown-content mt-3 p-2 shadow bg-neutral rounded-box w-52">
                                         <li className="my-5">Welcome, {userInfo.name}</li>
-                                        <li><Link href="/dashboard">Dashboard</Link></li>
-                                        <li><Link href="/exercise-library">Exercise Library{userInfo && userInfo.currentLevel === 1 ? <span className="text-warning text-xs">Unlocked After Level 1</span> : ''}</Link></li>
+                                        <li><Link href="/dashboard">Main Program</Link></li>
+                                        <li><Link href="/exercise-library">Random Exercise{userInfo && userInfo.currentLevel === 1 ? <span className="text-warning text-xs">Unlocked After Level 1</span> : ''}</Link></li>
                                         <li><Link href="/rec-tools">Helpful Tools</Link></li>
                                         <li><Link href="/faq">FAQ</Link></li>
                                         <li><Link href="/account">Manage Account</Link></li>
