@@ -30,7 +30,7 @@ export default function Nav() {
             {user
                 ? (
                     <div>
-                        <div className="navbar bg-neutral p-base pr-0 pl-8 mb-7 text-base-200">
+                        <div className="navbar bg-neutral p-base pr-8 pl-8 mb-7 text-base-200">
                             <div className="navbar-start">
                                 <div className="dropdown">
                                     <label tabIndex={0} className="btn btn-ghost btn-circle">
