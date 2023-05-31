@@ -149,22 +149,22 @@ export default function Register() {
 
     return (
         <main className="flex min-h-screen flex-col items-center justify-between p-24">
-            <div className="flex flex-col gap-20 z-10 w-80 items-center justify-center font-mono text-sm lg:flex">
-                <div className="flex flex-col justify-center items-center card-bordered rounded-lg p-10 w-auto gap-10">
+            <div className="flex flex-col gap-20 z-10 w-80 items-center justify-center text-sm lg:flex">
+                <div className="flex flex-col justify-center items-center bg-secondary rounded-lg p-10 w-auto gap-10 shadow-2xl">
                     {errors.emailExists ? <p className="alert-error">Email already exists</p> : ''}
                     {errors.invalidEmail ? <p className="alert-error">Invalid email</p> : ''}
                     {errors.invalidPass ? <p className="alert-error">Invalid password. Must be at least 6 characters.</p> : ''}
                     {errors.passwordMismatch ? <p className="alert-error">Passwords do not match. Try again.</p> : ''}
                     {errors.generalError ? <p className="alert-error">This is embarassing. Error occurred. Please try again.</p> : ''}
                     <div>
-                        <p>Sign Up</p>
+                        <p className="font-semibold text-lg text-base-100">Let&apos;s Get Started</p>
                     </div>
                     <div>
                         <input name="username" value={credentials.username} onChange={handleChange} className="input input-bordered w-full my-2" placeholder="email" />
                         <input name="password" value={credentials.password} onChange={handleChange} className="input input-bordered w-full my-2" placeholder="password" type="password" />
                         <input name="confirmPass" value={credentials.confirmPass} onChange={handleChange} enterKeyHint="Register" onKeyDown={handleKeydown} className="input input-bordered w-full my-2" placeholder="confirm password" type="password" />
                     </div>
-                    <button ref={registerRef} type="submit" onClick={signUp} className="btn btn-accent">{registerAccount ? 'Creating Account...' : 'Register'}</button>
+                    <button ref={registerRef} type="submit" onClick={signUp} className="btn btn-info">{registerAccount ? 'Creating Account...' : 'Register'}</button>
                 </div>
                 <div className="text-center">
                     <p>Have an account? <Link href="/" className="link">Login</Link></p>

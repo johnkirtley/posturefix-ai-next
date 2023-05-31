@@ -31,6 +31,7 @@ export function CurrentProtocol({ userInfo, showOnboard }) {
     const [selected, setSelected] = useState({});
     const router = useRouter();
     const [curLevel, setCurLevel] = useState(1);
+    const [showCompletedBadge, setShowCompletedBadge] = useState(false);
 
     useEffect(() => {
         setCount(userInfo.progressMade);
@@ -385,6 +386,10 @@ export function CurrentProtocol({ userInfo, showOnboard }) {
                     if (typeof window !== 'undefined') {
                         // eslint-disable-next-line no-undef
                         window.scrollTo({ top: 0, behavior: 'smooth' });
+                        setShowCompletedBadge(true);
+                        setTimeout(() => {
+                            setShowCompletedBadge(false);
+                        }, 2500);
                     }
                 }, 1200);
             }
@@ -416,97 +421,112 @@ export function CurrentProtocol({ userInfo, showOnboard }) {
                         </div>
                         <div className="w-full">
                             {showAdvanceModal ? <AdvanceModal setCount={setCount} generateRoutine={generateRoutine} showAdvanceModal={showAdvanceModal} setShowAdvanceModal={setShowAdvanceModal} completedProgram={completedProgram} curLevel={curLevel} /> : ''}
+                            {showCompletedBadge ? <div className="badge badge-success mb-5 p-4"><p className="text-base-100">🎉 Nice Job! Workout Completed.</p></div> : ''}
                             <StatusBar count={count} />
                             <div>
-                                <div className="badge badge-secondary w-full h-12 text-lg rounded-none">
-                            Warmups
+                                <div className="divider lg:divider-horizontal">
+                                    <p className="badge badge-info p-3 font-semibold">Warmups</p>
                                 </div>
                                 {userInfo.currentProtocol.length > 0
         && userInfo.currentProtocol[0].warmup.exercises.map((exercise, idx) => (
-            <div tabIndex={0} className="cardborder-base-300 bg-base-100 rounded-box w-3/4 m-auto my-5 shadow-md" key={idx}>
+            <div tabIndex={0} className="cardborder-base-300 bg-base-100 rounded-box w-3/4 m-auto my-5 shadow-lg" key={idx}>
                 <div className="text-base font-medium p-5">
                     <div>
                         <p>{exercise.name}</p>
                         <p className="text-sm font-light">{exercise.reps}</p>
                     </div>
                 </div>
-                <button type="button" className="btn btn-info my-4 text-xs" onClick={() => handleShowDetails(exercise)}>
+                <button type="button" className="btn btn-secondary my-4 text-xs" onClick={() => handleShowDetails(exercise)}>
                     <div className="flex justify-center items-center gap-1">
                         <Icon icon="pepicons-pop:plus" />
-                        <p>Show Exercise Details</p>
+                        <p>Exercise Details</p>
                     </div>
                 </button>
             </div>
         ))}
                             </div>
                             <div className="pb-5">
-                                <div className="badge badge-secondary w-full h-10 text-lg rounded-none color-baseFont">
-                            Back
+                                <div className="divider lg:divider-horizontal">
+                                    <p className="badge badge-info p-3 font-semibold">Back</p>
                                 </div>
                                 {userInfo.currentProtocol.length > 0
         && userInfo.currentProtocol[0].back.exercises.map((exercise, idx) => (
-            <div tabIndex={0} className="cardborder-base-300 bg-base-100 rounded-box w-3/4 m-auto my-5 shadow-md" key={idx}>
+            <div tabIndex={0} className="cardborder-base-300 bg-base-100 rounded-box w-3/4 m-auto my-5 shadow-lg" key={idx}>
                 <div className="text-base font-medium p-5">
                     <div>
                         <p>{exercise.name}</p>
                         <p className="text-sm font-light">{exercise.reps}</p>
                     </div>
                 </div>
-                <button type="button" className="btn btn-info my-4 text-xs" onClick={() => handleShowDetails(exercise)}>
+                <button type="button" className="btn btn-secondary my-4 text-xs" onClick={() => handleShowDetails(exercise)}>
                     <div className="flex justify-center items-center gap-1">
                         <Icon icon="pepicons-pop:plus" />
-                        <p>Show Exercise Details</p>
+                        <p>Exercise Details</p>
                     </div>
                 </button>
             </div>
         ))}
                             </div>
                             <div className="pb-5">
-                                <div className="badge badge-secondary w-full rounded-none h-10 text-lg">
-                            Core
+                                <div className="divider lg:divider-horizontal">
+                                    <p className="badge badge-info p-3 font-semibold">Core</p>
                                 </div>
                                 {userInfo.currentProtocol.length > 0
         && userInfo.currentProtocol[0].core.exercises.map((exercise, idx) => (
-            <div tabIndex={0} className="cardborder-base-300 bg-base-100 rounded-box w-3/4 m-auto my-5 shadow-md" key={idx}>
+            <div tabIndex={0} className="cardborder-base-300 bg-base-100 rounded-box w-3/4 m-auto my-5 shadow-lg" key={idx}>
                 <div className="text-base font-medium p-5">
                     <div>
                         <p>{exercise.name}</p>
                         <p className="text-sm font-light">{exercise.reps}</p>
                     </div>
                 </div>
-                <button type="button" className="btn btn-info my-4 text-xs" onClick={() => handleShowDetails(exercise)}>
+                <button type="button" className="btn btn-secondary my-4 text-xs" onClick={() => handleShowDetails(exercise)}>
                     <div className="flex justify-center items-center gap-1">
                         <Icon icon="pepicons-pop:plus" />
-                        <p>Show Exercise Details</p>
+                        <p>Exercise Details</p>
                     </div>
                 </button>
             </div>
         ))}
                             </div>
                             <div className="pb-5">
-                                <div className="badge badge-secondary w-full rounded-none h-10 text-lg">
-                            Neck
+                                <div className="divider lg:divider-horizontal">
+                                    <p className="badge badge-info p-3 font-semibold">Neck</p>
                                 </div>
                                 {userInfo.currentProtocol.length > 0
         && userInfo.currentProtocol[0].neck.exercises.map((exercise, idx) => (
-            <div tabIndex={0} className="cardborder-base-300 bg-base-100 rounded-box w-3/4 m-auto my-5 shadow-md" key={idx}>
+            <div tabIndex={0} className="cardborder-base-300 bg-base-100 rounded-box w-3/4 m-auto my-5 shadow-lg" key={idx}>
                 <div className="text-base font-medium p-5">
                     <div>
                         <p>{exercise.name}</p>
                         <p className="text-sm font-light">{exercise.reps}</p>
                     </div>
                 </div>
-                <button type="button" className="btn btn-info my-4 text-xs" onClick={() => handleShowDetails(exercise)}>
+                <button type="button" className="btn btn-secondary my-4 text-xs" onClick={() => handleShowDetails(exercise)}>
                     <div className="flex justify-center items-center gap-1">
                         <Icon icon="pepicons-pop:plus" />
-                        <p>Show Exercise Details</p>
+                        <p>Exercise Details</p>
                     </div>
                 </button>
             </div>
         ))}
                             </div>
                             {premiumStatus.planName === '' ? <button type="button" className="btn btn-warning mt-5 h-20 text-sm w-full" onClick={() => router.push('/plans')}>Please Choose Plan To Log Workout</button>
-                                : <button disabled={!!loading || showAlert} type="button" className="btn btn-success mt-5 h-20 text-lg w-full" onClick={completeWorkout}>{loading ? 'Submitting...' : 'Complete Workout'}</button> }
+                                : '' }
+                            {premiumStatus.planName !== '' && curLevel !== 4 ? <button disabled={!!loading || showAlert} type="button" className="btn btn-success mt-5 h-20 text-lg w-full" onClick={completeWorkout}>{loading ? 'Submitting...' : 'Complete Workout'}</button> : ''}
+                            {premiumStatus.planName !== '' && curLevel === 4 ? (
+                                <button disabled={!!loading || showAlert} type="button" className="btn btn-success mt-5 h-20 text-lg w-full" onClick={generateRoutine}>{loading ? 'Generating...' : (
+                                    <div>
+                                        <p className="text-xs">Ready To Switch It Up?</p>
+                                        <div className="flex justify-center items-center gap-2">
+                                            <Icon icon="ep:refresh" height={25} width={25} />
+                                            <p>Generate New Workout</p>
+                                        </div>
+                                    </div>
+                                )}
+                                </button>
+                            ) : ''}
+
                         </div>
                     </div>
                 )}

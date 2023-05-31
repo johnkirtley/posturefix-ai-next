@@ -30,7 +30,7 @@ export default function RootLayout({ children }) {
     return (
         <html lang="en">
             <body className={inter.className}>
-                <div className="bg-zinc-100 min-h-screen">
+                <div className=" min-h-screen" style={{ backgroundColor: 'rgb(115 56 0 / 5%)' }}>
                     <AuthProvider>
                         <UserContext.Provider value={{ userInfo, setUserInfo }}>
                             {children}

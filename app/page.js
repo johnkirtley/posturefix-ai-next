@@ -114,20 +114,20 @@ export default function Login() {
                     </div>
                 </div>
             </div>
-            <div className="flex flex-col gap-20 z-10 w-80 items-center justify-center font-mono text-sm lg:flex">
-                <div className="flex flex-col justify-center items-center card-bordered rounded-lg p-10 gap-10">
+            <div className="flex flex-col gap-20 z-10 w-80 items-center justify-center text-sm lg:flex">
+                <div className="flex flex-col justify-center items-center card-bordered bg-primary rounded-lg p-10 gap-10 shadow-2xl">
                     {showError ? <div className="alert-error">Error, Check Email and Password</div> : ''}
                     <div>
-                        <p>Welcome Back</p>
+                        <p className="font-semibold text-lg text-base-100">👋 Welcome Back</p>
                     </div>
                     <div>
                         <input name="username" value={credentials.username} onChange={handleChange} className="input input-bordered w-full my-2" placeholder="email" />
                         <input name="password" value={credentials.password} onKeyDown={handleKeydown} enterKeyHint="Login" onChange={handleChange} className="input input-bordered w-full my-2" placeholder="password" type="password" />
                     </div>
                     <div>
-                        <button type="button" onClick={handleForgotPassword}>Forgot Password?</button>
+                        <button type="button" className="underline text-base-100" onClick={handleForgotPassword}>Forgot Password?</button>
                     </div>
-                    <button ref={loginRef} type="submit" onClick={signIn} className="btn btn-primary">{loggingIn ? 'Logging In...' : 'Login'}</button>
+                    <button ref={loginRef} type="submit" onClick={signIn} className="btn btn-info">{loggingIn ? 'Logging In...' : 'Login'}</button>
                 </div>
                 <div className="text-center">
                     <p>Need an account? <Link href="/register" className="link">Register</Link></p>

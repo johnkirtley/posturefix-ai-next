@@ -17,6 +17,7 @@ export function PlanPage() {
     const isUserPremium = usePremiumStatus(user.email);
     const [clicked, setClicked] = useState(true);
     const [plan] = useState(devPlanInfo);
+    const [loading, setLoading] = useState(false);
 
     async function getSubscriber(email) {
         const response = await fetch('/api/get-subscriber', {
@@ -43,6 +44,7 @@ export function PlanPage() {
         const trial = data.data[0].metadata.usedFreeTrial !== 'true';
 
         setShowTrialText(trial);
+        setLoading(false);
         return data;
     }
 
@@ -65,6 +67,7 @@ export function PlanPage() {
     }
 
     useEffect(() => {
+        setLoading(true);
         if (user) {
             getSubscriber(user.email);
             getCustomer(user.email);
@@ -105,24 +108,25 @@ export function PlanPage() {
                 <div className="form-control">
                     <label className="label cursor-pointer flex gap-4">
                         <span className="label-text font-bold">Monthly</span>
-                        <input type="checkbox" className="toggle toggle-success" onChange={handleClick} checked={clicked} />
+                        <input type="checkbox" className="toggle toggle-info" onChange={handleClick} checked={clicked} />
                         <span className="label-text font-bold">Yearly</span>
                     </label>
                 </div>
                 <div className="card w-11/12 m-auto rounded-md bg-base-100 shadow-xl">
-                    <div className="card-body justify-center items-center gap-5 text-center">
+                    <div className="card-body justify-center items-center gap-3 text-center">
                         <h2 className="card-title text-3xl">{!clicked ? plan[1].name : plan[0].name}</h2>
-                        {showTrialText ? <p>3 day free trial available</p> : ''}
+                        {showTrialText ? <p className="font-semibold">⏳ 3 day free trial available</p> : ''}
                         <p className="text-2xl font-bold">{!clicked ? `$${plan[1].price}` : `$${plan[0].price}`}{!clicked ? <span className="font-medium">/month</span> : <span className="font-medium">/year</span>}</p>
-                        <p className="text-sm italic">{clicked ? <div><p className="border bg-warning w-full rounded-md p-1">Save Over {plan[0].savings}% </p><p>Compared To Monthly</p></div> : ''}</p>
+                        <p className="text-sm italic">{clicked ? <div><p className="border bg-warning w-full rounded-md p-1 text-xs">Save Over {plan[0].savings}% </p><p>Compared To Monthly</p></div> : ''}</p>
                         <ul className="list-disc flex flex-col justify-start items-start gap-4">
                             {plan[0].features.map((feature) => (
                                 <li className="text-left text-sm">{feature}</li>
                             ))}
                         </ul>
-                        <p className="py-1">+ Access To All New Features</p>
+                        <p className="py-1 text-sm font-semibold">+ Access To All New Features</p>
                         <div className="card-actions justify-end">
-                            <button type="button" className="btn btn-primary" onClick={!clicked ? () => handleBilling(plan[1].id) : () => handleBilling(plan[0].id)}>{planClicked ? 'Redirecting to Stripe' : 'Select'}</button>
+                            {!loading ? <button disabled={loading} type="button" className="btn btn-info" onClick={!clicked ? () => handleBilling(plan[1].id) : () => handleBilling(plan[0].id)}>{planClicked ? 'Redirecting to Stripe' : 'Select'}</button>
+                                : <button disabled={loading} type="button" className="btn btn-info btn-ghost">Loading Plan Info...</button> }
                         </div>
                     </div>
                 </div>

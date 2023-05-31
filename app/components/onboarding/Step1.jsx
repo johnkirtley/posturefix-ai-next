@@ -39,13 +39,13 @@ export default function Step1({ setStep, step, onboardingQuestions, setOnboardin
                     <label className="label">
                         <span className="label-text">First Name</span>
                     </label>
-                    <input type="text" placeholder="First Name..." className="input input-bordered input-accent" onChange={handleNameChange} name="name" value={onboardingQuestions.name} />
+                    <input type="text" placeholder="First Name..." className="input input-bordered input-info" onChange={handleNameChange} name="name" value={onboardingQuestions.name} />
                 </div>
                 <div>
                     <label className="label">
                         <span className="label-text">Activity Level</span>
                     </label>
-                    <select defaultValue="sedentary" className="select w-full max-w-xs select-bordered select-accent" name="activityLevel" onChange={handleSelectChange}>
+                    <select defaultValue="sedentary" className="select w-full max-w-xs select-bordered select-info" name="activityLevel" onChange={handleSelectChange}>
                         <option disabled>Select Activity Level</option>
                         <option value="sedentary">Sedentary (Desk Job)</option>
                         <option value="light">Light Activity (Walks, Workout 1-2x/week)</option>
@@ -59,7 +59,7 @@ export default function Step1({ setStep, step, onboardingQuestions, setOnboardin
                             <Icon icon="material-symbols:info" />
                         </div>
                     </label>
-                    <select defaultValue="no" className="select w-full max-w-xs select-bordered select-accent" name="painAfterInjury" onChange={handleSelectChange}>
+                    <select defaultValue="no" className="select w-full max-w-xs select-bordered select-info" name="painAfterInjury" onChange={handleSelectChange}>
                         <option disabled>Did Pain Start After An Injury?</option>
                         <option value="no">No</option>
                         <option value="yes">Yes</option>
@@ -80,7 +80,7 @@ export default function Step1({ setStep, step, onboardingQuestions, setOnboardin
             <button
                 type="button"
                 disabled={onboardingQuestions.name === ''}
-                className="btn btn-primary"
+                className="btn btn-info"
                 onClick={() => setStep(step + 1)}
             >Next
             </button>

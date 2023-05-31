@@ -44,7 +44,7 @@ export default function ExerciseList() {
     }, [exercise, type]);
 
     if (userInfo.currentLevel === 1) {
-        return <p className="text-center">Section Unlocked After Level 1</p>;
+        return <div className="flex flex-col justify-center items-center p-4 gap-5"><p className="text-center font-semibold">Section Unlocked After Level 1</p><p className="text-center">We Want You To Establish A Stronger Foundation Before Trying Out Random Exercises.</p></div>;
     }
 
     return (
@@ -54,7 +54,7 @@ export default function ExerciseList() {
                     <div className="flex flex-col justify-center items-center gap-5">
                         <Icon icon="game-icons:perspective-dice-six-faces-random" width="100" height="100" />
                         <div>
-                            <button type="button" htmlFor="my-modal-stretch" className="btn btn-info" onClick={() => selectRandomExercise(stretchInfo, 'stretch')}>Random Stretch</button>
+                            <button type="button" htmlFor="my-modal-stretch" className="btn btn-secondary" onClick={() => selectRandomExercise(stretchInfo, 'stretch')}>Random Stretch</button>
                             <input type="checkbox" id="my-modal-shuffle-stretch" className="modal-toggle" />
                             <div className="modal justify-center items-center text-center">
                                 <div className="modal-box">
@@ -70,7 +70,7 @@ export default function ExerciseList() {
                             </div>
                         </div>
                         <div>
-                            <button type="button" htmlFor="my-modal-exercise" className="btn btn-info" onClick={() => selectRandomExercise(exerciseInfo, 'exercise')}>Random Exercise</button>
+                            <button type="button" htmlFor="my-modal-exercise" className="btn btn-secondary" onClick={() => selectRandomExercise(exerciseInfo, 'exercise')}>Random Exercise</button>
                             <input type="checkbox" id="my-modal-shuffle-exercise" className="modal-toggle" />
                             <div className="modal justify-center items-center text-center">
                                 <div className="modal-box">

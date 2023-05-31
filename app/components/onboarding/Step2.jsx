@@ -43,14 +43,14 @@ export default function Step2({ setStep, step, onboardingQuestions, setOnboardin
             <div className="flex gap-5">
                 <button
                     type="button"
-                    className="btn btn-primary"
+                    className="btn btn-info btn-outline"
                     onClick={() => setStep(step - 1)}
                 >Back
                 </button>
                 <button
                     type="button"
                     disabled={checkIfSelected()}
-                    className="btn btn-primary"
+                    className="btn btn-info"
                     onClick={() => setStep(step + 1)}
                 >Next
                 </button>

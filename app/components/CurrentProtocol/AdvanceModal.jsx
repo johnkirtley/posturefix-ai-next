@@ -62,7 +62,7 @@ export function AdvanceModal({
             {showAdvanceModal
                 ? (
                     <div>
-                        <label htmlFor="my-modal" className="btn">open modal</label>
+                        <label htmlFor="my-modal" className="btn hidden">open modal</label>
                         <input type="checkbox" id="my-modal-complete" className="modal-toggle" />
                         <div className="modal">
                             <div className="modal-box">

@@ -6,14 +6,16 @@ export function Faq() {
     return (
         <div>
             <div className="flex flex-col justify-center items-center gap-5 w-11/12 m-auto py-5">
-                <p className="text-lg">❓ Frequently Asked Questions</p>
+                <p className="text-lg font-semibold">❓ Frequently Asked Questions</p>
                 {faqContent.map((content) => (
-                    <div tabIndex={0} className="collapse collapse-arrow border border-base-300 bg-base-100 rounded-box w-full">
+                    <div tabIndex={0} className="collapse collapse-arrow bg-base-100 rounded-box w-full shadow-lg">
                         <div className="collapse-title text-md font-medium">
                             {content.title}
                         </div>
-                        <div className="collapse-content">
-                            <p>{content.content}</p>
+                        <div className="collapse-content flex flex-col gap-3">
+                            {content.content.map((text) => (
+                                <p className="font-light">{text}</p>
+                            ))}
                         </div>
                     </div>
                 ))}

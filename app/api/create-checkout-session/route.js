@@ -23,10 +23,12 @@ export async function POST(req) {
             cancel_url: successUrl,
             customer: customer.data[0].id,
             allow_promotion_codes: true,
+            automatic_tax: { enabled: true },
             line_items: [
                 { price: product, quantity: 1 },
             ],
             mode: 'subscription',
+            customer_update: { address: 'auto' },
         });
         return NextResponse.json({ message: 'Checkout Created No Free Trial', session });
     }
@@ -37,11 +39,13 @@ export async function POST(req) {
             cancel_url: successUrl,
             customer: customer.data[0].id,
             allow_promotion_codes: true,
+            automatic_tax: { enabled: true },
             subscription_data: { trial_period_days: 3 },
             line_items: [
                 { price: product, quantity: 1 },
             ],
             mode: 'subscription',
+            customer_update: { address: 'auto' },
         });
 
         return new Response(JSON.stringify({ message: 'Checkout Created Free Trial', session }));

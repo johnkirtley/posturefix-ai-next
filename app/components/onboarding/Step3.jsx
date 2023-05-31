@@ -46,11 +46,11 @@ export default function Step3({
                 <div className="flex gap-5">
                     <button
                         type="button"
-                        className="btn btn-primary"
+                        className="btn btn-info btn-outline"
                         onClick={() => setStep(step - 1)}
                     >Back
                     </button>
-                    <button type="button" onClick={finishOnboarding} className="btn btn-primary">Finish</button>
+                    <button type="button" onClick={finishOnboarding} className="btn btn-info">Finish</button>
                 </div>
             </div>
         </div>

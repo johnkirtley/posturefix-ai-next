@@ -55,17 +55,18 @@ export default function Plans() {
                 <div>
                     <Nav />
                     <div className="flex flex-col gap-5 justify-center items-center">
-                        <h2 className="text-center font-bold mb-4">Account Page</h2>
-                        <div className="flex flex-col justify-center items-center gap-2 border rounded-md p-5 w-3/4 m-auto bg-neutral text-base-200">
-                            <div>
-                                <p>Email: {userInfo.email}</p>
-                            </div>
+                        <h2 className="text-center font-semibold mb-4">Account</h2>
+                        {/* <div className="flex flex-col justify-center items-center gap-2 border rounded-md p-5 w-3/4 m-auto bg-secondary text-base-200">
+
                             {/* <div>
                                 <p className="underline text-base-100 hover:text-info">Change Password</p>
                             </div> */}
-                        </div>
-                        <div className="flex flex-col justify-center items-center border rounded-md w-3/4 p-5 m-auto bg-neutral text-base-200 gap-5 mt-4">
-                            <div><p className="font-bold">Subscription Information</p></div>
+                        {/* </div> */}
+                        <div className="flex flex-col justify-center items-center border rounded-md w-3/4 p-5 m-auto bg-secondary text-base-200 gap-5 mt-4">
+                            <div>
+                                <p><span className="font-bold">Email:</span> {userInfo.email}</p>
+                            </div>
+                            <div><p className="font-bold">Subscription Info</p></div>
                             <div className="text-center">
                                 <p>Current Plan: {premiumStatus && premiumStatus.planName !== '' ? premiumStatus.planName.toUpperCase() : 'No Active Plan'}</p>
                             </div>
