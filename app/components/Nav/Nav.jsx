@@ -52,7 +52,7 @@ export default function Nav() {
                                 </div>
                             </div>
                             <div className="navbar-end">
-                                <Image src="/logo.png" width={150} height={100} />
+                                <Image src="/logo.png" width={100} height={100} />
                             </div>
                         </div>
                     </div>
