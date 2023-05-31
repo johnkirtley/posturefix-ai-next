@@ -56,7 +56,7 @@ export default function Plans() {
                     <Nav />
                     <div className="flex flex-col gap-5 justify-center items-center">
                         <h2 className="text-center font-bold mb-4">Account Page</h2>
-                        <div className="flex flex-col justify-center items-center gap-2 border rounded-md p-5 w-3/4 m-auto bg-neutral text-info">
+                        <div className="flex flex-col justify-center items-center gap-2 border rounded-md p-5 w-3/4 m-auto bg-neutral text-base-200">
                             <div>
                                 <p>Email: {userInfo.email}</p>
                             </div>
@@ -64,10 +64,10 @@ export default function Plans() {
                                 <p className="underline text-base-100 hover:text-info">Change Password</p>
                             </div> */}
                         </div>
-                        <div className="flex flex-col justify-center items-center border rounded-md w-3/4 p-5 m-auto bg-neutral text-info gap-5 mt-4">
+                        <div className="flex flex-col justify-center items-center border rounded-md w-3/4 p-5 m-auto bg-neutral text-base-200 gap-5 mt-4">
                             <div><p className="font-bold">Subscription Information</p></div>
                             <div className="text-center">
-                                <div>Current Plan: {premiumStatus && premiumStatus.planName !== '' ? premiumStatus.planName.toUpperCase() : 'No Active Plan'}</div>
+                                <p>Current Plan: {premiumStatus && premiumStatus.planName !== '' ? premiumStatus.planName.toUpperCase() : 'No Active Plan'}</p>
                             </div>
                             <div>
                                 {premiumStatus.planName !== '' ? <button type="button" className="btn btn-info" onClick={() => generatePortal(user.email)}>Manage Subscription</button> : ''}

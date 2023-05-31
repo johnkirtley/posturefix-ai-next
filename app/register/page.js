@@ -164,7 +164,7 @@ export default function Register() {
                         <input name="password" value={credentials.password} onChange={handleChange} className="input input-bordered w-full my-2" placeholder="password" type="password" />
                         <input name="confirmPass" value={credentials.confirmPass} onChange={handleChange} enterKeyHint="Register" onKeyDown={handleKeydown} className="input input-bordered w-full my-2" placeholder="confirm password" type="password" />
                     </div>
-                    <button ref={registerRef} type="submit" onClick={signUp} className="btn btn-secondary">{registerAccount ? 'Creating Account...' : 'Register'}</button>
+                    <button ref={registerRef} type="submit" onClick={signUp} className="btn btn-accent">{registerAccount ? 'Creating Account...' : 'Register'}</button>
                 </div>
                 <div className="text-center">
                     <p>Have an account? <Link href="/" className="link">Login</Link></p>

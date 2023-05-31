@@ -409,7 +409,7 @@ export function CurrentProtocol({ userInfo, showOnboard }) {
                                     <p className="pt-4"><span className="font-bold">Reference Video:</span></p>
                                     <p>{selected && selected.video}</p>
                                     <div className="modal-action">
-                                        <label htmlFor="my-modal" className="btn">Close</label>
+                                        <label htmlFor="my-modal" className="btn btn-neutral">Close</label>
                                     </div>
                                 </div>
                             </div>
@@ -430,7 +430,7 @@ export function CurrentProtocol({ userInfo, showOnboard }) {
                         <p className="text-sm font-light">{exercise.reps}</p>
                     </div>
                 </div>
-                <button type="button" className="btn btn-neutral my-4 text-xs" onClick={() => handleShowDetails(exercise)}>
+                <button type="button" className="btn btn-info my-4 text-xs" onClick={() => handleShowDetails(exercise)}>
                     <div className="flex justify-center items-center gap-1">
                         <Icon icon="pepicons-pop:plus" />
                         <p>Show Exercise Details</p>
@@ -452,7 +452,7 @@ export function CurrentProtocol({ userInfo, showOnboard }) {
                         <p className="text-sm font-light">{exercise.reps}</p>
                     </div>
                 </div>
-                <button type="button" className="btn btn-neutral my-4 text-xs" onClick={() => handleShowDetails(exercise)}>
+                <button type="button" className="btn btn-info my-4 text-xs" onClick={() => handleShowDetails(exercise)}>
                     <div className="flex justify-center items-center gap-1">
                         <Icon icon="pepicons-pop:plus" />
                         <p>Show Exercise Details</p>
@@ -474,7 +474,7 @@ export function CurrentProtocol({ userInfo, showOnboard }) {
                         <p className="text-sm font-light">{exercise.reps}</p>
                     </div>
                 </div>
-                <button type="button" className="btn btn-neutral my-4 text-xs" onClick={() => handleShowDetails(exercise)}>
+                <button type="button" className="btn btn-info my-4 text-xs" onClick={() => handleShowDetails(exercise)}>
                     <div className="flex justify-center items-center gap-1">
                         <Icon icon="pepicons-pop:plus" />
                         <p>Show Exercise Details</p>
@@ -496,7 +496,7 @@ export function CurrentProtocol({ userInfo, showOnboard }) {
                         <p className="text-sm font-light">{exercise.reps}</p>
                     </div>
                 </div>
-                <button type="button" className="btn btn-neutral my-4 text-xs" onClick={() => handleShowDetails(exercise)}>
+                <button type="button" className="btn btn-info my-4 text-xs" onClick={() => handleShowDetails(exercise)}>
                     <div className="flex justify-center items-center gap-1">
                         <Icon icon="pepicons-pop:plus" />
                         <p>Show Exercise Details</p>

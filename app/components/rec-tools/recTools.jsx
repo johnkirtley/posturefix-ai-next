@@ -20,7 +20,7 @@ export function RecTools() {
                                 {tool.recommend ? <div className="badge badge-warning">Highly Recommend</div> : ''}
                                 <p className="text-sm">{tool.description}</p>
                                 <div className="card-actions justify-center mt-4">
-                                    <a target="_blank" href={tool.link} rel="noreferrer"> <button type="button" className="btn btn-primary">Check It Out</button></a>
+                                    <a target="_blank" href={tool.link} rel="noreferrer"> <button type="button" className="btn btn-info">Check It Out</button></a>
                                 </div>
                             </div>
                         </div>

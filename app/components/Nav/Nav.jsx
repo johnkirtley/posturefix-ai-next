@@ -8,6 +8,7 @@
 import { signOut } from 'firebase/auth';
 import { useRouter } from 'next/navigation';
 import Link from 'next/link';
+import Image from 'next/image';
 import { firebaseAuth } from '../../../firebase/clientApp';
 import { useAuth } from '../../Context/AuthContext';
 import { useFirebase } from '../../hooks/useFirebase';
@@ -29,7 +30,7 @@ export default function Nav() {
             {user
                 ? (
                     <div>
-                        <div className="navbar bg-neutral p-base pl-8 pr-8 mb-7 text-white">
+                        <div className="navbar bg-neutral p-base pr-0 pl-8 mb-7 text-base-200">
                             <div className="navbar-start">
                                 <div className="dropdown">
                                     <label tabIndex={0} className="btn btn-ghost btn-circle">
@@ -51,7 +52,7 @@ export default function Nav() {
                                 </div>
                             </div>
                             <div className="navbar-end">
-                                <h1>PostureFix</h1>
+                                <Image src="/logo.png" width={150} height={100} />
                             </div>
                         </div>
                     </div>
