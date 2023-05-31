@@ -1,14 +1,19 @@
 'use client';
 
+import { useState } from 'react';
 import { doc, deleteDoc } from 'firebase/firestore';
-import { deleteUser } from 'firebase/auth';
+import { deleteUser, signOut } from 'firebase/auth';
 // import { usePostHog } from 'posthog-js/react';
-import { firestore } from '../../firebase/clientApp';
+import { useRouter } from 'next/navigation';
+import { firestore, firebaseAuth } from '../../firebase/clientApp';
 
 import { useAuth } from '../Context/AuthContext';
 
 export default function DeleteAccount() {
+    const [promptForCredentials, setPromptForCredentials] = useState(false);
     const { user } = useAuth();
+
+    const router = useRouter();
 
     async function getCustomer(email) {
         const response = await fetch('/api/get-customer', {
@@ -52,6 +57,9 @@ export default function DeleteAccount() {
                     .catch((error) => {
                         if (error.message.includes('auth/requires-recent-login')) {
                             console.log('error', error.message);
+
+                            setPromptForCredentials(true);
+
                             // posthog.capture('Reauth Required For Account Delete',
                             // { email: storeEmail });
                             // setShowReAuthModal(true);
@@ -61,11 +69,28 @@ export default function DeleteAccount() {
             });
         }
     };
+
+    const signOutButton = () => signOut(firebaseAuth)
+        .then(() => {
+            console.log('logged out');
+            router.push('/');
+        })
+        .catch((error) => console.log(error));
+
     return (
         <div className="mt-20">
-            <button type="button" className="btn btn-error" onClick={handleUserDelete}>
+            <div>
+                {promptForCredentials ? (
+                    <div>
+                        <button type="button" className="btn btn-neutral" onClick={signOutButton}>Sign Back In Before Making Account Changes</button>
+                    </div>
+                )
+                    : (
+                        <button type="button" className="btn btn-error" onClick={handleUserDelete}>
             Delete Account
-            </button>
+                        </button>
+                    )}
+            </div>
         </div>
     );
 }

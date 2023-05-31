@@ -30,10 +30,11 @@ export function CurrentProtocol({ userInfo, showOnboard }) {
     const { premiumStatus } = usePremiumStatus(user.email);
     const [selected, setSelected] = useState({});
     const router = useRouter();
-    // const [curProtocol, setCurProtocol] = useState([]);
+    const [curLevel, setCurLevel] = useState(1);
 
     useEffect(() => {
         setCount(userInfo.progressMade);
+        setCurLevel(userInfo.currentLevel);
     }, [userInfo]);
 
     const handleShowDetails = (exercise) => {
@@ -414,7 +415,7 @@ export function CurrentProtocol({ userInfo, showOnboard }) {
                             </div>
                         </div>
                         <div className="w-full">
-                            {showAdvanceModal ? <AdvanceModal setCount={setCount} generateRoutine={generateRoutine} showAdvanceModal={showAdvanceModal} setShowAdvanceModal={setShowAdvanceModal} completedProgram={completedProgram} /> : ''}
+                            {showAdvanceModal ? <AdvanceModal setCount={setCount} generateRoutine={generateRoutine} showAdvanceModal={showAdvanceModal} setShowAdvanceModal={setShowAdvanceModal} completedProgram={completedProgram} curLevel={curLevel} /> : ''}
                             <StatusBar count={count} />
                             <div>
                                 <div className="badge badge-secondary w-full h-12 text-lg rounded-none">
@@ -506,7 +507,6 @@ export function CurrentProtocol({ userInfo, showOnboard }) {
                             </div>
                             {premiumStatus.planName === '' ? <button type="button" className="btn btn-warning mt-5 h-20 text-sm w-full" onClick={() => router.push('/plans')}>Please Choose Plan To Log Workout</button>
                                 : <button disabled={!!loading || showAlert} type="button" className="btn btn-success mt-5 h-20 text-lg w-full" onClick={completeWorkout}>{loading ? 'Submitting...' : 'Complete Workout'}</button> }
-
                         </div>
                     </div>
                 )}
