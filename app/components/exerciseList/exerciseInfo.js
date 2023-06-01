@@ -3,10 +3,10 @@ export const exerciseInfo = [
     {
         name: 'Chest Stretch 1',
         description: 'Stand in a doorway with your arms bent at a 90-degree angle, forearms resting on the door frame. Lean forward until you feel a stretch in the front of your shoulders.',
-        image: 'https://i.imgur.com/8JjUx9b.png',
+        image: '/gifs/doorway-chest-stretch.gif',
         video: 'https://www.youtube.com/watch?v=OxXpWg9lSsE',
         required: true,
-        muscleGroup: 'chest',
+        muscleGroup: 'warmup',
         equipmentNeeded: ['none'],
     },
     {
@@ -47,8 +47,8 @@ export const exerciseInfo = [
     },
     {
         name: 'Core Stretch 1',
-        description: 'Stand in a doorway with your arms bent at a 90-degree angle, forearms resting on the door frame. Lean forward until you feel a stretch in the front of your shoulders.',
-        image: 'https://i.imgur.com/8JjUx9b.png',
+        description: 'Core Stand in a doorway with your arms bent at a 90-degree angle, forearms resting on the door frame. Lean forward until you feel a stretch in the front of your shoulders.',
+        image: '/gifs/scissor-kick.gif',
         video: 'https://www.youtube.com/watch?v=OxXpWg9lSsE',
         required: true,
         muscleGroup: 'core',
@@ -56,8 +56,8 @@ export const exerciseInfo = [
     },
     {
         name: 'Test',
-        description: 'Stand in a doorway with your arms bent at a 90-degree angle, forearms resting on the door frame. Lean forward until you feel a stretch in the front of your shoulders.',
-        image: 'https://i.imgur.com/8JjUx9b.png',
+        description: 'Test Stand in a doorway with your arms bent at a 90-degree angle, forearms resting on the door frame. Lean forward until you feel a stretch in the front of your shoulders.',
+        image: '/gifs/scissor-kick.gif',
         video: 'https://www.youtube.com/watch?v=OxXpWg9lSsE',
         required: true,
         muscleGroup: 'neck',

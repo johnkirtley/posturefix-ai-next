@@ -10,6 +10,7 @@ import {
 } from 'firebase/firestore';
 import { useRouter } from 'next/navigation';
 import { Icon } from '@iconify/react';
+import Image from 'next/image';
 import { useAuth } from '../../Context/AuthContext';
 import { firestore } from '../../../firebase/clientApp';
 import { exerciseListL1, exerciseListL2, exerciseListL3 } from '../onboarding/exercises';
@@ -40,6 +41,7 @@ export function CurrentProtocol({ userInfo, showOnboard }) {
 
     const handleShowDetails = (exercise) => {
         setSelected(exercise);
+        console.log(exercise);
         // eslint-disable-next-line no-undef
         const btn = document.getElementById('my-modal');
         btn.checked = true;
@@ -408,7 +410,7 @@ export function CurrentProtocol({ userInfo, showOnboard }) {
                                     <h3 className="font-bold text-lg">{selected && selected.name}</h3>
                                     <p className="py-4">10 reps x 3 sets</p>
                                     <p className="pt-4"><span className="font-bold">Example:</span></p>
-                                    <p>{selected && selected.image}</p>
+                                    <Image src={selected && selected.image} width={275} height={275} className="m-auto" alt={selected && selected.name} />
                                     <p className="pt-4"><span className="font-bold">Explanation:</span></p>
                                     <p>{selected && selected.description}</p>
                                     <p className="pt-4"><span className="font-bold">Reference Video:</span></p>
@@ -421,10 +423,10 @@ export function CurrentProtocol({ userInfo, showOnboard }) {
                         </div>
                         <div className="w-full">
                             {showAdvanceModal ? <AdvanceModal setCount={setCount} generateRoutine={generateRoutine} showAdvanceModal={showAdvanceModal} setShowAdvanceModal={setShowAdvanceModal} completedProgram={completedProgram} curLevel={curLevel} /> : ''}
-                            {showCompletedBadge ? <div className="badge badge-success mb-5 p-4"><p className="text-base-100">🎉 Nice Job! Workout Completed.</p></div> : ''}
+                            {showCompletedBadge ? <div className="badge badge-success mb-5 p-4"><p className="text-base-100">🐧🎉 Nice Job! Workout Completed.</p></div> : ''}
                             <StatusBar count={count} />
                             <div>
-                                <div className="divider lg:divider-horizontal">
+                                <div className="divider xl:divider-horizontal">
                                     <p className="badge badge-info p-3 font-semibold">Warmups</p>
                                 </div>
                                 {userInfo.currentProtocol.length > 0
@@ -446,7 +448,7 @@ export function CurrentProtocol({ userInfo, showOnboard }) {
         ))}
                             </div>
                             <div className="pb-5">
-                                <div className="divider lg:divider-horizontal">
+                                <div className="divider xl:divider-horizontal">
                                     <p className="badge badge-info p-3 font-semibold">Back</p>
                                 </div>
                                 {userInfo.currentProtocol.length > 0
@@ -468,7 +470,7 @@ export function CurrentProtocol({ userInfo, showOnboard }) {
         ))}
                             </div>
                             <div className="pb-5">
-                                <div className="divider lg:divider-horizontal">
+                                <div className="divider xl:divider-horizontal">
                                     <p className="badge badge-info p-3 font-semibold">Core</p>
                                 </div>
                                 {userInfo.currentProtocol.length > 0
@@ -490,7 +492,7 @@ export function CurrentProtocol({ userInfo, showOnboard }) {
         ))}
                             </div>
                             <div className="pb-5">
-                                <div className="divider lg:divider-horizontal">
+                                <div className="divider xl:divider-horizontal">
                                     <p className="badge badge-info p-3 font-semibold">Neck</p>
                                 </div>
                                 {userInfo.currentProtocol.length > 0

@@ -4,7 +4,7 @@
 /* eslint-disable jsx-a11y/no-noninteractive-tabindex */
 /* eslint-disable react/prop-types */
 import { useState, useEffect } from 'react';
-import { Icon } from '@iconify/react';
+import Image from 'next/image';
 import { exerciseInfo, stretchInfo } from './exerciseInfo';
 // import List from './List';
 import usePremiumStatus from '../../../stripe/usePremiumStatus';
@@ -44,7 +44,7 @@ export default function ExerciseList() {
     }, [exercise, type]);
 
     if (userInfo.currentLevel === 1) {
-        return <div className="flex flex-col justify-center items-center p-4 gap-5"><p className="text-center font-semibold">Section Unlocked After Level 1</p><p className="text-center">We Want You To Establish A Stronger Foundation Before Trying Out Random Exercises.</p></div>;
+        return <div className="flex flex-col justify-center items-center p-4 gap-5"><p className="text-center font-semibold">Section Unlocked After Level 1</p><p className="text-center">We Want You To Establish A Stronger Foundation Before Trying Out Random Exercises.</p><Image style={{ opacity: '80%' }} src="/penguinClock.png" alt="Penguin Clock" width={300} height={300} /></div>;
     }
 
     return (
@@ -52,7 +52,7 @@ export default function ExerciseList() {
             {premiumStatus.planName !== '' ? (
                 <div>
                     <div className="flex flex-col justify-center items-center gap-5">
-                        <Icon icon="game-icons:perspective-dice-six-faces-random" width="100" height="100" />
+                        <Image style={{ opacity: '80%' }} src="/penguin-random.png" alt="penguin random" width={200} height={200} />
                         <div>
                             <button type="button" htmlFor="my-modal-stretch" className="btn btn-secondary" onClick={() => selectRandomExercise(stretchInfo, 'stretch')}>Random Stretch</button>
                             <input type="checkbox" id="my-modal-shuffle-stretch" className="modal-toggle" />

@@ -6,7 +6,7 @@ export const exerciseListL1 = [
     {
         name: 'Doorway Chest Stretch',
         description: 'Stand in a doorway with your arms bent at a 90-degree angle, forearms resting on the door frame. Lean forward until you feel a stretch in the front of your shoulders.',
-        image: 'https://i.imgur.com/8JjUx9b.png',
+        image: '/gifs/doorway-chest-stretch.gif',
         video: 'https://www.youtube.com/watch?v=OxXpWg9lSsE',
         required: true,
         reps: '30 seconds - 2 sets',
