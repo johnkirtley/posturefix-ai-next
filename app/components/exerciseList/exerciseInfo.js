@@ -3,7 +3,7 @@ export const exerciseInfo = [
     {
         name: 'Chest Stretch 1',
         description: 'Stand in a doorway with your arms bent at a 90-degree angle, forearms resting on the door frame. Lean forward until you feel a stretch in the front of your shoulders.',
-        image: '/gifs/doorway-chest-stretch.gif',
+        image: 'https://posturepal.s3.us-east-2.amazonaws.com/Gifs/doorway-pec-stretch/55571301-Standing-Chest-Stretch-against-Door_Chest_720.gif',
         video: 'https://www.youtube.com/watch?v=OxXpWg9lSsE',
         required: true,
         muscleGroup: 'warmup',
