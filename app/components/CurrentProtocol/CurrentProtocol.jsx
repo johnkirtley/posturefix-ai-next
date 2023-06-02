@@ -33,10 +33,12 @@ export function CurrentProtocol({ userInfo, showOnboard }) {
     const router = useRouter();
     const [curLevel, setCurLevel] = useState(1);
     const [showCompletedBadge, setShowCompletedBadge] = useState(false);
+    const [curProtocol, setCurProtocol] = useState([]);
 
     useEffect(() => {
         setCount(userInfo.progressMade);
         setCurLevel(userInfo.currentLevel);
+        setCurProtocol(userInfo.currentProtocol);
     }, [userInfo]);
 
     const handleShowDetails = (exercise) => {
@@ -124,7 +126,7 @@ export function CurrentProtocol({ userInfo, showOnboard }) {
 
                         routine.neck.exercises.push(exercise);
                         routine.neck.count += 1;
-                    } else if (exercise.muscleGroup === 'back' && routine.back.count < 3) {
+                    } else if (exercise.muscleGroup === 'back' && routine.back.count < 2) {
                         if (userEquipment.length > 0 && userEquipment.includes(exercise.equipmentNeeded)) {
                             routine.back.exercises.push(exercise);
                             routine.back.count += 1;
@@ -253,14 +255,17 @@ export function CurrentProtocol({ userInfo, showOnboard }) {
 
                 if (currentLevel === 1) {
                     await updateDoc(userRef, { currentLevel: 2 });
+                    setCurLevel(2);
                 }
 
                 if (currentLevel === 2) {
                     await updateDoc(userRef, { currentLevel: 3 });
+                    setCurLevel(3);
                 }
 
                 if (currentLevel === 3) {
                     await updateDoc(userRef, { currentLevel: 4 });
+                    setCurLevel(4);
                 }
 
                 if (currentLevel === 4) {
@@ -268,6 +273,7 @@ export function CurrentProtocol({ userInfo, showOnboard }) {
                     progressMade[4] = 0;
 
                     setCount(progressMade);
+                    setCurLevel(4);
                     await updateDoc(userRef, { currentLevel: 4 });
                     await updateDoc(userRef, { progressMade });
                 }
@@ -282,6 +288,7 @@ export function CurrentProtocol({ userInfo, showOnboard }) {
         // potentially add timeout here. routine getting generated before level upgrade being detected
         const routine = await getRoutine();
         console.log('routine', routine);
+        setCurProtocol([routine]);
         await updateDoc(userRef, { currentProtocol: [routine] });
         // setCurProtocol([routine]);
         setTimeout(() => {
@@ -290,7 +297,7 @@ export function CurrentProtocol({ userInfo, showOnboard }) {
             setGenerateLoading(false);
             if (typeof window !== 'undefined') {
                 // eslint-disable-next-line no-undef
-                window.location.reload();
+                // window.location.reload();
             }
         }, 2000);
     };
@@ -408,7 +415,7 @@ export function CurrentProtocol({ userInfo, showOnboard }) {
                             <div className="modal justify-center items-center text-center">
                                 <div className="modal-box">
                                     <h3 className="font-bold text-lg">{selected && selected.name}</h3>
-                                    <p className="py-2 text-sm">10 reps x 3 sets</p>
+                                    <p className="py-2 text-sm">{selected && selected.reps}</p>
                                     {/* {selected && !loadingAnimation ? <Image src={selected && selected.image} width={250} height={250} className="m-auto" alt={selected && selected.name} /> : <Loading text="Loading Animation..." />} */}
                                     <p className="pt-2"><span className="font-bold">Explanation:</span></p>
                                     <p className="text-sm">{selected && selected.description}</p>
@@ -423,22 +430,21 @@ export function CurrentProtocol({ userInfo, showOnboard }) {
                         <div className="w-full">
                             {showAdvanceModal ? <AdvanceModal setCount={setCount} generateRoutine={generateRoutine} showAdvanceModal={showAdvanceModal} setShowAdvanceModal={setShowAdvanceModal} completedProgram={completedProgram} curLevel={curLevel} /> : ''}
                             {showCompletedBadge ? <div className="badge badge-success mb-5 p-4"><p className="text-base-100">🐧🎉 Nice Job! Workout Completed.</p></div> : ''}
-                            <StatusBar count={count} />
+                            <StatusBar count={count} curLevel={curLevel} />
                             <div>
-                                <div className="divider 3xl:divider-horizontal">
-                                    <p className="badge badge-info p-3 font-semibold">Warmups</p>
+                                <div className="divider 3xl:divider-horizontal mb-8">
+                                    <p className="badge badge-info p-4 text-base font-semibold">Warmups</p>
                                 </div>
-                                {userInfo.currentProtocol.length > 0
-        && userInfo.currentProtocol[0].warmup.exercises.map((exercise, idx) => (
+                                {curProtocol.length > 0
+        && curProtocol[0].warmup.exercises.map((exercise, idx) => (
             <div tabIndex={0} className="cardborder-base-300 bg-base-100 rounded-box w-3/4 m-auto my-5 shadow-lg" key={idx}>
                 <div className="text-base font-medium p-5">
                     <div>
                         <p>{exercise.name}</p>
-                        <p className="text-sm font-light">{exercise.reps}</p>
                         {exercise ? <Image src={exercise && exercise.image} width={250} height={200} className="m-auto" alt={exercise && exercise.name} /> : <Loading text="Loading Animation..." />}
                     </div>
                 </div>
-                <p className="text-md font-normal">10 sets x 3 reps</p>
+                <p className="text-md font-normal">{exercise.reps}</p>
                 <button type="button" className="btn btn-secondary my-4 text-xs" onClick={() => handleShowDetails(exercise)}>
                     <div className="flex justify-center items-center gap-1">
                         <Icon icon="pepicons-pop:plus" />
@@ -449,11 +455,11 @@ export function CurrentProtocol({ userInfo, showOnboard }) {
         ))}
                             </div>
                             <div className="pb-5">
-                                <div className="divider 3xl:divider-horizontal">
-                                    <p className="badge badge-info p-3 font-semibold">Back</p>
+                                <div className="divider 3xl:divider-horizontal my-8">
+                                    <p className="badge badge-info p-4 text-base font-semibold">Back</p>
                                 </div>
-                                {userInfo.currentProtocol.length > 0
-        && userInfo.currentProtocol[0].back.exercises.map((exercise, idx) => (
+                                {curProtocol.length > 0
+        && curProtocol[0].back.exercises.map((exercise, idx) => (
             <div tabIndex={0} className="cardborder-base-300 bg-base-100 rounded-box w-3/4 m-auto my-5 shadow-lg" key={idx}>
                 <div className="text-base font-medium p-5">
                     <div>
@@ -461,7 +467,7 @@ export function CurrentProtocol({ userInfo, showOnboard }) {
                         {exercise ? <Image src={exercise && exercise.image} width={250} height={200} className="m-auto" alt={exercise && exercise.name} /> : <Loading text="Loading Animation..." />}
                     </div>
                 </div>
-                <p className="text-md font-normal">10 sets x 3 reps</p>
+                <p className="text-md font-normal">{exercise.reps}</p>
                 <button type="button" className="btn btn-secondary my-4 text-xs" onClick={() => handleShowDetails(exercise)}>
                     <div className="flex justify-center items-center gap-1">
                         <Icon icon="pepicons-pop:plus" />
@@ -472,20 +478,19 @@ export function CurrentProtocol({ userInfo, showOnboard }) {
         ))}
                             </div>
                             <div className="pb-5">
-                                <div className="divider 3xl:divider-horizontal">
-                                    <p className="badge badge-info p-3 font-semibold">Core</p>
+                                <div className="divider 3xl:divider-horizontal my-8">
+                                    <p className="badge badge-info p-4 text-base font-semibold">Core</p>
                                 </div>
-                                {userInfo.currentProtocol.length > 0
-        && userInfo.currentProtocol[0].core.exercises.map((exercise, idx) => (
+                                {curProtocol.length > 0
+        && curProtocol[0].core.exercises.map((exercise, idx) => (
             <div tabIndex={0} className="cardborder-base-300 bg-base-100 rounded-box w-3/4 m-auto my-5 shadow-lg" key={idx}>
                 <div className="text-base font-medium p-5">
                     <div>
                         <p>{exercise.name}</p>
-                        <p className="text-sm font-light">{exercise.reps}</p>
                         {exercise ? <Image src={exercise && exercise.image} width={250} height={200} className="m-auto" alt={exercise && exercise.name} /> : <Loading text="Loading Animation..." />}
                     </div>
                 </div>
-                <p className="text-md font-normal">10 sets x 3 reps</p>
+                <p className="text-md font-normal">{exercise.reps}</p>
                 <button type="button" className="btn btn-secondary my-4 text-xs" onClick={() => handleShowDetails(exercise)}>
                     <div className="flex justify-center items-center gap-1">
                         <Icon icon="pepicons-pop:plus" />
@@ -496,20 +501,19 @@ export function CurrentProtocol({ userInfo, showOnboard }) {
         ))}
                             </div>
                             <div className="pb-5">
-                                <div className="divider 3xl:divider-horizontal">
-                                    <p className="badge badge-info p-3 font-semibold">Neck</p>
+                                <div className="divider 3xl:divider-horizontal my-8">
+                                    <p className="badge badge-info p-4 text-base font-semibold">Neck</p>
                                 </div>
-                                {userInfo.currentProtocol.length > 0
-        && userInfo.currentProtocol[0].neck.exercises.map((exercise, idx) => (
+                                {curProtocol.length > 0
+        && curProtocol[0].neck.exercises.map((exercise, idx) => (
             <div tabIndex={0} className="cardborder-base-300 bg-base-100 rounded-box w-3/4 m-auto my-5 shadow-lg" key={idx}>
                 <div className="text-base font-medium p-5">
                     <div>
                         <p>{exercise.name}</p>
-                        <p className="text-sm font-light">{exercise.reps}</p>
                         {exercise ? <Image src={exercise && exercise.image} width={250} height={200} className="m-auto" alt={exercise && exercise.name} /> : <Loading text="Loading Animation..." />}
                     </div>
                 </div>
-                <p className="text-md font-normal">10 sets x 3 reps</p>
+                <p className="text-md font-normal">{exercise.reps}</p>
                 <button type="button" className="btn btn-secondary my-4 text-xs" onClick={() => handleShowDetails(exercise)}>
                     <div className="flex justify-center items-center gap-1">
                         <Icon icon="pepicons-pop:plus" />

@@ -14,8 +14,9 @@ import usePremiumStatus from '../../stripe/usePremiumStatus';
 export default function Plans() {
     const { user } = useAuth();
     const { userInfo } = useContext(UserContext);
-    const { premiumStatus, loading } = usePremiumStatus(user.email);
     const router = useRouter();
+
+    const { premiumStatus, loading } = usePremiumStatus(user && user.email);
 
     async function createPortalSession(email) {
         let data;

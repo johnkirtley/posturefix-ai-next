@@ -14,7 +14,7 @@ export function PlanPage() {
     const [planClicked, setPlanClicked] = useState(false);
     const [showTrialText, setShowTrialText] = useState(false);
     const { user } = useAuth();
-    const isUserPremium = usePremiumStatus(user.email);
+    const isUserPremium = usePremiumStatus(user && user.email);
     const [clicked, setClicked] = useState(true);
     const [plan] = useState(devPlanInfo);
     const [loading, setLoading] = useState(false);

@@ -6,7 +6,7 @@
 
 import { createContext, useState, useEffect, useContext } from 'react';
 import { onAuthStateChanged } from 'firebase/auth';
-// import { useRouter } from 'next/navigation';
+import { useRouter } from 'next/navigation';
 import { firebaseAuth } from '../../firebase/clientApp';
 
 const AuthContext = createContext({ user: '', loading: true });
@@ -16,12 +16,20 @@ export const useAuth = () => useContext(AuthContext);
 export function AuthProvider({ children }) {
     const [user, setUser] = useState('');
     const [loading, setLoading] = useState(true);
-    // const router = useRouter();
+    const router = useRouter();
 
     useEffect(() => {
         const unsubscribe = onAuthStateChanged(firebaseAuth, (user) => {
             setUser(user);
             setLoading(false);
+
+            if (user) {
+                router.push('/dashboard');
+            }
+
+            if (!user) {
+                router.push('/');
+            }
         });
 
         return () => unsubscribe();

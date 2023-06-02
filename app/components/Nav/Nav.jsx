@@ -52,7 +52,7 @@ export default function Nav() {
                                 </div>
                             </div>
                             <div className="navbar-end">
-                                <Image src="/text-logo.png" width={100} height={100} />
+                                <Image src="/text-logo-2.png" width={100} height={100} alt="penguin-word-logo" />
                             </div>
                         </div>
                     </div>

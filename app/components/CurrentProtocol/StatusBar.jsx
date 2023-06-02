@@ -1,25 +1,25 @@
 /* eslint-disable max-len */
 /* eslint-disable react/prop-types */
 /* eslint-disable import/prefer-default-export */
-import { useContext } from 'react';
-import { UserContext } from '../../Context';
+// import { useContext } from 'react';
+// import { UserContext } from '../../Context';
 
-export function StatusBar({ count }) {
-    const { userInfo } = useContext(UserContext);
-    const { currentLevel } = userInfo;
+export function StatusBar({ count, curLevel }) {
+    // const { userInfo } = useContext(UserContext);
+    // const { currentLevel } = userInfo;
     const totalWorkouts = 5;
 
     return (
         <div className="flex flex-col gap-1 mb-10">
             <div className="font-bold">
-                {currentLevel <= 3 ? `Level ${currentLevel}` : 'Maintenance Phase'}
+                {curLevel <= 3 ? `Level ${curLevel}` : 'Maintenance Phase'}
             </div>
-            {currentLevel === 4 ? '' : (
+            {curLevel === 4 ? '' : (
                 <div className="flex flex-col justify-center items-center">
-                    {count && currentLevel ? totalWorkouts - count[currentLevel] : totalWorkouts - 0}
+                    {count && curLevel ? totalWorkouts - count[curLevel] : totalWorkouts - 0}
                     {' '}
-                    {count && count[currentLevel] === 4 ? 'Workout Left' : 'Workouts Left'}
-                    <progress className="progress progress-success w-56" value={count && currentLevel ? count[currentLevel] : 0} max="5" />
+                    {count && count[curLevel] === 4 ? 'Workout Left' : 'Workouts Left'}
+                    <progress className="progress progress-success w-56" value={count && curLevel ? count[curLevel] : 0} max="5" />
                 </div>
             )}
 

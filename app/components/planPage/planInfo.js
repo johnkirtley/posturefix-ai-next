@@ -11,17 +11,17 @@ const devPlanInfo = [
         name: 'Align (Early Bird)',
         type: 'Yearly',
         features: ['3 Levels of Progressive Exercise Difficulty', 'Unlimited Maintenance Phase Workout Generations', 'Random Stretch + Exercise Generator'],
-        price: 45.00,
+        price: 45,
         savings: 25,
-        id: 'price_1NBrIZIEkyn8v16oCqxmmYEZ',
+        id: 'price_1NEc6VIEkyn8v16oAyghU7DM',
     },
     {
         name: 'Align (Early Bird)',
         type: 'Monthly',
         features: ['3 Levels of Progressive Exercise Difficulty', 'Unlimited Maintenance Phase Workout Generations', 'Random Stretch + Exercise Generator'],
-        price: 4.99,
+        price: 5,
         savings: 0,
-        id: 'price_1NBrI4IEkyn8v16oartQ0iug',
+        id: 'price_1NEc5yIEkyn8v16oO6PTP823',
     },
 ];
 
