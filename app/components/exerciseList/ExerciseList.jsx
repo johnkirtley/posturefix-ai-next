@@ -78,14 +78,14 @@ export default function ExerciseList() {
                             <input type="checkbox" id="my-modal-shuffle-stretch" className="modal-toggle" />
                             <div className="modal justify-center items-center text-center">
                                 <div className="modal-box">
-                                    <div className="modal-action mt-0">
-                                        <label htmlFor="my-modal-shuffle-stretch" className="btn btn-primary">X</label>
-                                    </div>
                                     <h3 className="font-bold text-lg">{exercise && exercise.name}</h3>
                                     <p className="py-4">10 reps x 3 sets</p>
                                     {exercise ? <Image className="m-auto" src={exercise && exercise.image} alt={exercise && exercise.name} width={250} height={250} /> : ''}
-                                    <p className="py-4">{exercise && exercise.description}</p>
-                                    <p className="py-4">{exercise && exercise.video}</p>
+                                    <p className="py-2 text-sm">{exercise && exercise.description}</p>
+                                    <p className="py-2 text-sm">{exercise && exercise.video}</p>
+                                    <div className="modal-action mt-0">
+                                        <label htmlFor="my-modal-shuffle-stretch" className="btn btn-primary">Close</label>
+                                    </div>
                                 </div>
                             </div>
                         </div>
@@ -94,14 +94,14 @@ export default function ExerciseList() {
                             <input type="checkbox" id="my-modal-shuffle-exercise" className="modal-toggle" />
                             <div className="modal justify-center items-center text-center">
                                 <div className="modal-box">
-                                    <div className="modal-action mt-0">
-                                        <label htmlFor="my-modal-shuffle-exercise" className="btn btn-primary">X</label>
-                                    </div>
                                     <h3 className="font-bold text-lg">{exercise && exercise.name}</h3>
                                     <p className="py-4">10 reps x 3 sets</p>
                                     {exercise ? <Image className="m-auto" src={exercise && exercise.image} alt={exercise && exercise.name} width={250} height={250} /> : ''}
-                                    <p className="py-4">{exercise && exercise.description}</p>
-                                    <p className="py-4">{exercise && exercise.video}</p>
+                                    <p className="py-2 text-sm">{exercise && exercise.description}</p>
+                                    <p className="py-2 text-sm">{exercise && exercise.video}</p>
+                                    <div className="modal-action mt-0">
+                                        <label htmlFor="my-modal-shuffle-exercise" className="btn btn-primary">Close</label>
+                                    </div>
                                 </div>
                             </div>
                         </div>

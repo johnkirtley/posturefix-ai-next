@@ -24,7 +24,6 @@ export function CurrentProtocol({ userInfo, showOnboard }) {
     const { user } = useAuth();
     const [count, setCount] = useState({ 1: 0, 2: 0, 3: 0, 4: 0 });
     const [loading, setLoading] = useState(false);
-    const [loadingAnimation, setLoadingAnimation] = useState(false);
     const [generateLoading, setGenerateLoading] = useState(false);
     const [showAlert] = useState(false);
     const [showAdvanceModal, setShowAdvanceModal] = useState(false);
@@ -41,15 +40,11 @@ export function CurrentProtocol({ userInfo, showOnboard }) {
     }, [userInfo]);
 
     const handleShowDetails = (exercise) => {
-        setLoadingAnimation(true);
         setSelected(exercise);
         console.log(exercise);
         // eslint-disable-next-line no-undef
         const btn = document.getElementById('my-modal');
         btn.checked = true;
-        setTimeout(() => {
-            setLoadingAnimation(false);
-        }, 1000);
     };
 
     const getRoutine = async () => {
@@ -412,16 +407,16 @@ export function CurrentProtocol({ userInfo, showOnboard }) {
                             <input type="checkbox" id="my-modal" className="modal-toggle" />
                             <div className="modal justify-center items-center text-center">
                                 <div className="modal-box">
-                                    <div className="modal-action mt-0">
-                                        <label htmlFor="my-modal" className="btn btn-neutral">X</label>
-                                    </div>
                                     <h3 className="font-bold text-lg">{selected && selected.name}</h3>
-                                    <p className="py-4">10 reps x 3 sets</p>
-                                    {selected && !loadingAnimation ? <Image src={selected && selected.image} width={250} height={250} className="m-auto" alt={selected && selected.name} /> : <Loading text="Loading Animation..." />}
-                                    <p className="pt-4"><span className="font-bold">Explanation:</span></p>
-                                    <p>{selected && selected.description}</p>
-                                    <p className="pt-4"><span className="font-bold">Reference Video:</span></p>
-                                    <p>{selected && selected.video}</p>
+                                    <p className="py-2 text-sm">10 reps x 3 sets</p>
+                                    {/* {selected && !loadingAnimation ? <Image src={selected && selected.image} width={250} height={250} className="m-auto" alt={selected && selected.name} /> : <Loading text="Loading Animation..." />} */}
+                                    <p className="pt-2"><span className="font-bold">Explanation:</span></p>
+                                    <p className="text-sm">{selected && selected.description}</p>
+                                    <p className="pt-2"><span className="font-bold">Reference Video:</span></p>
+                                    <p className="text-sm">{selected && selected.video}</p>
+                                    <div className="modal-action">
+                                        <label htmlFor="my-modal" className="btn btn-neutral">Close</label>
+                                    </div>
                                 </div>
                             </div>
                         </div>
@@ -440,8 +435,10 @@ export function CurrentProtocol({ userInfo, showOnboard }) {
                     <div>
                         <p>{exercise.name}</p>
                         <p className="text-sm font-light">{exercise.reps}</p>
+                        {exercise ? <Image src={exercise && exercise.image} width={250} height={200} className="m-auto" alt={exercise && exercise.name} /> : <Loading text="Loading Animation..." />}
                     </div>
                 </div>
+                <p className="text-md font-normal">10 sets x 3 reps</p>
                 <button type="button" className="btn btn-secondary my-4 text-xs" onClick={() => handleShowDetails(exercise)}>
                     <div className="flex justify-center items-center gap-1">
                         <Icon icon="pepicons-pop:plus" />
@@ -461,9 +458,10 @@ export function CurrentProtocol({ userInfo, showOnboard }) {
                 <div className="text-base font-medium p-5">
                     <div>
                         <p>{exercise.name}</p>
-                        <p className="text-sm font-light">{exercise.reps}</p>
+                        {exercise ? <Image src={exercise && exercise.image} width={250} height={200} className="m-auto" alt={exercise && exercise.name} /> : <Loading text="Loading Animation..." />}
                     </div>
                 </div>
+                <p className="text-md font-normal">10 sets x 3 reps</p>
                 <button type="button" className="btn btn-secondary my-4 text-xs" onClick={() => handleShowDetails(exercise)}>
                     <div className="flex justify-center items-center gap-1">
                         <Icon icon="pepicons-pop:plus" />
@@ -484,8 +482,10 @@ export function CurrentProtocol({ userInfo, showOnboard }) {
                     <div>
                         <p>{exercise.name}</p>
                         <p className="text-sm font-light">{exercise.reps}</p>
+                        {exercise ? <Image src={exercise && exercise.image} width={250} height={200} className="m-auto" alt={exercise && exercise.name} /> : <Loading text="Loading Animation..." />}
                     </div>
                 </div>
+                <p className="text-md font-normal">10 sets x 3 reps</p>
                 <button type="button" className="btn btn-secondary my-4 text-xs" onClick={() => handleShowDetails(exercise)}>
                     <div className="flex justify-center items-center gap-1">
                         <Icon icon="pepicons-pop:plus" />
@@ -506,8 +506,10 @@ export function CurrentProtocol({ userInfo, showOnboard }) {
                     <div>
                         <p>{exercise.name}</p>
                         <p className="text-sm font-light">{exercise.reps}</p>
+                        {exercise ? <Image src={exercise && exercise.image} width={250} height={200} className="m-auto" alt={exercise && exercise.name} /> : <Loading text="Loading Animation..." />}
                     </div>
                 </div>
+                <p className="text-md font-normal">10 sets x 3 reps</p>
                 <button type="button" className="btn btn-secondary my-4 text-xs" onClick={() => handleShowDetails(exercise)}>
                     <div className="flex justify-center items-center gap-1">
                         <Icon icon="pepicons-pop:plus" />

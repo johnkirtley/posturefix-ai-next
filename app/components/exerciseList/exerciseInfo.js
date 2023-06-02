@@ -10,15 +10,6 @@ export const exerciseInfo = [
         equipmentNeeded: ['none'],
     },
     {
-        name: 'Assisted Chin Tuck',
-        description: 'Stand in a doorway with your arms bent at a 90-degree angle, forearms resting on the door frame. Lean forward until you feel a stretch in the front of your shoulders.',
-        image: 'https://posturepal.s3.us-east-2.amazonaws.com/Gifs/assisted-chin-tuck/31501301-Assisted-Chin-Tuck_Neck_720.gif',
-        video: 'https://www.youtube.com/watch?v=OxXpWg9lSsE',
-        required: true,
-        muscleGroup: 'neck',
-        equipmentNeeded: ['none'],
-    },
-    {
         name: 'Face Pull',
         description: 'Stand in a doorway with your arms bent at a 90-degree angle, forearms resting on the door frame. Lean forward until you feel a stretch in the front of your shoulders.',
         image: 'https://posturepal.s3.us-east-2.amazonaws.com/Gifs/band-face-pull/08961301-Band-face-pull_Shoulders_720.gif',
