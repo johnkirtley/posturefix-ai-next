@@ -28,7 +28,6 @@ const defaultAnswers = {
         { name: 'Neck', valName: 'neck', isChecked: false },
         { name: 'Upper Back', valName: 'upperBack', isChecked: false },
         { name: 'Lower Back', valName: 'lowerBack', isChecked: false },
-        { name: 'Below Skull', valName: 'belowSkull', isChecked: false },
         { name: 'Hips', valName: 'hips', isChecked: false },
 
     ],

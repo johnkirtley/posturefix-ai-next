@@ -1,3 +1,4 @@
+/* eslint-disable max-len */
 /* eslint-disable import/prefer-default-export */
 export const exerciseInfo = [
     {
@@ -171,15 +172,15 @@ export const exerciseInfo = [
         muscleGroup: 'core',
         equipmentNeeded: ['none'],
     },
-    {
-        name: 'Lying T-Raise',
-        description: 'Stand in a doorway with your arms bent at a 90-degree angle, forearms resting on the door frame. Lean forward until you feel a stretch in the front of your shoulders.',
-        image: 'https://posturepal.s3.us-east-2.amazonaws.com/Gifs/lying-t-raise/48321301-Lying-Rear-Lateral-Raise_Shoulders_720.gif',
-        video: 'https://www.youtube.com/watch?v=OxXpWg9lSsE',
-        required: true,
-        muscleGroup: 'back',
-        equipmentNeeded: ['none'],
-    },
+    // {
+    //     name: 'Lying T-Raise',
+    //     description: 'Stand in a doorway with your arms bent at a 90-degree angle, forearms resting on the door frame. Lean forward until you feel a stretch in the front of your shoulders.',
+    //     image: 'https://posturepal.s3.us-east-2.amazonaws.com/Gifs/lying-t-raise/48321301-Lying-Rear-Lateral-Raise_Shoulders_720.gif',
+    //     video: 'https://www.youtube.com/watch?v=OxXpWg9lSsE',
+    //     required: true,
+    //     muscleGroup: 'back',
+    //     equipmentNeeded: ['none'],
+    // },
     {
         name: 'Lying T-Raise',
         description: 'Stand in a doorway with your arms bent at a 90-degree angle, forearms resting on the door frame. Lean forward until you feel a stretch in the front of your shoulders.',

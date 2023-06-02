@@ -425,7 +425,7 @@ export function CurrentProtocol({ userInfo, showOnboard }) {
                             {showCompletedBadge ? <div className="badge badge-success mb-5 p-4"><p className="text-base-100">🐧🎉 Nice Job! Workout Completed.</p></div> : ''}
                             <StatusBar count={count} />
                             <div>
-                                <div className="divider xl:divider-horizontal">
+                                <div className="divider 3xl:divider-horizontal">
                                     <p className="badge badge-info p-3 font-semibold">Warmups</p>
                                 </div>
                                 {userInfo.currentProtocol.length > 0
@@ -449,7 +449,7 @@ export function CurrentProtocol({ userInfo, showOnboard }) {
         ))}
                             </div>
                             <div className="pb-5">
-                                <div className="divider xl:divider-horizontal">
+                                <div className="divider 3xl:divider-horizontal">
                                     <p className="badge badge-info p-3 font-semibold">Back</p>
                                 </div>
                                 {userInfo.currentProtocol.length > 0
@@ -472,7 +472,7 @@ export function CurrentProtocol({ userInfo, showOnboard }) {
         ))}
                             </div>
                             <div className="pb-5">
-                                <div className="divider xl:divider-horizontal">
+                                <div className="divider 3xl:divider-horizontal">
                                     <p className="badge badge-info p-3 font-semibold">Core</p>
                                 </div>
                                 {userInfo.currentProtocol.length > 0
@@ -496,7 +496,7 @@ export function CurrentProtocol({ userInfo, showOnboard }) {
         ))}
                             </div>
                             <div className="pb-5">
-                                <div className="divider xl:divider-horizontal">
+                                <div className="divider 3xl:divider-horizontal">
                                     <p className="badge badge-info p-3 font-semibold">Neck</p>
                                 </div>
                                 {userInfo.currentProtocol.length > 0
