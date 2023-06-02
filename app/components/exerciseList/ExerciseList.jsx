@@ -83,7 +83,7 @@ export default function ExerciseList() {
                                     </div>
                                     <h3 className="font-bold text-lg">{exercise && exercise.name}</h3>
                                     <p className="py-4">10 reps x 3 sets</p>
-                                    {exercise ? <Image className="m-auto" src={exercise && exercise.image} alt={exercise && exercise.name} width={200} height={200} /> : ''}
+                                    {exercise ? <Image className="m-auto" src={exercise && exercise.image} alt={exercise && exercise.name} width={250} height={250} /> : ''}
                                     <p className="py-4">{exercise && exercise.description}</p>
                                     <p className="py-4">{exercise && exercise.video}</p>
                                 </div>
@@ -99,7 +99,7 @@ export default function ExerciseList() {
                                     </div>
                                     <h3 className="font-bold text-lg">{exercise && exercise.name}</h3>
                                     <p className="py-4">10 reps x 3 sets</p>
-                                    {exercise ? <Image className="m-auto" src={exercise && exercise.image} alt={exercise && exercise.name} width={200} height={200} /> : ''}
+                                    {exercise ? <Image className="m-auto" src={exercise && exercise.image} alt={exercise && exercise.name} width={250} height={250} /> : ''}
                                     <p className="py-4">{exercise && exercise.description}</p>
                                     <p className="py-4">{exercise && exercise.video}</p>
                                 </div>

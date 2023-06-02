@@ -417,7 +417,7 @@ export function CurrentProtocol({ userInfo, showOnboard }) {
                                     </div>
                                     <h3 className="font-bold text-lg">{selected && selected.name}</h3>
                                     <p className="py-4">10 reps x 3 sets</p>
-                                    {selected && !loadingAnimation ? <Image src={selected && selected.image} width={200} height={200} className="m-auto" alt={selected && selected.name} /> : <Loading text="Loading Animation..." />}
+                                    {selected && !loadingAnimation ? <Image src={selected && selected.image} width={250} height={250} className="m-auto" alt={selected && selected.name} /> : <Loading text="Loading Animation..." />}
                                     <p className="pt-4"><span className="font-bold">Explanation:</span></p>
                                     <p>{selected && selected.description}</p>
                                     <p className="pt-4"><span className="font-bold">Reference Video:</span></p>
