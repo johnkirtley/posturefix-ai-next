@@ -2,7 +2,7 @@
 /* eslint-disable import/prefer-default-export */
 export function Loading({ text }) {
     return (
-        <div className="flex flex-col-reverse justify-center items-center mt-10">
+        <div className="flex flex-col justify-center items-center mt-10">
             {text}
             <div
                 className="m-5 inline-block h-8 w-8 animate-spin rounded-full border-4 border-solid border-current border-r-transparent align-[-0.125em] motion-reduce:animate-[spin_2s_linear_infinite]"

@@ -13,38 +13,58 @@ import { NoPlan } from './noPlan';
 import { useFirebase } from '../../hooks/useFirebase';
 
 export default function ExerciseList() {
-    const [exercise, setExercise] = useState(null);
+    const [exercise, setExercise] = useState('');
     const { user } = useAuth();
     const { premiumStatus } = usePremiumStatus(user.email);
     const [type, setType] = useState('');
+    const [loadingStretch, setLoadingStretch] = useState(false);
+    const [loadingExercise, setLoadingExercise] = useState(false);
     const { userInfo } = useFirebase();
 
     const selectRandomExercise = (list, selectedType) => {
-        const shuffled = list.sort(() => 0.5 - Math.random());
-        const randomDecimal = Math.random();
-        const randomNumGenerator = Math.floor(randomDecimal * (shuffled.length - 0 + 1) + 0);
-        setType(selectedType);
-        setExercise(list[randomNumGenerator]);
+        if (selectedType === 'stretch') {
+            setLoadingStretch(true);
+            const shuffled = list.sort(() => 0.5 - Math.random());
+            const randomDecimal = Math.random();
+            const randomNumGenerator = Math.floor(randomDecimal * (shuffled.length - 0 + 1) + 0);
+            setType(selectedType);
+            setExercise(list[randomNumGenerator]);
+            setTimeout(() => {
+                setLoadingStretch(false);
+            }, 1200);
+        }
+
+        if (selectedType === 'exercise') {
+            setLoadingExercise(true);
+            const shuffled = list.sort(() => 0.5 - Math.random());
+            const randomDecimal = Math.random();
+            const randomNumGenerator = Math.floor(randomDecimal * (shuffled.length - 0 + 1) + 0);
+            setType(selectedType);
+            setExercise(list[randomNumGenerator]);
+            setTimeout(() => {
+                setLoadingExercise(false);
+            }, 1200);
+        }
     };
 
     useEffect(() => {
         if (exercise && type) {
-            if (type === 'stretch') {
+            if (type === 'stretch' && !loadingStretch) {
                 // eslint-disable-next-line no-undef
                 const btn = document.getElementById('my-modal-shuffle-stretch');
                 btn.checked = true;
             }
 
-            if (type === 'exercise') {
+            if (type === 'exercise' && !loadingExercise) {
                 // eslint-disable-next-line no-undef
                 const btn = document.getElementById('my-modal-shuffle-exercise');
                 btn.checked = true;
             }
         }
-    }, [exercise, type]);
+    }, [exercise, type, loadingStretch, loadingExercise]);
 
     if (userInfo.currentLevel === 1) {
-        return <div className="flex flex-col justify-center items-center p-4 gap-5"><p className="text-center font-semibold">Section Unlocked After Level 1</p><p className="text-center">We Want You To Establish A Stronger Foundation Before Trying Out Random Exercises.</p><Image style={{ opacity: '80%' }} src="/penguinClock.png" alt="Penguin Clock" width={300} height={300} /></div>;
+        return <div className="flex flex-col justify-center items-center p-4 gap-5"><p className="text-center font-semibold">Section Unlocked After Level 1</p><p className="text-center">We Want You To Establish A Stronger Foundation Before Trying Out Random Exercises.</p><Image style={{ opacity: '80%' }} src="https://posturepal.s3.us-east-2.amazonaws.com/images/flat_vector_penguin_wearing_a_large_clock_as_a__241ffe03-9bae-4608-b2a5-f0d2eb72e6a6-removebg-preview.png" alt="Penguin Clock" width={300} height={300} /></div>;
     }
 
     return (
@@ -52,36 +72,36 @@ export default function ExerciseList() {
             {premiumStatus.planName !== '' ? (
                 <div>
                     <div className="flex flex-col justify-center items-center gap-5">
-                        <Image style={{ opacity: '80%' }} src="/penguin-random.png" alt="penguin random" width={200} height={200} />
+                        <Image style={{ opacity: '80%' }} src="https://posturepal.s3.us-east-2.amazonaws.com/images/flat_vector_image_of_penguin_gambling_with_dice_ef1367c1-44ab-4665-9fd4-d594948985cc-removebg-preview.png" alt="penguin random" width={200} height={200} />
                         <div>
-                            <button type="button" htmlFor="my-modal-stretch" className="btn btn-secondary" onClick={() => selectRandomExercise(stretchInfo, 'stretch')}>Random Stretch</button>
+                            <button type="button" htmlFor="my-modal-stretch" className="btn btn-secondary" onClick={() => selectRandomExercise(stretchInfo, 'stretch')}>{loadingStretch ? 'Shuffling...' : 'Random Stretch'}</button>
                             <input type="checkbox" id="my-modal-shuffle-stretch" className="modal-toggle" />
                             <div className="modal justify-center items-center text-center">
                                 <div className="modal-box">
+                                    <div className="modal-action mt-0">
+                                        <label htmlFor="my-modal-shuffle-stretch" className="btn btn-primary">X</label>
+                                    </div>
                                     <h3 className="font-bold text-lg">{exercise && exercise.name}</h3>
                                     <p className="py-4">10 reps x 3 sets</p>
-                                    <p className="py-4">{exercise && exercise.image}</p>
+                                    {exercise ? <Image className="m-auto" src={exercise && exercise.image} alt={exercise && exercise.name} width={200} height={200} /> : ''}
                                     <p className="py-4">{exercise && exercise.description}</p>
                                     <p className="py-4">{exercise && exercise.video}</p>
-                                    <div className="modal-action">
-                                        <label htmlFor="my-modal-shuffle-stretch" className="btn">Done</label>
-                                    </div>
                                 </div>
                             </div>
                         </div>
                         <div>
-                            <button type="button" htmlFor="my-modal-exercise" className="btn btn-secondary" onClick={() => selectRandomExercise(exerciseInfo, 'exercise')}>Random Exercise</button>
+                            <button type="button" htmlFor="my-modal-exercise" className="btn btn-secondary" onClick={() => selectRandomExercise(exerciseInfo, 'exercise')}>{loadingExercise ? 'Shuffling...' : 'Random Exercise'}</button>
                             <input type="checkbox" id="my-modal-shuffle-exercise" className="modal-toggle" />
                             <div className="modal justify-center items-center text-center">
                                 <div className="modal-box">
+                                    <div className="modal-action mt-0">
+                                        <label htmlFor="my-modal-shuffle-exercise" className="btn btn-primary">X</label>
+                                    </div>
                                     <h3 className="font-bold text-lg">{exercise && exercise.name}</h3>
                                     <p className="py-4">10 reps x 3 sets</p>
+                                    {exercise ? <Image src={exercise && exercise.image} alt={exercise && exercise.name} width={275} height={275} /> : ''}
                                     <p className="py-4">{exercise && exercise.description}</p>
-                                    <p className="py-4">{exercise && exercise.image}</p>
                                     <p className="py-4">{exercise && exercise.video}</p>
-                                    <div className="modal-action">
-                                        <label htmlFor="my-modal-shuffle-exercise" className="btn">Done</label>
-                                    </div>
                                 </div>
                             </div>
                         </div>

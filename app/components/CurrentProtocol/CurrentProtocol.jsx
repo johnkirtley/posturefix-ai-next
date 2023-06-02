@@ -18,12 +18,13 @@ import { StatusBar } from './StatusBar';
 import { AdvanceModal } from './AdvanceModal';
 import { Loading } from '../loading';
 import usePremiumStatus from '../../../stripe/usePremiumStatus';
-import { exerciseInfo } from '../exerciseList/exerciseInfo';
+import { exerciseStretchCombo } from '../exerciseList/exerciseInfo';
 
 export function CurrentProtocol({ userInfo, showOnboard }) {
     const { user } = useAuth();
     const [count, setCount] = useState({ 1: 0, 2: 0, 3: 0, 4: 0 });
     const [loading, setLoading] = useState(false);
+    const [loadingAnimation, setLoadingAnimation] = useState(false);
     const [generateLoading, setGenerateLoading] = useState(false);
     const [showAlert] = useState(false);
     const [showAdvanceModal, setShowAdvanceModal] = useState(false);
@@ -40,11 +41,15 @@ export function CurrentProtocol({ userInfo, showOnboard }) {
     }, [userInfo]);
 
     const handleShowDetails = (exercise) => {
+        setLoadingAnimation(true);
         setSelected(exercise);
         console.log(exercise);
         // eslint-disable-next-line no-undef
         const btn = document.getElementById('my-modal');
         btn.checked = true;
+        setTimeout(() => {
+            setLoadingAnimation(false);
+        }, 1000);
     };
 
     const getRoutine = async () => {
@@ -68,7 +73,7 @@ export function CurrentProtocol({ userInfo, showOnboard }) {
                     list = exerciseListL3;
                     break;
                 case 4:
-                    list = exerciseInfo;
+                    list = exerciseStretchCombo;
                     break;
                 default:
                     break;
@@ -407,17 +412,16 @@ export function CurrentProtocol({ userInfo, showOnboard }) {
                             <input type="checkbox" id="my-modal" className="modal-toggle" />
                             <div className="modal justify-center items-center text-center">
                                 <div className="modal-box">
+                                    <div className="modal-action mt-0">
+                                        <label htmlFor="my-modal" className="btn btn-neutral">X</label>
+                                    </div>
                                     <h3 className="font-bold text-lg">{selected && selected.name}</h3>
                                     <p className="py-4">10 reps x 3 sets</p>
-                                    <p className="pt-4"><span className="font-bold">Example:</span></p>
-                                    <Image src={selected && selected.image} width={275} height={275} className="m-auto" alt={selected && selected.name} />
+                                    {selected && !loadingAnimation ? <Image src={selected && selected.image} width={275} height={275} className="m-auto" alt={selected && selected.name} /> : <Loading text="Loading Animation..." />}
                                     <p className="pt-4"><span className="font-bold">Explanation:</span></p>
                                     <p>{selected && selected.description}</p>
                                     <p className="pt-4"><span className="font-bold">Reference Video:</span></p>
                                     <p>{selected && selected.video}</p>
-                                    <div className="modal-action">
-                                        <label htmlFor="my-modal" className="btn btn-neutral">Close</label>
-                                    </div>
                                 </div>
                             </div>
                         </div>
