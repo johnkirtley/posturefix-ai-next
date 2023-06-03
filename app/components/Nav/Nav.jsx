@@ -20,7 +20,6 @@ export default function Nav() {
 
     const signOutButton = () => signOut(firebaseAuth)
         .then(() => {
-            console.log('logged out');
             router.push('/');
         })
         .catch((error) => console.log(error));
