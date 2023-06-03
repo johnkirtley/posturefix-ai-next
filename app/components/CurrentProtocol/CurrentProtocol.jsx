@@ -415,12 +415,12 @@ export function CurrentProtocol({ userInfo, showOnboard }) {
                             <div className="modal justify-center items-center text-center">
                                 <div className="modal-box">
                                     <h3 className="font-bold text-lg">{selected && selected.name}</h3>
-                                    <p className="py-2 text-sm">{selected && selected.reps}</p>
                                     {/* {selected && !loadingAnimation ? <Image src={selected && selected.image} width={250} height={250} className="m-auto" alt={selected && selected.name} /> : <Loading text="Loading Animation..." />} */}
-                                    <p className="pt-2"><span className="font-bold">Explanation:</span></p>
+                                    <p className="pt-2"><span className="font-semibold text-normal">Explanation:</span></p>
                                     <p className="text-sm">{selected && selected.description}</p>
-                                    <p className="pt-2"><span className="font-bold">Reference Video:</span></p>
-                                    <p className="text-sm">{selected && selected.video}</p>
+                                    {selected && selected.tip ? <p className="text-sm bg-info my-3 p-3 w-3/4 m-auto rounded-md"><p><span className="font-semibold">💡 Tip: </span>{selected.tip}</p></p> : ''}
+                                    {selected && selected.alternative ? <p className="pt-2"><span className="font-semibold text-normal">Alternative:</span></p> : ''}
+                                    <p className="text-sm">{selected && selected.alternative ? selected.alternative : ''}</p>
                                     <div className="modal-action">
                                         <label htmlFor="my-modal" className="btn btn-neutral">Close</label>
                                     </div>
@@ -444,7 +444,7 @@ export function CurrentProtocol({ userInfo, showOnboard }) {
                         {exercise ? <Image src={exercise && exercise.image} width={250} height={200} className="m-auto" alt={exercise && exercise.name} /> : <Loading text="Loading Animation..." />}
                     </div>
                 </div>
-                <p className="text-md font-normal">{exercise.reps}</p>
+                <p className="text-normal font-normal">{exercise.reps}</p>
                 <button type="button" className="btn btn-secondary my-4 text-xs" onClick={() => handleShowDetails(exercise)}>
                     <div className="flex justify-center items-center gap-1">
                         <Icon icon="pepicons-pop:plus" />
@@ -467,7 +467,7 @@ export function CurrentProtocol({ userInfo, showOnboard }) {
                         {exercise ? <Image src={exercise && exercise.image} width={250} height={200} className="m-auto" alt={exercise && exercise.name} /> : <Loading text="Loading Animation..." />}
                     </div>
                 </div>
-                <p className="text-md font-normal">{exercise.reps}</p>
+                <p className="text-normal font-normal">{exercise.reps}</p>
                 <button type="button" className="btn btn-secondary my-4 text-xs" onClick={() => handleShowDetails(exercise)}>
                     <div className="flex justify-center items-center gap-1">
                         <Icon icon="pepicons-pop:plus" />
@@ -490,7 +490,7 @@ export function CurrentProtocol({ userInfo, showOnboard }) {
                         {exercise ? <Image src={exercise && exercise.image} width={250} height={200} className="m-auto" alt={exercise && exercise.name} /> : <Loading text="Loading Animation..." />}
                     </div>
                 </div>
-                <p className="text-md font-normal">{exercise.reps}</p>
+                <p className="text-normal font-normal">{exercise.reps}</p>
                 <button type="button" className="btn btn-secondary my-4 text-xs" onClick={() => handleShowDetails(exercise)}>
                     <div className="flex justify-center items-center gap-1">
                         <Icon icon="pepicons-pop:plus" />
@@ -513,7 +513,7 @@ export function CurrentProtocol({ userInfo, showOnboard }) {
                         {exercise ? <Image src={exercise && exercise.image} width={250} height={200} className="m-auto" alt={exercise && exercise.name} /> : <Loading text="Loading Animation..." />}
                     </div>
                 </div>
-                <p className="text-md font-normal">{exercise.reps}</p>
+                <p className="text-normal font-normal">{exercise.reps}</p>
                 <button type="button" className="btn btn-secondary my-4 text-xs" onClick={() => handleShowDetails(exercise)}>
                     <div className="flex justify-center items-center gap-1">
                         <Icon icon="pepicons-pop:plus" />

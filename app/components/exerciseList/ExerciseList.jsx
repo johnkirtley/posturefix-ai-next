@@ -79,10 +79,10 @@ export default function ExerciseList() {
                             <div className="modal justify-center items-center text-center">
                                 <div className="modal-box">
                                     <h3 className="font-bold text-lg">{exercise && exercise.name}</h3>
-                                    <p className="py-4">10 reps x 3 sets</p>
+                                    <p className="py-2 text-sm font-semibold">{exercise && exercise.reps}</p>
                                     {exercise ? <Image className="m-auto" src={exercise && exercise.image} alt={exercise && exercise.name} width={250} height={250} /> : ''}
+                                    <p className="font-semibold text-normal">Description:</p>
                                     <p className="py-2 text-sm">{exercise && exercise.description}</p>
-                                    <p className="py-2 text-sm">{exercise && exercise.video}</p>
                                     <div className="modal-action mt-0">
                                         <label htmlFor="my-modal-shuffle-stretch" className="btn btn-primary">Close</label>
                                     </div>
@@ -95,10 +95,10 @@ export default function ExerciseList() {
                             <div className="modal justify-center items-center text-center">
                                 <div className="modal-box">
                                     <h3 className="font-bold text-lg">{exercise && exercise.name}</h3>
-                                    <p className="py-4">10 reps x 3 sets</p>
+                                    <p className="py-2 text-sm font-semibold">{exercise && exercise.reps}</p>
                                     {exercise ? <Image className="m-auto" src={exercise && exercise.image} alt={exercise && exercise.name} width={250} height={250} /> : ''}
+                                    <p className="font-semibold text-normal">Description:</p>
                                     <p className="py-2 text-sm">{exercise && exercise.description}</p>
-                                    <p className="py-2 text-sm">{exercise && exercise.video}</p>
                                     <div className="modal-action mt-0">
                                         <label htmlFor="my-modal-shuffle-exercise" className="btn btn-primary">Close</label>
                                     </div>

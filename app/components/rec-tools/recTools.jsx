@@ -6,7 +6,7 @@ export function RecTools() {
         <div>
             <div className="text-center flex flex-col gap-4">
                 <p className="text-lg font-semibold">🛠 Helpful Tools</p>
-                <p className="text-sm">* These are just examples. <br />Feel free to search for alternatives</p>
+                <p className="text-xs w-11/12 m-auto">May contain affiliate links, but these are all products we&apos;ve found useful.</p><p className="text-xs">Feel free to search for alternatives.</p>
             </div>
             <div className="flex flex-col justify-center items-center w-11/12 m-auto gap-5 py-5">
                 {tools.map((tool) => (

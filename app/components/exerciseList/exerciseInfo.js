@@ -9,6 +9,7 @@ export const exerciseInfo = [
         required: true,
         muscleGroup: 'core',
         equipmentNeeded: ['none'],
+        reps: '6-8 reps - 3 sets',
     },
     {
         name: 'Face Pull',
@@ -18,6 +19,7 @@ export const exerciseInfo = [
         required: true,
         muscleGroup: 'back',
         equipmentNeeded: ['none'],
+        reps: '10-12 reps - 3 sets',
     },
     {
         name: 'Band Pull Apart',
@@ -27,6 +29,7 @@ export const exerciseInfo = [
         required: true,
         muscleGroup: 'back',
         equipmentNeeded: ['none'],
+        reps: '12-15 reps - 3 sets',
     },
     {
         name: 'Bear Crawl',
@@ -36,6 +39,7 @@ export const exerciseInfo = [
         required: true,
         muscleGroup: 'core',
         equipmentNeeded: ['none'],
+        reps: '6-8 reps - 2 sets',
     },
     {
         name: 'Bent Over Row',
@@ -45,6 +49,7 @@ export const exerciseInfo = [
         required: true,
         muscleGroup: 'back',
         equipmentNeeded: ['none'],
+        reps: '10-12 reps - 3 sets',
     },
     {
         name: 'Bodyweight Row',
@@ -54,6 +59,8 @@ export const exerciseInfo = [
         required: true,
         muscleGroup: 'back',
         equipmentNeeded: ['none'],
+        reps: '12-15 reps - 3 sets',
+
     },
     {
         name: 'Chin Tuck',
@@ -63,6 +70,7 @@ export const exerciseInfo = [
         required: true,
         muscleGroup: 'neck',
         equipmentNeeded: ['none'],
+        reps: '8-10 reps - 2 sets',
     },
     {
         name: 'Donkey Kick',
@@ -72,6 +80,7 @@ export const exerciseInfo = [
         required: true,
         muscleGroup: 'back',
         equipmentNeeded: ['none'],
+        reps: '8-10 reps - 3 sets',
     },
     {
         name: 'Face Pull - Sitting',
@@ -81,6 +90,7 @@ export const exerciseInfo = [
         required: true,
         muscleGroup: 'back',
         equipmentNeeded: ['none'],
+        reps: '12-15 reps - 3 sets',
     },
     {
         name: 'Front Plank Arm Lift Hold',
@@ -90,6 +100,7 @@ export const exerciseInfo = [
         required: true,
         muscleGroup: 'core',
         equipmentNeeded: ['none'],
+        reps: '30-45 sec hold - 2 sets',
     },
     {
         name: 'Front Plank Arm and Leg Lift',
@@ -99,6 +110,7 @@ export const exerciseInfo = [
         required: true,
         muscleGroup: 'core',
         equipmentNeeded: ['none'],
+        reps: '30-45 sec hold - 2 sets',
     },
     {
         name: 'Front Plank Leg Lift',
@@ -108,6 +120,7 @@ export const exerciseInfo = [
         required: true,
         muscleGroup: 'core',
         equipmentNeeded: ['none'],
+        reps: '30-45 sec hold - 2 sets',
     },
     {
         name: 'Plank',
@@ -117,6 +130,7 @@ export const exerciseInfo = [
         required: true,
         muscleGroup: 'core',
         equipmentNeeded: ['none'],
+        reps: '30-60 hold - 2 sets',
     },
     {
         name: 'Glute Bridge On Heels',
@@ -126,6 +140,7 @@ export const exerciseInfo = [
         required: true,
         muscleGroup: 'back',
         equipmentNeeded: ['none'],
+        reps: '10-12 reps - 3 sets',
     },
     {
         name: 'High Plank',
@@ -135,6 +150,7 @@ export const exerciseInfo = [
         required: true,
         muscleGroup: 'core',
         equipmentNeeded: ['none'],
+        reps: '30-60 sec holds - 2 sets',
     },
     {
         name: 'Plank With Hip Roll',
@@ -144,6 +160,7 @@ export const exerciseInfo = [
         required: true,
         muscleGroup: 'core',
         equipmentNeeded: ['none'],
+        reps: '30-45 sec - 2 sets',
     },
     {
         name: 'Kneeling Face Pull',
@@ -153,6 +170,7 @@ export const exerciseInfo = [
         required: true,
         muscleGroup: 'back',
         equipmentNeeded: ['none'],
+        reps: '12-15 reps - 3 sets',
     },
     {
         name: 'Lying Chin Tuck',
@@ -162,6 +180,7 @@ export const exerciseInfo = [
         required: true,
         muscleGroup: 'neck',
         equipmentNeeded: ['none'],
+        reps: '8-10 reps - 2 sets',
     },
     {
         name: 'Lying Scissor Kick',
@@ -171,16 +190,8 @@ export const exerciseInfo = [
         required: true,
         muscleGroup: 'core',
         equipmentNeeded: ['none'],
+        reps: '30-60 sec - 2 sets',
     },
-    // {
-    //     name: 'Lying T-Raise',
-    //     description: 'Stand in a doorway with your arms bent at a 90-degree angle, forearms resting on the door frame. Lean forward until you feel a stretch in the front of your shoulders.',
-    //     image: 'https://posturepal.s3.us-east-2.amazonaws.com/Gifs/lying-t-raise/48321301-Lying-Rear-Lateral-Raise_Shoulders_720.gif',
-    //     video: 'https://www.youtube.com/watch?v=OxXpWg9lSsE',
-    //     required: true,
-    //     muscleGroup: 'back',
-    //     equipmentNeeded: ['none'],
-    // },
     {
         name: 'Lying T-Raise',
         description: 'Stand in a doorway with your arms bent at a 90-degree angle, forearms resting on the door frame. Lean forward until you feel a stretch in the front of your shoulders.',
@@ -189,6 +200,7 @@ export const exerciseInfo = [
         required: true,
         muscleGroup: 'back',
         equipmentNeeded: ['none'],
+        reps: '8-10 reps - 3 sets',
     },
     {
         name: 'Plank Alternating Arm Lift',
@@ -198,6 +210,7 @@ export const exerciseInfo = [
         required: true,
         muscleGroup: 'core',
         equipmentNeeded: ['none'],
+        reps: '30-45 sec hold - 2 sets',
     },
     {
         name: 'Prone Y-Raise',
@@ -207,6 +220,7 @@ export const exerciseInfo = [
         required: true,
         muscleGroup: 'back',
         equipmentNeeded: ['none'],
+        reps: '8-12 reps - 3 sets',
     },
     {
         name: 'Prone Cervical Extension Hold',
@@ -216,6 +230,7 @@ export const exerciseInfo = [
         required: true,
         muscleGroup: 'neck',
         equipmentNeeded: ['none'],
+        reps: '5 sec hold each side - 3 sets',
     },
     {
         name: 'Prone T-Raise',
@@ -225,6 +240,7 @@ export const exerciseInfo = [
         required: true,
         muscleGroup: 'back',
         equipmentNeeded: ['none'],
+        reps: '8-12 reps - 3 sets',
     },
     {
         name: 'Prone Y-Raise',
@@ -234,6 +250,7 @@ export const exerciseInfo = [
         required: true,
         muscleGroup: 'back',
         equipmentNeeded: ['none'],
+        reps: '8-12 reps - 3 sets',
     },
     {
         name: 'Push Up Plus',
@@ -243,6 +260,7 @@ export const exerciseInfo = [
         required: true,
         muscleGroup: 'back',
         equipmentNeeded: ['none'],
+        reps: '8-10 reps - 2 sets',
     },
     {
         name: 'Scapular Push Up',
@@ -252,6 +270,7 @@ export const exerciseInfo = [
         required: true,
         muscleGroup: 'back',
         equipmentNeeded: ['none'],
+        reps: '8-10 reps - 2 sets',
     },
     {
         name: 'Wall Slide',
@@ -261,6 +280,7 @@ export const exerciseInfo = [
         required: true,
         muscleGroup: 'back',
         equipmentNeeded: ['none'],
+        reps: '8-10 reps - 3 sets',
     },
     {
         name: 'Side Plank',
@@ -270,6 +290,7 @@ export const exerciseInfo = [
         required: true,
         muscleGroup: 'core',
         equipmentNeeded: ['none'],
+        reps: '30-45 sec hold - 2 sets',
     },
     {
         name: 'Single Leg Glute Bridge',
@@ -279,6 +300,7 @@ export const exerciseInfo = [
         required: true,
         muscleGroup: 'back',
         equipmentNeeded: ['none'],
+        reps: '8-10 reps - 3 sets',
     },
     {
         name: 'Single Leg Glute Bridge Hold',
@@ -288,6 +310,7 @@ export const exerciseInfo = [
         required: true,
         muscleGroup: 'back',
         equipmentNeeded: ['none'],
+        reps: '6-8 reps (5 sec hold at top) - 3 sets',
     },
     {
         name: 'Superman W-Raise Leg Lift',
@@ -297,6 +320,7 @@ export const exerciseInfo = [
         required: true,
         muscleGroup: 'back',
         equipmentNeeded: ['none'],
+        reps: '6-8 reps - 3 sets',
     },
     {
         name: 'Superman W/Y Raise',
@@ -306,6 +330,7 @@ export const exerciseInfo = [
         required: true,
         muscleGroup: 'back',
         equipmentNeeded: ['none'],
+        reps: '6-8 reps - 3 sets',
     },
     {
         name: 'Superman',
@@ -315,6 +340,7 @@ export const exerciseInfo = [
         required: true,
         muscleGroup: 'back',
         equipmentNeeded: ['none'],
+        reps: '6-8 reps - 3 sets',
     },
     {
         name: 'Swimming',
@@ -324,6 +350,7 @@ export const exerciseInfo = [
         required: true,
         muscleGroup: 'core',
         equipmentNeeded: ['none'],
+        reps: '30-45 sec - 3 sets',
     },
 ];
 
@@ -336,6 +363,7 @@ export const stretchInfo = [
         video: 'https://www.youtube.com/watch?v=OxXpWg9lSsE',
         muscleGroup: 'warmup',
         equipmentNeeded: ['none'],
+        reps: '25 sec. hold - 2 sets',
     },
     {
         name: 'Down Dog',
@@ -344,6 +372,7 @@ export const stretchInfo = [
         video: 'https://www.youtube.com/watch?v=OxXpWg9lSsE',
         muscleGroup: 'warmup',
         equipmentNeeded: ['none'],
+        reps: '30 sec hold - 3 sets',
     },
     {
         name: 'Child Pose',
@@ -352,6 +381,7 @@ export const stretchInfo = [
         video: 'https://www.youtube.com/watch?v=OxXpWg9lSsE',
         muscleGroup: 'warmup',
         equipmentNeeded: ['none'],
+        reps: '30 sec. hold - 1 set',
     },
     {
         name: 'Neck Circles',
@@ -360,14 +390,7 @@ export const stretchInfo = [
         video: 'https://www.youtube.com/watch?v=OxXpWg9lSsE',
         muscleGroup: 'warmup',
         equipmentNeeded: ['none'],
-    },
-    {
-        name: 'Neck Circles',
-        description: 'Stand in a doorway with your arms bent at a 90-degree angle, forearms resting on the door frame. Lean forward until you feel a stretch in the front of your shoulders.',
-        image: 'https://posturepal.s3.us-east-2.amazonaws.com/Gifs/neck-circle/39941301-Neck-Circle-Stretch_Neck_720.gif',
-        video: 'https://www.youtube.com/watch?v=OxXpWg9lSsE',
-        muscleGroup: 'warmup',
-        equipmentNeeded: ['none'],
+        reps: '5 each direction - 2 sets',
     },
     {
         name: 'Neck Extension',
@@ -376,6 +399,7 @@ export const stretchInfo = [
         video: 'https://www.youtube.com/watch?v=OxXpWg9lSsE',
         muscleGroup: 'warmup',
         equipmentNeeded: ['none'],
+        reps: '20 sec hold each side - 3 sets',
     },
     {
         name: 'Neck Flexor',
@@ -384,6 +408,7 @@ export const stretchInfo = [
         video: 'https://www.youtube.com/watch?v=OxXpWg9lSsE',
         muscleGroup: 'warmup',
         equipmentNeeded: ['none'],
+        reps: '20 sec hold each side - 3 sets',
     },
     {
         name: 'Bent Over Chest Stretch',
@@ -392,6 +417,7 @@ export const stretchInfo = [
         video: 'https://www.youtube.com/watch?v=OxXpWg9lSsE',
         muscleGroup: 'warmup',
         equipmentNeeded: ['none'],
+        reps: '25 sec hold - 2 sets',
     },
     {
         name: 'Doorway Chest Stretch',
@@ -400,6 +426,7 @@ export const stretchInfo = [
         video: 'https://www.youtube.com/watch?v=OxXpWg9lSsE',
         muscleGroup: 'warmup',
         equipmentNeeded: ['none'],
+        reps: '25 sec hold - 2 sets',
     },
     {
         name: 'Elbows Back Chest Stretch',
@@ -408,6 +435,7 @@ export const stretchInfo = [
         video: 'https://www.youtube.com/watch?v=OxXpWg9lSsE',
         muscleGroup: 'warmup',
         equipmentNeeded: ['none'],
+        reps: '25 sec hold - 2 sets',
     },
     {
         name: 'Happy Baby',
@@ -416,6 +444,7 @@ export const stretchInfo = [
         video: 'https://www.youtube.com/watch?v=OxXpWg9lSsE',
         muscleGroup: 'warmup',
         equipmentNeeded: ['none'],
+        reps: '40 sec hold - 1 set',
     },
     {
         name: 'Dead Hang',
@@ -424,6 +453,7 @@ export const stretchInfo = [
         video: 'https://www.youtube.com/watch?v=OxXpWg9lSsE',
         muscleGroup: 'warmup',
         equipmentNeeded: ['none'],
+        reps: 'Minimum 30 sec hold (or as long as possible) - 2 sets',
     },
     {
         name: 'Cat Cow',
@@ -432,14 +462,7 @@ export const stretchInfo = [
         video: 'https://www.youtube.com/watch?v=OxXpWg9lSsE',
         muscleGroup: 'warmup',
         equipmentNeeded: ['none'],
-    },
-    {
-        name: 'Cat Cow',
-        description: 'Stand in a doorway with your arms bent at a 90-degree angle, forearms resting on the door frame. Lean forward until you feel a stretch in the front of your shoulders.',
-        image: 'https://posturepal.s3.us-east-2.amazonaws.com/Gifs/cat-cow/45801301-Cat-Cow-Stretch_Stretching_720.gif',
-        video: 'https://www.youtube.com/watch?v=OxXpWg9lSsE',
-        muscleGroup: 'warmup',
-        equipmentNeeded: ['none'],
+        reps: '5 reps - 2 sets',
     },
     {
         name: 'Diagonal Neck Stretch',
@@ -448,14 +471,7 @@ export const stretchInfo = [
         video: 'https://www.youtube.com/watch?v=OxXpWg9lSsE',
         muscleGroup: 'warmup',
         equipmentNeeded: ['none'],
-    },
-    {
-        name: 'Foam Roll - Rotation',
-        description: 'Stand in a doorway with your arms bent at a 90-degree angle, forearms resting on the door frame. Lean forward until you feel a stretch in the front of your shoulders.',
-        image: 'https://posturepal.s3.us-east-2.amazonaws.com/Gifs/foam-roll-kneeling-rotation/53881301-Roll-Kneeling-Upper-Back-Rotation_Back_720.gif',
-        video: 'https://www.youtube.com/watch?v=OxXpWg9lSsE',
-        muscleGroup: 'warmup',
-        equipmentNeeded: ['none'],
+        reps: '20 sec hold each side -  2 sets',
     },
     {
         name: 'Foam Roll With Rotation',
@@ -464,6 +480,7 @@ export const stretchInfo = [
         video: 'https://www.youtube.com/watch?v=OxXpWg9lSsE',
         muscleGroup: 'warmup',
         equipmentNeeded: ['none'],
+        reps: '5 reps each side - 1 set',
     },
     {
         name: 'Foam Roll',
@@ -472,6 +489,7 @@ export const stretchInfo = [
         video: 'https://www.youtube.com/watch?v=OxXpWg9lSsE',
         muscleGroup: 'warmup',
         equipmentNeeded: ['none'],
+        reps: '30 sec - 2 sets',
     },
     {
         name: 'Hip Flexor Stretch',
@@ -480,6 +498,7 @@ export const stretchInfo = [
         video: 'https://www.youtube.com/watch?v=OxXpWg9lSsE',
         muscleGroup: 'warmup',
         equipmentNeeded: ['none'],
+        reps: '3 reps each side (30 sec hold) - 1 set',
     },
     {
         name: 'Kneeling Chest Stretch',
@@ -488,6 +507,7 @@ export const stretchInfo = [
         video: 'https://www.youtube.com/watch?v=OxXpWg9lSsE',
         muscleGroup: 'warmup',
         equipmentNeeded: ['none'],
+        reps: '30 sec hold - 2 sets',
     },
     {
         name: 'One Arm Lat Stretch',
@@ -496,6 +516,7 @@ export const stretchInfo = [
         video: 'https://www.youtube.com/watch?v=OxXpWg9lSsE',
         muscleGroup: 'warmup',
         equipmentNeeded: ['none'],
+        reps: '30 sec hold each side - 2 sets',
     },
     {
         name: 'Pigeon',
@@ -504,6 +525,7 @@ export const stretchInfo = [
         video: 'https://www.youtube.com/watch?v=OxXpWg9lSsE',
         muscleGroup: 'warmup',
         equipmentNeeded: ['none'],
+        reps: '45 sec hold each side - 1 set',
     },
     {
         name: 'Reverse Chest Stretch',
@@ -512,6 +534,7 @@ export const stretchInfo = [
         video: 'https://www.youtube.com/watch?v=OxXpWg9lSsE',
         muscleGroup: 'warmup',
         equipmentNeeded: ['none'],
+        reps: '30 sec hold - 2 sets',
     },
     {
         name: 'Seated Neck Stretch',
@@ -520,6 +543,7 @@ export const stretchInfo = [
         video: 'https://www.youtube.com/watch?v=OxXpWg9lSsE',
         muscleGroup: 'warmup',
         equipmentNeeded: ['none'],
+        reps: '25 sec hold each side - 2 sets',
     },
     {
         name: 'Side Neck Stretch',
@@ -528,6 +552,7 @@ export const stretchInfo = [
         video: 'https://www.youtube.com/watch?v=OxXpWg9lSsE',
         muscleGroup: 'warmup',
         equipmentNeeded: ['none'],
+        reps: '25 sec hold each side - 2 sets',
     },
     {
         name: 'Straight Arm Chest Stretch',
@@ -536,6 +561,7 @@ export const stretchInfo = [
         video: 'https://www.youtube.com/watch?v=OxXpWg9lSsE',
         muscleGroup: 'warmup',
         equipmentNeeded: ['none'],
+        reps: '25 sec hold each side - 2 sets',
     },
     {
         name: 'Thoracic Rotation',
@@ -544,6 +570,7 @@ export const stretchInfo = [
         video: 'https://www.youtube.com/watch?v=OxXpWg9lSsE',
         muscleGroup: 'warmup',
         equipmentNeeded: ['none'],
+        reps: '5 reps each side - 1 set',
     },
     {
         name: 'Thoracic Stretch - Foam Roller',
@@ -552,6 +579,7 @@ export const stretchInfo = [
         video: 'https://www.youtube.com/watch?v=OxXpWg9lSsE',
         muscleGroup: 'warmup',
         equipmentNeeded: ['none'],
+        reps: '5 reps each side - 1 set',
     },
     {
         name: 'Toe Touch',
@@ -560,6 +588,7 @@ export const stretchInfo = [
         video: 'https://www.youtube.com/watch?v=OxXpWg9lSsE',
         muscleGroup: 'warmup',
         equipmentNeeded: ['none'],
+        reps: '30 sec hold - 2 sets',
     },
 
 ];
@@ -572,6 +601,7 @@ export const exerciseStretchCombo = [
         video: 'https://www.youtube.com/watch?v=OxXpWg9lSsE',
         muscleGroup: 'warmup',
         equipmentNeeded: ['none'],
+        reps: '25 sec. hold - 2 sets',
     },
     {
         name: 'Down Dog',
@@ -580,6 +610,7 @@ export const exerciseStretchCombo = [
         video: 'https://www.youtube.com/watch?v=OxXpWg9lSsE',
         muscleGroup: 'warmup',
         equipmentNeeded: ['none'],
+        reps: '30 sec hold - 3 sets',
     },
     {
         name: 'Child Pose',
@@ -588,6 +619,7 @@ export const exerciseStretchCombo = [
         video: 'https://www.youtube.com/watch?v=OxXpWg9lSsE',
         muscleGroup: 'warmup',
         equipmentNeeded: ['none'],
+        reps: '30 sec. hold - 1 set',
     },
     {
         name: 'Neck Circles',
@@ -596,14 +628,7 @@ export const exerciseStretchCombo = [
         video: 'https://www.youtube.com/watch?v=OxXpWg9lSsE',
         muscleGroup: 'warmup',
         equipmentNeeded: ['none'],
-    },
-    {
-        name: 'Neck Circles',
-        description: 'Stand in a doorway with your arms bent at a 90-degree angle, forearms resting on the door frame. Lean forward until you feel a stretch in the front of your shoulders.',
-        image: 'https://posturepal.s3.us-east-2.amazonaws.com/Gifs/neck-circle/39941301-Neck-Circle-Stretch_Neck_720.gif',
-        video: 'https://www.youtube.com/watch?v=OxXpWg9lSsE',
-        muscleGroup: 'warmup',
-        equipmentNeeded: ['none'],
+        reps: '5 each direction - 2 sets',
     },
     {
         name: 'Neck Extension',
@@ -612,6 +637,7 @@ export const exerciseStretchCombo = [
         video: 'https://www.youtube.com/watch?v=OxXpWg9lSsE',
         muscleGroup: 'warmup',
         equipmentNeeded: ['none'],
+        reps: '20 sec hold each side - 2 sets',
     },
     {
         name: 'Neck Flexor',
@@ -620,6 +646,7 @@ export const exerciseStretchCombo = [
         video: 'https://www.youtube.com/watch?v=OxXpWg9lSsE',
         muscleGroup: 'warmup',
         equipmentNeeded: ['none'],
+        reps: '20 sec hold each side - 2 sets',
     },
     {
         name: 'Bent Over Chest Stretch',
@@ -628,6 +655,7 @@ export const exerciseStretchCombo = [
         video: 'https://www.youtube.com/watch?v=OxXpWg9lSsE',
         muscleGroup: 'warmup',
         equipmentNeeded: ['none'],
+        reps: '25 sec hold - 2 sets',
     },
     {
         name: 'Doorway Chest Stretch',
@@ -636,6 +664,7 @@ export const exerciseStretchCombo = [
         video: 'https://www.youtube.com/watch?v=OxXpWg9lSsE',
         muscleGroup: 'warmup',
         equipmentNeeded: ['none'],
+        reps: '25 sec hold - 2 sets',
     },
     {
         name: 'Elbows Back Chest Stretch',
@@ -644,6 +673,7 @@ export const exerciseStretchCombo = [
         video: 'https://www.youtube.com/watch?v=OxXpWg9lSsE',
         muscleGroup: 'warmup',
         equipmentNeeded: ['none'],
+        reps: '25 sec hold - 2 sets',
     },
     {
         name: 'Happy Baby',
@@ -652,6 +682,7 @@ export const exerciseStretchCombo = [
         video: 'https://www.youtube.com/watch?v=OxXpWg9lSsE',
         muscleGroup: 'warmup',
         equipmentNeeded: ['none'],
+        reps: '40 sec hold - 1 set',
     },
     {
         name: 'Dead Hang',
@@ -660,6 +691,7 @@ export const exerciseStretchCombo = [
         video: 'https://www.youtube.com/watch?v=OxXpWg9lSsE',
         muscleGroup: 'warmup',
         equipmentNeeded: ['none'],
+        reps: 'Minimum 30 sec hold (or as long as possible) - 2 sets',
     },
     {
         name: 'Cat Cow',
@@ -668,14 +700,7 @@ export const exerciseStretchCombo = [
         video: 'https://www.youtube.com/watch?v=OxXpWg9lSsE',
         muscleGroup: 'warmup',
         equipmentNeeded: ['none'],
-    },
-    {
-        name: 'Cat Cow',
-        description: 'Stand in a doorway with your arms bent at a 90-degree angle, forearms resting on the door frame. Lean forward until you feel a stretch in the front of your shoulders.',
-        image: 'https://posturepal.s3.us-east-2.amazonaws.com/Gifs/cat-cow/45801301-Cat-Cow-Stretch_Stretching_720.gif',
-        video: 'https://www.youtube.com/watch?v=OxXpWg9lSsE',
-        muscleGroup: 'warmup',
-        equipmentNeeded: ['none'],
+        reps: '5 reps - 2 sets',
     },
     {
         name: 'Diagonal Neck Stretch',
@@ -684,14 +709,7 @@ export const exerciseStretchCombo = [
         video: 'https://www.youtube.com/watch?v=OxXpWg9lSsE',
         muscleGroup: 'warmup',
         equipmentNeeded: ['none'],
-    },
-    {
-        name: 'Foam Roll - Rotation',
-        description: 'Stand in a doorway with your arms bent at a 90-degree angle, forearms resting on the door frame. Lean forward until you feel a stretch in the front of your shoulders.',
-        image: 'https://posturepal.s3.us-east-2.amazonaws.com/Gifs/foam-roll-kneeling-rotation/53881301-Roll-Kneeling-Upper-Back-Rotation_Back_720.gif',
-        video: 'https://www.youtube.com/watch?v=OxXpWg9lSsE',
-        muscleGroup: 'warmup',
-        equipmentNeeded: ['none'],
+        reps: '20 sec hold each side -  2 sets',
     },
     {
         name: 'Foam Roll With Rotation',
@@ -700,6 +718,7 @@ export const exerciseStretchCombo = [
         video: 'https://www.youtube.com/watch?v=OxXpWg9lSsE',
         muscleGroup: 'warmup',
         equipmentNeeded: ['none'],
+        reps: '5 reps each side - 1 set',
     },
     {
         name: 'Foam Roll',
@@ -708,6 +727,7 @@ export const exerciseStretchCombo = [
         video: 'https://www.youtube.com/watch?v=OxXpWg9lSsE',
         muscleGroup: 'warmup',
         equipmentNeeded: ['none'],
+        reps: '30 sec - 2 sets',
     },
     {
         name: 'Hip Flexor Stretch',
@@ -716,6 +736,7 @@ export const exerciseStretchCombo = [
         video: 'https://www.youtube.com/watch?v=OxXpWg9lSsE',
         muscleGroup: 'warmup',
         equipmentNeeded: ['none'],
+        reps: '3 reps each side (30 sec hold) - 1 set',
     },
     {
         name: 'Kneeling Chest Stretch',
@@ -724,6 +745,7 @@ export const exerciseStretchCombo = [
         video: 'https://www.youtube.com/watch?v=OxXpWg9lSsE',
         muscleGroup: 'warmup',
         equipmentNeeded: ['none'],
+        reps: '30 sec hold - 2 sets',
     },
     {
         name: 'One Arm Lat Stretch',
@@ -732,6 +754,7 @@ export const exerciseStretchCombo = [
         video: 'https://www.youtube.com/watch?v=OxXpWg9lSsE',
         muscleGroup: 'warmup',
         equipmentNeeded: ['none'],
+        reps: '30 sec hold each side - 2 sets',
     },
     {
         name: 'Pigeon',
@@ -740,6 +763,7 @@ export const exerciseStretchCombo = [
         video: 'https://www.youtube.com/watch?v=OxXpWg9lSsE',
         muscleGroup: 'warmup',
         equipmentNeeded: ['none'],
+        reps: '45 sec hold each side - 1 set',
     },
     {
         name: 'Reverse Chest Stretch',
@@ -748,6 +772,7 @@ export const exerciseStretchCombo = [
         video: 'https://www.youtube.com/watch?v=OxXpWg9lSsE',
         muscleGroup: 'warmup',
         equipmentNeeded: ['none'],
+        reps: '30 sec hold - 2 sets',
     },
     {
         name: 'Seated Neck Stretch',
@@ -756,6 +781,7 @@ export const exerciseStretchCombo = [
         video: 'https://www.youtube.com/watch?v=OxXpWg9lSsE',
         muscleGroup: 'warmup',
         equipmentNeeded: ['none'],
+        reps: '25 sec hold each side - 2 sets',
     },
     {
         name: 'Side Neck Stretch',
@@ -764,6 +790,7 @@ export const exerciseStretchCombo = [
         video: 'https://www.youtube.com/watch?v=OxXpWg9lSsE',
         muscleGroup: 'warmup',
         equipmentNeeded: ['none'],
+        reps: '25 sec hold each side - 2 sets',
     },
     {
         name: 'Straight Arm Chest Stretch',
@@ -772,6 +799,7 @@ export const exerciseStretchCombo = [
         video: 'https://www.youtube.com/watch?v=OxXpWg9lSsE',
         muscleGroup: 'warmup',
         equipmentNeeded: ['none'],
+        reps: '25 sec hold each side - 2 sets',
     },
     {
         name: 'Thoracic Rotation',
@@ -780,6 +808,7 @@ export const exerciseStretchCombo = [
         video: 'https://www.youtube.com/watch?v=OxXpWg9lSsE',
         muscleGroup: 'warmup',
         equipmentNeeded: ['none'],
+        reps: '5 reps each side - 1 set',
     },
     {
         name: 'Thoracic Stretch - Foam Roller',
@@ -788,6 +817,7 @@ export const exerciseStretchCombo = [
         video: 'https://www.youtube.com/watch?v=OxXpWg9lSsE',
         muscleGroup: 'warmup',
         equipmentNeeded: ['none'],
+        reps: '5 reps each side - 1 set',
     },
     {
         name: 'Toe Touch',
@@ -796,6 +826,7 @@ export const exerciseStretchCombo = [
         video: 'https://www.youtube.com/watch?v=OxXpWg9lSsE',
         muscleGroup: 'warmup',
         equipmentNeeded: ['none'],
+        reps: '30 sec hold - 2 sets',
     },
     {
         name: 'Around The World',
@@ -805,15 +836,7 @@ export const exerciseStretchCombo = [
         required: true,
         muscleGroup: 'core',
         equipmentNeeded: ['none'],
-    },
-    {
-        name: 'Assisted Chin Tuck',
-        description: 'Stand in a doorway with your arms bent at a 90-degree angle, forearms resting on the door frame. Lean forward until you feel a stretch in the front of your shoulders.',
-        image: 'https://posturepal.s3.us-east-2.amazonaws.com/Gifs/assisted-chin-tuck/31501301-Assisted-Chin-Tuck_Neck_720.gif',
-        video: 'https://www.youtube.com/watch?v=OxXpWg9lSsE',
-        required: true,
-        muscleGroup: 'neck',
-        equipmentNeeded: ['none'],
+        reps: '6-8 reps - 3 sets',
     },
     {
         name: 'Face Pull',
@@ -823,6 +846,7 @@ export const exerciseStretchCombo = [
         required: true,
         muscleGroup: 'back',
         equipmentNeeded: ['none'],
+        reps: '10-12 reps - 3 sets',
     },
     {
         name: 'Band Pull Apart',
@@ -832,6 +856,7 @@ export const exerciseStretchCombo = [
         required: true,
         muscleGroup: 'back',
         equipmentNeeded: ['none'],
+        reps: '12-15 reps - 3 sets',
     },
     {
         name: 'Bear Crawl',
@@ -841,6 +866,7 @@ export const exerciseStretchCombo = [
         required: true,
         muscleGroup: 'core',
         equipmentNeeded: ['none'],
+        reps: '6-8 reps - 2 sets',
     },
     {
         name: 'Bent Over Row',
@@ -850,6 +876,7 @@ export const exerciseStretchCombo = [
         required: true,
         muscleGroup: 'back',
         equipmentNeeded: ['none'],
+        reps: '10-12 reps - 3 sets',
     },
     {
         name: 'Bodyweight Row',
@@ -859,6 +886,8 @@ export const exerciseStretchCombo = [
         required: true,
         muscleGroup: 'back',
         equipmentNeeded: ['none'],
+        reps: '12-15 reps - 3 sets',
+
     },
     {
         name: 'Chin Tuck',
@@ -868,6 +897,7 @@ export const exerciseStretchCombo = [
         required: true,
         muscleGroup: 'neck',
         equipmentNeeded: ['none'],
+        reps: '8-10 reps - 2 sets',
     },
     {
         name: 'Donkey Kick',
@@ -877,6 +907,7 @@ export const exerciseStretchCombo = [
         required: true,
         muscleGroup: 'back',
         equipmentNeeded: ['none'],
+        reps: '8-10 reps - 3 sets',
     },
     {
         name: 'Face Pull - Sitting',
@@ -886,6 +917,7 @@ export const exerciseStretchCombo = [
         required: true,
         muscleGroup: 'back',
         equipmentNeeded: ['none'],
+        reps: '12-15 reps - 3 sets',
     },
     {
         name: 'Front Plank Arm Lift Hold',
@@ -895,6 +927,7 @@ export const exerciseStretchCombo = [
         required: true,
         muscleGroup: 'core',
         equipmentNeeded: ['none'],
+        reps: '30-45 sec hold - 2 sets',
     },
     {
         name: 'Front Plank Arm and Leg Lift',
@@ -904,6 +937,7 @@ export const exerciseStretchCombo = [
         required: true,
         muscleGroup: 'core',
         equipmentNeeded: ['none'],
+        reps: '30-45 sec hold - 2 sets',
     },
     {
         name: 'Front Plank Leg Lift',
@@ -913,6 +947,7 @@ export const exerciseStretchCombo = [
         required: true,
         muscleGroup: 'core',
         equipmentNeeded: ['none'],
+        reps: '30-45 sec hold - 2 sets',
     },
     {
         name: 'Plank',
@@ -922,6 +957,7 @@ export const exerciseStretchCombo = [
         required: true,
         muscleGroup: 'core',
         equipmentNeeded: ['none'],
+        reps: '30-60 hold - 2 sets',
     },
     {
         name: 'Glute Bridge On Heels',
@@ -931,6 +967,7 @@ export const exerciseStretchCombo = [
         required: true,
         muscleGroup: 'back',
         equipmentNeeded: ['none'],
+        reps: '10-12 reps - 3 sets',
     },
     {
         name: 'High Plank',
@@ -940,6 +977,7 @@ export const exerciseStretchCombo = [
         required: true,
         muscleGroup: 'core',
         equipmentNeeded: ['none'],
+        reps: '30-60 sec holds - 2 sets',
     },
     {
         name: 'Plank With Hip Roll',
@@ -949,6 +987,7 @@ export const exerciseStretchCombo = [
         required: true,
         muscleGroup: 'core',
         equipmentNeeded: ['none'],
+        reps: '30-45 sec - 2 sets',
     },
     {
         name: 'Kneeling Face Pull',
@@ -958,6 +997,7 @@ export const exerciseStretchCombo = [
         required: true,
         muscleGroup: 'back',
         equipmentNeeded: ['none'],
+        reps: '12-15 reps - 3 sets',
     },
     {
         name: 'Lying Chin Tuck',
@@ -967,6 +1007,7 @@ export const exerciseStretchCombo = [
         required: true,
         muscleGroup: 'neck',
         equipmentNeeded: ['none'],
+        reps: '8-10 reps - 2 sets',
     },
     {
         name: 'Lying Scissor Kick',
@@ -976,6 +1017,7 @@ export const exerciseStretchCombo = [
         required: true,
         muscleGroup: 'core',
         equipmentNeeded: ['none'],
+        reps: '30-60 sec - 2 sets',
     },
     {
         name: 'Lying T-Raise',
@@ -985,15 +1027,7 @@ export const exerciseStretchCombo = [
         required: true,
         muscleGroup: 'back',
         equipmentNeeded: ['none'],
-    },
-    {
-        name: 'Lying T-Raise',
-        description: 'Stand in a doorway with your arms bent at a 90-degree angle, forearms resting on the door frame. Lean forward until you feel a stretch in the front of your shoulders.',
-        image: 'https://posturepal.s3.us-east-2.amazonaws.com/Gifs/lying-t-raise/48321301-Lying-Rear-Lateral-Raise_Shoulders_720.gif',
-        video: 'https://www.youtube.com/watch?v=OxXpWg9lSsE',
-        required: true,
-        muscleGroup: 'back',
-        equipmentNeeded: ['none'],
+        reps: '8-10 reps - 3 sets',
     },
     {
         name: 'Plank Alternating Arm Lift',
@@ -1003,6 +1037,7 @@ export const exerciseStretchCombo = [
         required: true,
         muscleGroup: 'core',
         equipmentNeeded: ['none'],
+        reps: '30-45 sec hold - 2 sets',
     },
     {
         name: 'Prone Y-Raise',
@@ -1012,6 +1047,7 @@ export const exerciseStretchCombo = [
         required: true,
         muscleGroup: 'back',
         equipmentNeeded: ['none'],
+        reps: '8-12 reps - 3 sets',
     },
     {
         name: 'Prone Cervical Extension Hold',
@@ -1021,6 +1057,7 @@ export const exerciseStretchCombo = [
         required: true,
         muscleGroup: 'neck',
         equipmentNeeded: ['none'],
+        reps: '6 reps (5 sec hold) - 2 sets',
     },
     {
         name: 'Prone T-Raise',
@@ -1030,6 +1067,7 @@ export const exerciseStretchCombo = [
         required: true,
         muscleGroup: 'back',
         equipmentNeeded: ['none'],
+        reps: '8-12 reps - 3 sets',
     },
     {
         name: 'Prone Y-Raise',
@@ -1039,6 +1077,7 @@ export const exerciseStretchCombo = [
         required: true,
         muscleGroup: 'back',
         equipmentNeeded: ['none'],
+        reps: '8-12 reps - 3 sets',
     },
     {
         name: 'Push Up Plus',
@@ -1048,6 +1087,7 @@ export const exerciseStretchCombo = [
         required: true,
         muscleGroup: 'back',
         equipmentNeeded: ['none'],
+        reps: '8-10 reps - 2 sets',
     },
     {
         name: 'Scapular Push Up',
@@ -1057,6 +1097,7 @@ export const exerciseStretchCombo = [
         required: true,
         muscleGroup: 'back',
         equipmentNeeded: ['none'],
+        reps: '8-10 reps - 2 sets',
     },
     {
         name: 'Wall Slide',
@@ -1066,6 +1107,7 @@ export const exerciseStretchCombo = [
         required: true,
         muscleGroup: 'back',
         equipmentNeeded: ['none'],
+        reps: '8-10 reps - 3 sets',
     },
     {
         name: 'Side Plank',
@@ -1075,6 +1117,7 @@ export const exerciseStretchCombo = [
         required: true,
         muscleGroup: 'core',
         equipmentNeeded: ['none'],
+        reps: '30-45 sec hold - 2 sets',
     },
     {
         name: 'Single Leg Glute Bridge',
@@ -1084,6 +1127,7 @@ export const exerciseStretchCombo = [
         required: true,
         muscleGroup: 'back',
         equipmentNeeded: ['none'],
+        reps: '8-10 reps - 3 sets',
     },
     {
         name: 'Single Leg Glute Bridge Hold',
@@ -1093,6 +1137,7 @@ export const exerciseStretchCombo = [
         required: true,
         muscleGroup: 'back',
         equipmentNeeded: ['none'],
+        reps: '6-8 reps (5 sec hold at top) - 3 sets',
     },
     {
         name: 'Superman W-Raise Leg Lift',
@@ -1102,6 +1147,7 @@ export const exerciseStretchCombo = [
         required: true,
         muscleGroup: 'back',
         equipmentNeeded: ['none'],
+        reps: '6-8 reps - 3 sets',
     },
     {
         name: 'Superman W/Y Raise',
@@ -1111,6 +1157,7 @@ export const exerciseStretchCombo = [
         required: true,
         muscleGroup: 'back',
         equipmentNeeded: ['none'],
+        reps: '6-8 reps - 3 sets',
     },
     {
         name: 'Superman',
@@ -1120,6 +1167,7 @@ export const exerciseStretchCombo = [
         required: true,
         muscleGroup: 'back',
         equipmentNeeded: ['none'],
+        reps: '6-8 reps - 3 sets',
     },
     {
         name: 'Swimming',
@@ -1129,5 +1177,6 @@ export const exerciseStretchCombo = [
         required: true,
         muscleGroup: 'core',
         equipmentNeeded: ['none'],
+        reps: '30-45 sec - 3 sets',
     },
 ];
