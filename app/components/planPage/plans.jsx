@@ -16,16 +16,15 @@ export function PlanPage() {
     const { user } = useAuth();
     const isUserPremium = usePremiumStatus(user && user.email);
     const [clicked, setClicked] = useState(true);
-    const [plan, setPlan] = useState(devPlanInfo);
     const [loading, setLoading] = useState(false);
 
-    useEffect(() => {
-        if (process.env.NEXT_PUBLIC_ENV === 'prod') {
-            setPlan(prodPlanInfo);
-        } else {
-            setPlan(devPlanInfo);
-        }
-    }, []);
+    let plan;
+
+    if (process.env.NEXT_PUBLIC_ENV === 'prod') {
+        plan = prodPlanInfo;
+    } else {
+        plan = devPlanInfo;
+    }
 
     async function getSubscriber(email) {
         const response = await fetch('/api/get-subscriber', {
