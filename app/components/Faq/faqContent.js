@@ -23,6 +23,11 @@ export const faqContent = [
         content: ['PostureFix is specifically designed to strengthen any postural weaknesses while also stretching commonly tight muscles. By doing so, you may notice positive improvements in your posture over time, as well as a reduction in symptoms such as neck pain and headaches that can be caused by bad posture.', 'While we can\'t guarantee results, the exercises provided in our program are commonly prescribed to address many postural issues and can help counteract the negative effects of bad posture.'],
     },
     {
+        title: 'Why Isn\'t This A Mobile App',
+        content: ['I wanted to make this as accessible as possible. This way, PostureFix can easily be accessed on any device and on the web.',
+        ],
+    },
+    {
         title: 'How Do I Manage My Account',
         content: ['1. Navigate to your Account page', '2. Click the "Manage Subscription" or "Choose a Plan" button'],
     },
