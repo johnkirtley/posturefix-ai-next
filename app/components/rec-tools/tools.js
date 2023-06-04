@@ -36,4 +36,11 @@ export const tools = [
         link: 'https://amzn.to/43E0yQu',
         recommend: true,
     },
+    {
+        name: 'Lacrosse/Tennis Ball',
+        image: '/tools/massage-ball.jpg',
+        description: 'These work well as a Theracane alternative. Also great to roll across tight traps, upper back, and neck.',
+        link: 'https://amzn.to/3IVoSFt',
+        recommend: false,
+    },
 ];

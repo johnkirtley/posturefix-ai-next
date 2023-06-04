@@ -9,8 +9,8 @@ export function RecTools() {
                 <p className="text-xs w-11/12 m-auto">May contain affiliate links, but these are all products we&apos;ve found useful.</p><p className="text-xs">Feel free to search for alternatives.</p>
             </div>
             <div className="flex flex-col justify-center items-center w-11/12 m-auto gap-5 py-5">
-                {tools.map((tool) => (
-                    <div className="w-11/12 flex flex-col justify-center items-center">
+                {tools.map((tool, idx) => (
+                    <div className="w-11/12 flex flex-col justify-center items-center" key={idx}>
                         <div className="card bg-base-100 shadow-xl w-11/12 flex flex-col justify-center items-center">
                             <figure><img className="p-5 h-60 object-contain" src={tool.image} alt="Shoes" /></figure>
                             <div className="card-body flex flex-col justify-center items-center">

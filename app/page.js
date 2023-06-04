@@ -8,6 +8,7 @@ import { signInWithEmailAndPassword, getAuth, sendPasswordResetEmail } from 'fir
 import { useRouter } from 'next/navigation';
 import Link from 'next/link';
 import { firebaseAuth } from '../firebase/clientApp';
+import { useAuth } from './Context/AuthContext';
 
 const auth = firebaseAuth;
 
@@ -23,9 +24,14 @@ export default function Login() {
     const [emailSent, setEmailSent] = useState(false);
     const [sending, setSending] = useState(false);
     const [forgotEmail, setForgotEmail] = useState('');
+    const { user } = useAuth();
 
     const loginRef = useRef(null);
     const router = useRouter();
+
+    if (user) {
+        router.push('/dashboard');
+    }
 
     const signIn = async () => {
         setShowError(false);
