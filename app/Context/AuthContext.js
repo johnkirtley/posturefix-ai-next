@@ -23,10 +23,6 @@ export function AuthProvider({ children }) {
             setUser(user);
             setLoading(false);
 
-            if (user) {
-                router.push('/dashboard');
-            }
-
             if (!user) {
                 router.push('/');
             }
