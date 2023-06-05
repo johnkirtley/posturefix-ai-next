@@ -73,7 +73,7 @@ export default function ExerciseList() {
                 <div>
                     <div className="flex flex-col justify-center items-center gap-5">
                         <p className="text-lg font-semibold text-center">Short On Time? <br />Let Us Pick A Quick Workout For You!</p>
-                        <Image style={{ opacity: '90%' }} src="https://posturepal.s3.us-east-2.amazonaws.com/images/flat_vector_image_of_penguin_gambling_with_dice_ef1367c1-44ab-4665-9fd4-d594948985cc-removebg-preview.png" alt="penguin random" width={250} height={250} />
+                        <Image style={{ opacity: '80%' }} src="https://posturepal.s3.us-east-2.amazonaws.com/images/rJ4VktZB_4x.jpeg" alt="penguin random" width={250} height={250} />
                         <div>
                             <button type="button" htmlFor="my-modal-stretch" className="btn btn-secondary" onClick={() => selectRandomExercise(stretchInfo, 'stretch')}>{loadingStretch ? 'Spinning...' : 'Random Stretch'}</button>
                             <input type="checkbox" id="my-modal-shuffle-stretch" className="modal-toggle" />
