@@ -19,7 +19,7 @@ export default function Step3({
     };
     return (
         <div className="flex flex-col justify-center items-center text-center gap-5">
-            <div className="flex flex-col gap-5">
+            <div className="flex flex-col gap-5 mb-10">
                 <div className="form-control">
                     <label className="label cursor-pointer flex justify-start gap-3">
                         <div>

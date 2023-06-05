@@ -23,6 +23,11 @@ export function AuthProvider({ children }) {
             setUser(user);
             setLoading(false);
 
+            // eslint-disable-next-line no-undef
+            if (user && typeof window !== 'undefined' && window.location.pathname === '/') {
+                router.push('/dashboard');
+            }
+
             if (!user) {
                 router.push('/');
             }
