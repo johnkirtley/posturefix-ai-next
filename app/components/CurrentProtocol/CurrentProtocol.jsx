@@ -254,28 +254,92 @@ export function CurrentProtocol({ userInfo, showOnboard }) {
                 console.log('current level', currentLevel);
 
                 if (currentLevel === 1) {
-                    await updateDoc(userRef, { currentLevel: 2 });
-                    setCurLevel(2);
+                    updateDoc(userRef, { currentLevel: 2 }).then(() => {
+                        getRoutine().then(async (routine) => {
+                            console.log('routine', routine);
+                            setCurProtocol([routine]);
+                            await updateDoc(userRef, { currentProtocol: [routine] });
+                            // setCurProtocol([routine]);
+                            setTimeout(() => {
+                                setCurLevel(2);
+                                setShowAdvanceModal(false);
+                                setLoading(false);
+                                setGenerateLoading(false);
+                                if (typeof window !== 'undefined') {
+                                    // eslint-disable-next-line no-undef
+                                    // window.location.reload();
+                                }
+                            }, 2000);
+                        });
+                    });
                 }
 
                 if (currentLevel === 2) {
-                    await updateDoc(userRef, { currentLevel: 3 });
-                    setCurLevel(3);
+                    updateDoc(userRef, { currentLevel: 3 }).then(() => {
+                        getRoutine().then(async (routine) => {
+                            console.log('routine', routine);
+                            setCurProtocol([routine]);
+                            await updateDoc(userRef, { currentProtocol: [routine] });
+                            // setCurProtocol([routine]);
+                            setTimeout(() => {
+                                setCurLevel(3);
+                                setShowAdvanceModal(false);
+                                setLoading(false);
+                                setGenerateLoading(false);
+                                if (typeof window !== 'undefined') {
+                                    // eslint-disable-next-line no-undef
+                                    // window.location.reload();
+                                }
+                            }, 2000);
+                        });
+                    });
                 }
 
                 if (currentLevel === 3) {
-                    await updateDoc(userRef, { currentLevel: 4 });
-                    setCurLevel(4);
+                    updateDoc(userRef, { currentLevel: 4 }).then(() => {
+                        getRoutine().then(async (routine) => {
+                            console.log('routine', routine);
+                            setCurProtocol([routine]);
+                            await updateDoc(userRef, { currentProtocol: [routine] });
+                            // setCurProtocol([routine]);
+                            setTimeout(() => {
+                                setCurLevel(4);
+                                setShowAdvanceModal(false);
+                                setLoading(false);
+                                setGenerateLoading(false);
+                                if (typeof window !== 'undefined') {
+                                    // eslint-disable-next-line no-undef
+                                    // window.location.reload();
+                                }
+                            }, 2000);
+                        });
+                    });
                 }
 
                 if (currentLevel === 4) {
                     const progressMade = { ...document.data().progressMade };
                     progressMade[4] = 0;
 
-                    setCount(progressMade);
-                    setCurLevel(4);
                     await updateDoc(userRef, { currentLevel: 4 });
                     await updateDoc(userRef, { progressMade });
+
+                    getRoutine().then(async (routine) => {
+                        console.log('routine', routine);
+                        setCurProtocol([routine]);
+                        await updateDoc(userRef, { currentProtocol: [routine] });
+                        // setCurProtocol([routine]);
+                        setTimeout(() => {
+                            setCount(progressMade);
+                            setCurLevel(4);
+                            setShowAdvanceModal(false);
+                            setLoading(false);
+                            setGenerateLoading(false);
+                            if (typeof window !== 'undefined') {
+                                // eslint-disable-next-line no-undef
+                                // window.location.reload();
+                            }
+                        }, 2000);
+                    });
                 }
 
                 setTimeout(() => {
@@ -286,20 +350,6 @@ export function CurrentProtocol({ userInfo, showOnboard }) {
         });
 
         // potentially add timeout here. routine getting generated before level upgrade being detected
-        const routine = await getRoutine();
-        console.log('routine', routine);
-        setCurProtocol([routine]);
-        await updateDoc(userRef, { currentProtocol: [routine] });
-        // setCurProtocol([routine]);
-        setTimeout(() => {
-            setShowAdvanceModal(false);
-            setLoading(false);
-            setGenerateLoading(false);
-            if (typeof window !== 'undefined') {
-                // eslint-disable-next-line no-undef
-                // window.location.reload();
-            }
-        }, 2000);
     };
 
     if (generateLoading) {
