@@ -31,8 +31,6 @@ export function AdvanceModal({
                 const { currentLevel } = document.data();
                 progressMade[currentLevel] = 0;
 
-                console.log('progress', progressMade);
-
                 setCount(0);
                 await updateDoc(userRef, { progressMade });
 

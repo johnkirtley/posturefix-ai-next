@@ -30,7 +30,6 @@ export default function DeleteAccount() {
         const customerData = await getCustomer(email);
         const customerId = customerData.data[0].id;
 
-        console.log('delete customer', customerId);
         const response = await fetch('/api/delete-customer', {
             method: 'POST',
             headers: { 'Content-Type': 'application/json' },

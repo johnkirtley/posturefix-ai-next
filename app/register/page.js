@@ -34,7 +34,6 @@ export default function Register() {
     const auth = firebaseAuth;
 
     async function createStripeSubscription(email) {
-        console.log('stripe register', email);
         const response = await fetch('/api/create-on-register', {
             method: 'POST',
             headers: { 'Content-Type': 'application/json' },
@@ -43,7 +42,6 @@ export default function Register() {
 
         if (response.ok) {
             const data = await response.json();
-            console.log('data', data);
             return data;
         }
         return console.error('Error:', response.statusText);
@@ -96,7 +94,10 @@ export default function Register() {
                     activityLevel: null,
                     currentLevel: 1,
                     currentProtocol: [],
-                    favorites: [],
+                    favorites: {
+                        exercises: [],
+                        routines: [],
+                    },
                     progressMade: {
                         1: 0,
                         2: 0,
@@ -107,8 +108,8 @@ export default function Register() {
                 createStripeSubscription(user.email).then((res) => {
                     // addToSib(user.email);
                     // posthog.capture('Manual Sign Up', { user: user.email });
-                    console.log('success', res);
                     router.push('/dashboard');
+                    console.log(res);
                     setRegisterAccount(false);
                 }).catch((err) => {
                     // posthog.capture('Manual Sign Up', { error: err });

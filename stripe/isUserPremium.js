@@ -25,7 +25,6 @@ async function isUserPremium(email) {
         planStatus = '';
     }
 
-    console.log('isUserPremium', { role, planStatus });
     return { planName: role, status: planStatus };
 }
 

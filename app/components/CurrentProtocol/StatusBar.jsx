@@ -7,7 +7,9 @@
 export function StatusBar({ count, curLevel }) {
     // const { userInfo } = useContext(UserContext);
     // const { currentLevel } = userInfo;
-    const totalWorkouts = 5;
+
+    const totalWorkouts = process.env.NEXT_PUBLIC_ENV === 'prod' ? 8 : 3;
+    const finalWorkout = totalWorkouts - 1;
 
     return (
         <div className="flex flex-col gap-1 mb-10">
@@ -18,8 +20,8 @@ export function StatusBar({ count, curLevel }) {
                 <div className="flex flex-col justify-center items-center">
                     {count && curLevel ? totalWorkouts - count[curLevel] : totalWorkouts - 0}
                     {' '}
-                    {count && count[curLevel] === 4 ? 'Workout Left' : 'Workouts Left'}
-                    <progress className="progress progress-success w-56" value={count && curLevel ? count[curLevel] : 0} max="5" />
+                    {count && count[curLevel] === finalWorkout ? 'Workout Left' : 'Workouts Left'}
+                    <progress className="progress progress-success w-56" value={count && curLevel ? count[curLevel] : 0} max={totalWorkouts} />
                 </div>
             )}
 

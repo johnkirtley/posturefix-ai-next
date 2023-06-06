@@ -113,7 +113,7 @@ export function CurrentProtocol({ userInfo, showOnboard }) {
 
                         routine.core.exercises.push(exercise);
                         routine.core.count += 1;
-                    } else if (exercise.muscleGroup === 'neck' && routine.neck.count < 2) {
+                    } else if (exercise.muscleGroup === 'neck') {
                         if (userEquipment.length > 0 && userEquipment.includes(exercise.equipmentNeeded)) {
                             routine.neck.exercises.push(exercise);
                             routine.neck.count += 1;
@@ -124,9 +124,16 @@ export function CurrentProtocol({ userInfo, showOnboard }) {
                             routine.neck.count += 1;
                         }
 
-                        routine.neck.exercises.push(exercise);
-                        routine.neck.count += 1;
-                    } else if (exercise.muscleGroup === 'back' && routine.back.count < 2) {
+                        if (currentLevel < 4 && routine.neck.count < 2) {
+                            routine.neck.exercises.push(exercise);
+                            routine.neck.count += 1;
+                        }
+
+                        if (currentLevel === 4 && routine.neck.count < 1) {
+                            routine.neck.exercises.push(exercise);
+                            routine.neck.count += 1;
+                        }
+                    } else if (exercise.muscleGroup === 'back' && routine.back.count < 3) {
                         if (userEquipment.length > 0 && userEquipment.includes(exercise.equipmentNeeded)) {
                             routine.back.exercises.push(exercise);
                             routine.back.count += 1;
@@ -153,8 +160,6 @@ export function CurrentProtocol({ userInfo, showOnboard }) {
                         routine.warmup.count += 1;
                     }
                 });
-
-                console.log('generated', routine);
             }
 
             if (!routine) {
@@ -236,8 +241,6 @@ export function CurrentProtocol({ userInfo, showOnboard }) {
                         routine.warmup.count += 1;
                     }
                 });
-
-                console.log('default', routine);
             }
         });
         return routine;
@@ -254,28 +257,88 @@ export function CurrentProtocol({ userInfo, showOnboard }) {
                 console.log('current level', currentLevel);
 
                 if (currentLevel === 1) {
-                    await updateDoc(userRef, { currentLevel: 2 });
-                    setCurLevel(2);
+                    updateDoc(userRef, { currentLevel: 2 }).then(() => {
+                        getRoutine().then(async (routine) => {
+                            setCurProtocol([routine]);
+                            await updateDoc(userRef, { currentProtocol: [routine] });
+                            // setCurProtocol([routine]);
+                            setTimeout(() => {
+                                setCurLevel(2);
+                                setShowAdvanceModal(false);
+                                setLoading(false);
+                                setGenerateLoading(false);
+                                if (typeof window !== 'undefined') {
+                                    // eslint-disable-next-line no-undef
+                                    // window.location.reload();
+                                }
+                            }, 2000);
+                        });
+                    });
                 }
 
                 if (currentLevel === 2) {
-                    await updateDoc(userRef, { currentLevel: 3 });
-                    setCurLevel(3);
+                    updateDoc(userRef, { currentLevel: 3 }).then(() => {
+                        getRoutine().then(async (routine) => {
+                            setCurProtocol([routine]);
+                            await updateDoc(userRef, { currentProtocol: [routine] });
+                            // setCurProtocol([routine]);
+                            setTimeout(() => {
+                                setCurLevel(3);
+                                setShowAdvanceModal(false);
+                                setLoading(false);
+                                setGenerateLoading(false);
+                                if (typeof window !== 'undefined') {
+                                    // eslint-disable-next-line no-undef
+                                    // window.location.reload();
+                                }
+                            }, 2000);
+                        });
+                    });
                 }
 
                 if (currentLevel === 3) {
-                    await updateDoc(userRef, { currentLevel: 4 });
-                    setCurLevel(4);
+                    updateDoc(userRef, { currentLevel: 4 }).then(() => {
+                        getRoutine().then(async (routine) => {
+                            setCurProtocol([routine]);
+                            await updateDoc(userRef, { currentProtocol: [routine] });
+                            // setCurProtocol([routine]);
+                            setTimeout(() => {
+                                setCurLevel(4);
+                                setShowAdvanceModal(false);
+                                setLoading(false);
+                                setGenerateLoading(false);
+                                if (typeof window !== 'undefined') {
+                                    // eslint-disable-next-line no-undef
+                                    // window.location.reload();
+                                }
+                            }, 2000);
+                        });
+                    });
                 }
 
                 if (currentLevel === 4) {
                     const progressMade = { ...document.data().progressMade };
                     progressMade[4] = 0;
 
-                    setCount(progressMade);
-                    setCurLevel(4);
                     await updateDoc(userRef, { currentLevel: 4 });
                     await updateDoc(userRef, { progressMade });
+
+                    getRoutine().then(async (routine) => {
+                        setCurProtocol([routine]);
+                        await updateDoc(userRef, { currentProtocol: [routine] });
+                        // setCurProtocol([routine]);
+                        setTimeout(() => {
+                            setCount(progressMade);
+                            setCurLevel(4);
+                            setShowAdvanceModal(false);
+                            setLoading(false);
+                            setGenerateLoading(false);
+                            if (typeof window !== 'undefined') {
+                                // eslint-disable-next-line no-undef
+                                // window.location.reload();
+                            }
+                        }, 2000);
+                    });
                 }
 
                 setTimeout(() => {
@@ -286,20 +349,6 @@ export function CurrentProtocol({ userInfo, showOnboard }) {
         });
 
         // potentially add timeout here. routine getting generated before level upgrade being detected
-        const routine = await getRoutine();
-        console.log('routine', routine);
-        setCurProtocol([routine]);
-        await updateDoc(userRef, { currentProtocol: [routine] });
-        // setCurProtocol([routine]);
-        setTimeout(() => {
-            setShowAdvanceModal(false);
-            setLoading(false);
-            setGenerateLoading(false);
-            if (typeof window !== 'undefined') {
-                // eslint-disable-next-line no-undef
-                // window.location.reload();
-            }
-        }, 2000);
     };
 
     if (generateLoading) {
@@ -320,13 +369,14 @@ export function CurrentProtocol({ userInfo, showOnboard }) {
             if (document.data().email === user.email) {
                 const progressMade = { ...document.data().progressMade };
                 const { currentLevel } = document.data();
+                const totalWorkouts = process.env.NEXT_PUBLIC_ENV === 'prod' ? 8 : 3;
 
                 if (currentLevel === 1) {
                     if (progressMade[1] === undefined) {
                         progressMade[1] = 0;
                     }
 
-                    if (progressMade[1] >= 4) {
+                    if (progressMade[1] >= totalWorkouts - 1) {
                         progressMade[1] += 1;
                         setCount(progressMade);
                         handleAdvanceModal();
@@ -334,13 +384,13 @@ export function CurrentProtocol({ userInfo, showOnboard }) {
                         return;
                     }
 
-                    if (progressMade[1] < 4) {
+                    if (progressMade[1] < totalWorkouts) {
                         progressMade[1] += 1;
                     }
                 }
 
                 if (currentLevel === 2) {
-                    if (progressMade[2] >= 4) {
+                    if (progressMade[2] >= totalWorkouts - 1) {
                         progressMade[2] += 1;
                         setCount(progressMade);
                         handleAdvanceModal();
@@ -348,7 +398,7 @@ export function CurrentProtocol({ userInfo, showOnboard }) {
                         return;
                     }
 
-                    if (progressMade[2] < 4) {
+                    if (progressMade[2] < totalWorkouts) {
                         progressMade[2] += 1;
                     }
                 }
@@ -358,7 +408,7 @@ export function CurrentProtocol({ userInfo, showOnboard }) {
                         progressMade[3] = 0;
                     }
 
-                    if (progressMade[3] >= 4) {
+                    if (progressMade[3] >= totalWorkouts - 1) {
                         progressMade[3] += 1;
                         setCount(progressMade);
                         handleAdvanceModal();
@@ -367,13 +417,13 @@ export function CurrentProtocol({ userInfo, showOnboard }) {
                         return;
                     }
 
-                    if (progressMade[3] < 4) {
+                    if (progressMade[3] < totalWorkouts) {
                         progressMade[3] += 1;
                     }
                 }
 
                 if (currentLevel === 4) {
-                    if (progressMade[4] >= 4) {
+                    if (progressMade[4] >= totalWorkouts) {
                         progressMade[4] += 1;
                         setCount(progressMade);
                         handleAdvanceModal();
@@ -382,7 +432,7 @@ export function CurrentProtocol({ userInfo, showOnboard }) {
                         return;
                     }
 
-                    if (progressMade[4] < 4) {
+                    if (progressMade[4] < totalWorkouts) {
                         progressMade[4] += 1;
                     }
                 }
@@ -416,9 +466,18 @@ export function CurrentProtocol({ userInfo, showOnboard }) {
                                 <div className="modal-box">
                                     <h3 className="font-bold text-lg">{selected && selected.name}</h3>
                                     {/* {selected && !loadingAnimation ? <Image src={selected && selected.image} width={250} height={250} className="m-auto" alt={selected && selected.name} /> : <Loading text="Loading Animation..." />} */}
-                                    <p className="pt-2"><span className="font-semibold text-normal">Explanation:</span></p>
-                                    <p className="text-sm">{selected && selected.description}</p>
-                                    {selected && selected.tip ? <p className="text-sm bg-info my-3 p-3 w-3/4 m-auto rounded-md"><p><span className="font-semibold">💡 Tip: </span>{selected.tip}</p></p> : ''}
+                                    <p className="pt-2"><span className="font-semibold text-normal underline">Instructions:</span></p>
+                                    {selected && selected.description ? selected.description.map((step, idx) => (
+                                        <div className="flex my-3">
+                                            <div>
+                                                <p className="text-sm bg-info w-7 h-7 mr-2 rounded-full flex justify-center items-center">{idx + 1}</p>
+                                            </div>
+                                            <div className="flex justify-start items-center">
+                                                <p className="text-left text-sm">{step}</p>
+                                            </div>
+                                        </div>
+                                    )) : ''}
+                                    {selected && selected.tip ? <p className="text-sm bg-info my-3 p-3 w-11/12 m-auto rounded-md"><p><span className="font-semibold">💡 Tip: </span>{selected.tip}</p></p> : ''}
                                     {selected && selected.alternative ? <p className="pt-2"><span className="font-semibold text-normal">Alternative:</span></p> : ''}
                                     <p className="text-sm">{selected && selected.alternative ? selected.alternative : ''}</p>
                                     <div className="modal-action">
@@ -429,7 +488,7 @@ export function CurrentProtocol({ userInfo, showOnboard }) {
                         </div>
                         <div className="w-full">
                             {showAdvanceModal ? <AdvanceModal setCount={setCount} generateRoutine={generateRoutine} showAdvanceModal={showAdvanceModal} setShowAdvanceModal={setShowAdvanceModal} completedProgram={completedProgram} curLevel={curLevel} /> : ''}
-                            {showCompletedBadge ? <div className="badge badge-success mb-5 p-4"><p className="text-base-100">🐧🎉 Nice Job! Workout Completed.</p></div> : ''}
+                            {showCompletedBadge ? <div className="badge badge-success mb-5 p-4 shadow-xl"><p className="text-base-100">🐧🎉 Nice Job! Workout Completed.</p></div> : ''}
                             <StatusBar count={count} curLevel={curLevel} />
                             <div>
                                 <div className="divider 3xl:divider-horizontal mb-8">
