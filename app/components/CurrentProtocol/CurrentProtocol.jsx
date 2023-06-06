@@ -470,7 +470,7 @@ export function CurrentProtocol({ userInfo, showOnboard }) {
                                     <h3 className="font-bold text-lg">{selected && selected.name}</h3>
                                     {/* {selected && !loadingAnimation ? <Image src={selected && selected.image} width={250} height={250} className="m-auto" alt={selected && selected.name} /> : <Loading text="Loading Animation..." />} */}
                                     <p className="pt-2"><span className="font-semibold text-normal underline">Instructions:</span></p>
-                                    <div className="scrollable-div h-48 md:h-40 overflow-auto border border-primary rounded-md px-2 pb-2 md:px-4 mt-2">
+                                    <div className="scrollable-div h-64 md:h-40 overflow-auto border border-primary rounded-md px-2 pb-2 md:px-4 mt-2">
                                         {selected && selected.description ? selected.description.map((step, idx) => (
                                             <div className="flex my-3">
                                                 <div>

@@ -85,11 +85,11 @@ export default function ExerciseList() {
                             <input checked={stretchChecked} type="checkbox" id="my-modal-shuffle-stretch" className="modal-toggle" />
                             <div className="modal justify-center items-center text-center">
                                 <div className="modal-box pt-0">
-                                    {exercise ? <Image className="m-auto" src={exercise && exercise.image} alt={exercise && exercise.name} width={250} height={250} /> : ''}
+                                    {exercise ? <Image className="mt-2 m-auto" src={exercise && exercise.image} alt={exercise && exercise.name} width={250} height={250} /> : ''}
                                     <h3 className="font-bold text-lg">{exercise && exercise.name}</h3>
                                     <p className="py-2 text-normal font-semibold">{exercise && exercise.reps}</p>
-                                    <p className="pt-2"><span className="font-semibold text-normal underline">Instructions:</span></p>
-                                    <div className="scrollable-div h-32 md:h-40 overflow-auto border border-primary rounded-md px-2 pb-2 mt-2">
+                                    <p><span className="font-semibold text-normal underline">Instructions:</span></p>
+                                    <div className="scrollable-div h-48 md:h-40 overflow-auto border border-primary rounded-md px-2 pb-2 mt-2">
                                         {exercise && exercise.description ? exercise.description.map((step, idx) => (
                                             <div className="flex my-3">
                                                 <div>
@@ -115,11 +115,11 @@ export default function ExerciseList() {
                             <input checked={exerciseChecked} type="checkbox" id="my-modal-shuffle-exercise" className="modal-toggle" />
                             <div className="modal justify-center items-center text-center">
                                 <div className="modal-box pt-0">
-                                    {exercise ? <Image className="m-auto" src={exercise && exercise.image} alt={exercise && exercise.name} width={250} height={250} /> : ''}
+                                    {exercise ? <Image className="mt-2 m-auto" src={exercise && exercise.image} alt={exercise && exercise.name} width={250} height={250} /> : ''}
                                     <h3 className="font-bold text-lg">{exercise && exercise.name}</h3>
                                     <p className="py-2 text-normal font-semibold">{exercise && exercise.reps}</p>
-                                    <p className="pt-2"><span className="font-semibold text-normal underline">Instructions:</span></p>
-                                    <div className="scrollable-div h-32 md:h-40 overflow-auto border border-primary rounded-md px-2 pb-2 mt-2">
+                                    <p><span className="font-semibold text-normal underline">Instructions:</span></p>
+                                    <div className="scrollable-div h-48 md:h-40 overflow-auto border border-primary rounded-md px-2 pb-2 mt-2">
                                         {exercise && exercise.description ? exercise.description.map((step, idx) => (
                                             <div className="flex my-3">
                                                 <div>
