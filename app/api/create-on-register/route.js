@@ -14,8 +14,6 @@ export async function POST(req) {
     const stripe = new Stripe(stripeKey);
     const { email } = await req.json();
 
-    console.log('email', email);
-
     const customer = await stripe.customers.create({
         email,
         metadata: { usedFreeTrial: false },

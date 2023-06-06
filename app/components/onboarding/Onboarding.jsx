@@ -28,6 +28,7 @@ const defaultAnswers = {
         { name: 'Neck', valName: 'neck', isChecked: false },
         { name: 'Upper Back', valName: 'upperBack', isChecked: false },
         { name: 'Lower Back', valName: 'lowerBack', isChecked: false },
+        { name: 'Shoulders', valName: 'shoulders', isChecked: false },
         { name: 'Hips', valName: 'hips', isChecked: false },
 
     ],
@@ -65,7 +66,6 @@ export default function Onboarding({ setLoading, showOnboard, setShowOnboard }) 
 
         const userEquipment = onboardingQuestions.equipment.filter((item) => item.isChecked);
         const equipment = userEquipment.map((item) => item.valName);
-        console.log('userEquipment', equipment);
         const routine = {
             warmup: {
                 exercises: [],
@@ -140,7 +140,6 @@ export default function Onboarding({ setLoading, showOnboard, setShowOnboard }) 
             }
         });
 
-        console.log(routine);
         return routine;
     };
 
@@ -163,7 +162,6 @@ export default function Onboarding({ setLoading, showOnboard, setShowOnboard }) 
         await updateDoc(userRef, onboardingQuestions);
         setShowOnboard(false);
         setUserInfo(onboardingQuestions);
-        console.log('onboardingQuestions', onboardingQuestions);
         generateRoutine();
     };
 

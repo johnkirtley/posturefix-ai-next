@@ -13,7 +13,6 @@ export default function List({ exerciseInfo }) {
         // eslint-disable-next-line no-undef
         const btn = document.getElementById('my-modal');
         btn.checked = true;
-        console.log('selected', selected);
     };
 
     return (

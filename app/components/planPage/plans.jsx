@@ -46,7 +46,6 @@ export function PlanPage() {
         });
 
         const data = await response.json();
-        console.log('line 38 works', data);
 
         const trial = data.data[0].metadata.usedFreeTrial !== 'true';
 
@@ -88,8 +87,6 @@ export function PlanPage() {
         });
 
         if (isUserPremium.premiumStatus.planName === '') {
-            console.log('plan type', planType);
-            console.log('email', user.email);
             createCheckoutSessions(planType, user.email).then((res) => {
                 const { url } = res.session;
                 // eslint-disable-next-line no-undef
@@ -104,7 +101,6 @@ export function PlanPage() {
 
     const handleClick = () => {
         setClicked((prev) => !prev);
-        console.log('clicked', clicked);
     };
 
     return (

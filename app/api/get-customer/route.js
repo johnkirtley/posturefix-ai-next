@@ -16,6 +16,5 @@ export async function POST(req) {
 
     const customer = await stripe.customers.list({ email, limit: 1 });
 
-    console.log('line 19', customer);
     return new Response(JSON.stringify(customer));
 }
