@@ -94,7 +94,10 @@ export default function Register() {
                     activityLevel: null,
                     currentLevel: 1,
                     currentProtocol: [],
-                    favorites: [],
+                    favorites: {
+                        exercises: [],
+                        routines: [],
+                    },
                     progressMade: {
                         1: 0,
                         2: 0,
