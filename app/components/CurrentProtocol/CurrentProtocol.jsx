@@ -466,7 +466,7 @@ export function CurrentProtocol({ userInfo, showOnboard }) {
                                 <div className="modal-box">
                                     <h3 className="font-bold text-lg">{selected && selected.name}</h3>
                                     {/* {selected && !loadingAnimation ? <Image src={selected && selected.image} width={250} height={250} className="m-auto" alt={selected && selected.name} /> : <Loading text="Loading Animation..." />} */}
-                                    <p className="pt-2"><span className="font-semibold text-normal">Instructions:</span></p>
+                                    <p className="pt-2"><span className="font-semibold text-normal underline">Instructions:</span></p>
                                     {selected && selected.description ? selected.description.map((step, idx) => (
                                         <div className="flex my-3">
                                             <div>

@@ -78,11 +78,11 @@ export default function ExerciseList() {
                             <button type="button" htmlFor="my-modal-stretch" className="btn btn-secondary" onClick={() => selectRandomExercise(stretchInfo, 'stretch')}>{loadingStretch ? 'Spinning...' : 'Random Stretch'}</button>
                             <input checked={stretchChecked} type="checkbox" id="my-modal-shuffle-stretch" className="modal-toggle" />
                             <div className="modal justify-center items-center text-center">
-                                <div className="modal-box">
-                                    <h3 className="font-bold text-lg">{exercise && exercise.name}</h3>
-                                    <p className="py-2 text-sm font-semibold">{exercise && exercise.reps}</p>
+                                <div className="modal-box pt-0">
                                     {exercise ? <Image className="m-auto" src={exercise && exercise.image} alt={exercise && exercise.name} width={250} height={250} /> : ''}
-                                    <p className="pt-2"><span className="font-semibold text-normal">Instructions:</span></p>
+                                    <h3 className="font-bold text-lg">{exercise && exercise.name}</h3>
+                                    <p className="py-2 text-normal font-semibold">{exercise && exercise.reps}</p>
+                                    <p className="pt-2"><span className="font-semibold text-normal underline">Instructions:</span></p>
                                     {exercise && exercise.description ? exercise.description.map((step, idx) => (
                                         <div className="flex my-3">
                                             <div>
@@ -96,7 +96,7 @@ export default function ExerciseList() {
                                     {exercise && exercise.tip ? <p className="text-sm bg-info my-3 p-3 w-11/12 m-auto rounded-md"><p><span className="font-semibold">💡 Tip: </span>{exercise.tip}</p></p> : ''}
                                     {exercise && exercise.alternative ? <p className="pt-2"><span className="font-semibold text-normal">Alternative:</span></p> : ''}
                                     <p className="text-sm">{exercise && exercise.alternative ? exercise.alternative : ''}</p>
-                                    <div className="modal-action mt-0">
+                                    <div className="modal-action">
                                         <button type="button" onClick={() => setStretchChecked(false)} className="btn btn-primary">Close</button>
                                     </div>
                                 </div>
@@ -106,11 +106,11 @@ export default function ExerciseList() {
                             <button type="button" htmlFor="my-modal-exercise" className="btn btn-secondary" onClick={() => selectRandomExercise(exerciseInfo, 'exercise')}>{loadingExercise ? 'Spinning...' : 'Random Exercise'}</button>
                             <input checked={exerciseChecked} type="checkbox" id="my-modal-shuffle-exercise" className="modal-toggle" />
                             <div className="modal justify-center items-center text-center">
-                                <div className="modal-box">
-                                    <h3 className="font-bold text-lg">{exercise && exercise.name}</h3>
-                                    <p className="py-2 text-sm font-semibold">{exercise && exercise.reps}</p>
+                                <div className="modal-box pt-0">
                                     {exercise ? <Image className="m-auto" src={exercise && exercise.image} alt={exercise && exercise.name} width={250} height={250} /> : ''}
-                                    <p className="pt-2"><span className="font-semibold text-normal">Instructions:</span></p>
+                                    <h3 className="font-bold text-lg">{exercise && exercise.name}</h3>
+                                    <p className="py-2 text-normal font-semibold">{exercise && exercise.reps}</p>
+                                    <p className="pt-2"><span className="font-semibold text-normal underline">Instructions:</span></p>
                                     {exercise && exercise.description ? exercise.description.map((step, idx) => (
                                         <div className="flex my-3">
                                             <div>
@@ -124,7 +124,7 @@ export default function ExerciseList() {
                                     {exercise && exercise.tip ? <p className="text-sm bg-info my-3 p-3 w-11/12 m-auto rounded-md"><p><span className="font-semibold">💡 Tip: </span>{exercise.tip}</p></p> : ''}
                                     {exercise && exercise.alternative ? <p className="pt-2"><span className="font-semibold text-normal">Alternative:</span></p> : ''}
                                     <p className="text-sm">{exercise && exercise.alternative ? exercise.alternative : ''}</p>
-                                    <div className="modal-action mt-0">
+                                    <div className="modal-action">
                                         <button type="button" onClick={() => setExerciseChecked(false)} className="btn btn-primary">Close</button>
                                     </div>
                                 </div>
