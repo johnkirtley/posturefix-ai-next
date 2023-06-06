@@ -29,7 +29,12 @@ export function AuthProvider({ children }) {
             }
 
             if (!user) {
-                router.push('/');
+                // eslint-disable-next-line no-undef
+                if (typeof window !== 'undefined' && window.location.pathname === '/register') {
+                    router.push('/register');
+                } else {
+                    router.push('/');
+                }
             }
         });
 
