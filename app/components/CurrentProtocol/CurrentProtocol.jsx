@@ -47,6 +47,9 @@ export function CurrentProtocol({ userInfo, showOnboard }) {
         // eslint-disable-next-line no-undef
         const btn = document.getElementById('my-modal');
         btn.checked = true;
+        // eslint-disable-next-line no-undef
+        const div = document.querySelectorAll('.scrollable-div');
+        div[0].scrollTop = 0;
     };
 
     const getRoutine = async () => {
@@ -467,19 +470,21 @@ export function CurrentProtocol({ userInfo, showOnboard }) {
                                     <h3 className="font-bold text-lg">{selected && selected.name}</h3>
                                     {/* {selected && !loadingAnimation ? <Image src={selected && selected.image} width={250} height={250} className="m-auto" alt={selected && selected.name} /> : <Loading text="Loading Animation..." />} */}
                                     <p className="pt-2"><span className="font-semibold text-normal underline">Instructions:</span></p>
-                                    {selected && selected.description ? selected.description.map((step, idx) => (
-                                        <div className="flex my-3">
-                                            <div>
-                                                <p className="text-sm bg-info w-7 h-7 mr-2 rounded-full flex justify-center items-center">{idx + 1}</p>
+                                    <div className="scrollable-div h-64 md:h-40 overflow-auto border border-primary rounded-md px-2 pb-2 md:px-4 mt-2">
+                                        {selected && selected.description ? selected.description.map((step, idx) => (
+                                            <div className="flex my-3">
+                                                <div>
+                                                    <p className="text-sm bg-info w-7 h-7 mr-2 rounded-full flex justify-center items-center">{idx + 1}</p>
+                                                </div>
+                                                <div className="flex justify-start items-center">
+                                                    <p className="text-left text-sm">{step}</p>
+                                                </div>
                                             </div>
-                                            <div className="flex justify-start items-center">
-                                                <p className="text-left text-sm">{step}</p>
-                                            </div>
-                                        </div>
-                                    )) : ''}
-                                    {selected && selected.tip ? <p className="text-sm bg-info my-3 p-3 w-11/12 m-auto rounded-md"><p><span className="font-semibold">💡 Tip: </span>{selected.tip}</p></p> : ''}
-                                    {selected && selected.alternative ? <p className="pt-2"><span className="font-semibold text-normal">Alternative:</span></p> : ''}
-                                    <p className="text-sm">{selected && selected.alternative ? selected.alternative : ''}</p>
+                                        )) : ''}
+                                        {selected && selected.tip ? <p className="text-sm bg-info my-3 p-3 w-11/12 m-auto rounded-md"><p><span className="font-semibold">💡 Tip: </span>{selected.tip}</p></p> : ''}
+                                        {selected && selected.alternative ? <p className="pt-2"><span className="font-semibold text-normal">Alternative:</span></p> : ''}
+                                        <p className="text-sm">{selected && selected.alternative ? selected.alternative : ''}</p>
+                                    </div>
                                     <div className="modal-action">
                                         <label htmlFor="my-modal" className="btn btn-neutral">Close</label>
                                     </div>
@@ -496,7 +501,7 @@ export function CurrentProtocol({ userInfo, showOnboard }) {
                                 </div>
                                 {curProtocol.length > 0
         && curProtocol[0].warmup.exercises.map((exercise, idx) => (
-            <div tabIndex={0} className="cardborder-base-300 bg-base-100 rounded-box w-3/4 m-auto my-5 shadow-lg" key={idx}>
+            <div tabIndex={0} className="cardborder-base-300 bg-base-100 rounded-box w-3/4 md:w-3/4 m-auto my-5 shadow-lg" key={idx}>
                 <div className="text-base font-medium p-5">
                     <div>
                         <p>{exercise.name}</p>
@@ -519,7 +524,7 @@ export function CurrentProtocol({ userInfo, showOnboard }) {
                                 </div>
                                 {curProtocol.length > 0
         && curProtocol[0].back.exercises.map((exercise, idx) => (
-            <div tabIndex={0} className="cardborder-base-300 bg-base-100 rounded-box w-3/4 m-auto my-5 shadow-lg" key={idx}>
+            <div tabIndex={0} className="cardborder-base-300 bg-base-100 rounded-box w-3/4 md:w-3/4 m-auto my-5 shadow-lg" key={idx}>
                 <div className="text-base font-medium p-5">
                     <div>
                         <p>{exercise.name}</p>
@@ -542,7 +547,7 @@ export function CurrentProtocol({ userInfo, showOnboard }) {
                                 </div>
                                 {curProtocol.length > 0
         && curProtocol[0].core.exercises.map((exercise, idx) => (
-            <div tabIndex={0} className="cardborder-base-300 bg-base-100 rounded-box w-3/4 m-auto my-5 shadow-lg" key={idx}>
+            <div tabIndex={0} className="cardborder-base-300 bg-base-100 rounded-box w-3/4 md:w-3/4 m-auto my-5 shadow-lg" key={idx}>
                 <div className="text-base font-medium p-5">
                     <div>
                         <p>{exercise.name}</p>
@@ -565,7 +570,7 @@ export function CurrentProtocol({ userInfo, showOnboard }) {
                                 </div>
                                 {curProtocol.length > 0
         && curProtocol[0].neck.exercises.map((exercise, idx) => (
-            <div tabIndex={0} className="cardborder-base-300 bg-base-100 rounded-box w-3/4 m-auto my-5 shadow-lg" key={idx}>
+            <div tabIndex={0} className="cardborder-base-300 bg-base-100 rounded-box w-3/4 md:w-3/4 m-auto my-5 shadow-lg" key={idx}>
                 <div className="text-base font-medium p-5">
                     <div>
                         <p>{exercise.name}</p>

@@ -8,7 +8,7 @@ export function RecTools() {
                 <p className="text-lg font-semibold">🛠 Helpful Tools</p>
                 <p className="text-xs w-11/12 m-auto">May contain affiliate links, but these are all products we&apos;ve found useful.</p><p className="text-xs">Feel free to search for alternatives.</p>
             </div>
-            <div className="flex flex-col justify-center items-center w-11/12 m-auto gap-5 py-5">
+            <div className="flex flex-col justify-center items-center w-11/12 md:w-1/2 m-auto gap-5 py-5">
                 {tools.map((tool, idx) => (
                     <div className="w-11/12 flex flex-col justify-center items-center" key={idx}>
                         <div className="card bg-base-100 shadow-xl w-11/12 flex flex-col justify-center items-center">

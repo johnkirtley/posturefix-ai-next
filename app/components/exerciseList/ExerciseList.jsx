@@ -54,11 +54,17 @@ export default function ExerciseList() {
             if (type === 'stretch' && !loadingStretch) {
                 // eslint-disable-next-line no-undef
                 setStretchChecked(true);
+                // eslint-disable-next-line no-undef
+                const div = document.querySelectorAll('.scrollable-div');
+                div[0].scrollTop = 0;
             }
 
             if (type === 'exercise' && !loadingExercise) {
                 // eslint-disable-next-line no-undef
                 setExerciseChecked(true);
+                // eslint-disable-next-line no-undef
+                const div = document.querySelectorAll('.scrollable-div');
+                div[1].scrollTop = 0;
             }
         }
     }, [exercise, type, loadingStretch, loadingExercise]);
@@ -79,23 +85,25 @@ export default function ExerciseList() {
                             <input checked={stretchChecked} type="checkbox" id="my-modal-shuffle-stretch" className="modal-toggle" />
                             <div className="modal justify-center items-center text-center">
                                 <div className="modal-box pt-0">
-                                    {exercise ? <Image className="m-auto" src={exercise && exercise.image} alt={exercise && exercise.name} width={250} height={250} /> : ''}
+                                    {exercise ? <Image className="mt-2 m-auto" src={exercise && exercise.image} alt={exercise && exercise.name} width={250} height={250} /> : ''}
                                     <h3 className="font-bold text-lg">{exercise && exercise.name}</h3>
                                     <p className="py-2 text-normal font-semibold">{exercise && exercise.reps}</p>
-                                    <p className="pt-2"><span className="font-semibold text-normal underline">Instructions:</span></p>
-                                    {exercise && exercise.description ? exercise.description.map((step, idx) => (
-                                        <div className="flex my-3">
-                                            <div>
-                                                <p className="text-sm bg-info w-7 h-7 mr-2 rounded-full flex justify-center items-center">{idx + 1}</p>
+                                    <p><span className="font-semibold text-normal underline">Instructions:</span></p>
+                                    <div className="scrollable-div h-48 md:h-40 overflow-auto border border-primary rounded-md px-2 pb-2 mt-2">
+                                        {exercise && exercise.description ? exercise.description.map((step, idx) => (
+                                            <div className="flex my-3">
+                                                <div>
+                                                    <p className="text-sm bg-info w-7 h-7 mr-2 rounded-full flex justify-center items-center">{idx + 1}</p>
+                                                </div>
+                                                <div className="flex justify-start items-center">
+                                                    <p className="text-left text-sm">{step}</p>
+                                                </div>
                                             </div>
-                                            <div className="flex justify-start items-center">
-                                                <p className="text-left text-sm">{step}</p>
-                                            </div>
-                                        </div>
-                                    )) : ''}
-                                    {exercise && exercise.tip ? <p className="text-sm bg-info my-3 p-3 w-11/12 m-auto rounded-md"><p><span className="font-semibold">💡 Tip: </span>{exercise.tip}</p></p> : ''}
-                                    {exercise && exercise.alternative ? <p className="pt-2"><span className="font-semibold text-normal">Alternative:</span></p> : ''}
-                                    <p className="text-sm">{exercise && exercise.alternative ? exercise.alternative : ''}</p>
+                                        )) : ''}
+                                        {exercise && exercise.tip ? <p className="text-sm bg-info my-3 p-3 w-11/12 m-auto rounded-md"><p><span className="font-semibold">💡 Tip: </span>{exercise.tip}</p></p> : ''}
+                                        {exercise && exercise.alternative ? <p className="pt-2"><span className="font-semibold text-normal">Alternative:</span></p> : ''}
+                                        <p className="text-sm">{exercise && exercise.alternative ? exercise.alternative : ''}</p>
+                                    </div>
                                     <div className="modal-action">
                                         <button type="button" onClick={() => setStretchChecked(false)} className="btn btn-primary">Close</button>
                                     </div>
@@ -107,23 +115,25 @@ export default function ExerciseList() {
                             <input checked={exerciseChecked} type="checkbox" id="my-modal-shuffle-exercise" className="modal-toggle" />
                             <div className="modal justify-center items-center text-center">
                                 <div className="modal-box pt-0">
-                                    {exercise ? <Image className="m-auto" src={exercise && exercise.image} alt={exercise && exercise.name} width={250} height={250} /> : ''}
+                                    {exercise ? <Image className="mt-2 m-auto" src={exercise && exercise.image} alt={exercise && exercise.name} width={250} height={250} /> : ''}
                                     <h3 className="font-bold text-lg">{exercise && exercise.name}</h3>
                                     <p className="py-2 text-normal font-semibold">{exercise && exercise.reps}</p>
-                                    <p className="pt-2"><span className="font-semibold text-normal underline">Instructions:</span></p>
-                                    {exercise && exercise.description ? exercise.description.map((step, idx) => (
-                                        <div className="flex my-3">
-                                            <div>
-                                                <p className="text-sm bg-info w-7 h-7 mr-2 rounded-full flex justify-center items-center">{idx + 1}</p>
+                                    <p><span className="font-semibold text-normal underline">Instructions:</span></p>
+                                    <div className="scrollable-div h-48 md:h-40 overflow-auto border border-primary rounded-md px-2 pb-2 mt-2">
+                                        {exercise && exercise.description ? exercise.description.map((step, idx) => (
+                                            <div className="flex my-3">
+                                                <div>
+                                                    <p className="text-sm bg-info w-7 h-7 mr-2 rounded-full flex justify-center items-center">{idx + 1}</p>
+                                                </div>
+                                                <div className="flex justify-start items-center">
+                                                    <p className="text-left text-sm">{step}</p>
+                                                </div>
                                             </div>
-                                            <div className="flex justify-start items-center">
-                                                <p className="text-left text-sm">{step}</p>
-                                            </div>
-                                        </div>
-                                    )) : ''}
-                                    {exercise && exercise.tip ? <p className="text-sm bg-info my-3 p-3 w-11/12 m-auto rounded-md"><p><span className="font-semibold">💡 Tip: </span>{exercise.tip}</p></p> : ''}
-                                    {exercise && exercise.alternative ? <p className="pt-2"><span className="font-semibold text-normal">Alternative:</span></p> : ''}
-                                    <p className="text-sm">{exercise && exercise.alternative ? exercise.alternative : ''}</p>
+                                        )) : ''}
+                                        {exercise && exercise.tip ? <p className="text-sm bg-info my-3 p-3 w-11/12 m-auto rounded-md"><p><span className="font-semibold">💡 Tip: </span>{exercise.tip}</p></p> : ''}
+                                        {exercise && exercise.alternative ? <p className="pt-2"><span className="font-semibold text-normal">Alternative:</span></p> : ''}
+                                        <p className="text-sm">{exercise && exercise.alternative ? exercise.alternative : ''}</p>
+                                    </div>
                                     <div className="modal-action">
                                         <button type="button" onClick={() => setExerciseChecked(false)} className="btn btn-primary">Close</button>
                                     </div>
