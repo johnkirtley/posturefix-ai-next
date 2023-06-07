@@ -152,7 +152,7 @@ export default function Register() {
     return (
         <main className="flex min-h-screen flex-col items-center justify-between p-24">
             <div className="flex flex-col gap-20 z-10 w-80 items-center justify-center text-sm lg:flex">
-                <div className="flex flex-col justify-center items-center bg-secondary rounded-lg p-10 w-auto gap-10 shadow-2xl">
+                <div className="flex flex-col justify-center items-center bg-secondary rounded-lg p-10 w-auto gap-5 shadow-2xl">
                     {errors.emailExists ? <p className="alert-error">Email already exists</p> : ''}
                     {errors.invalidEmail ? <p className="alert-error">Invalid email</p> : ''}
                     {errors.invalidPass ? <p className="alert-error">Invalid password. Must be at least 6 characters.</p> : ''}
@@ -165,6 +165,11 @@ export default function Register() {
                         <input name="username" value={credentials.username} onChange={handleChange} className="input input-bordered w-full my-2" placeholder="email" />
                         <input name="password" value={credentials.password} onChange={handleChange} className="input input-bordered w-full my-2" placeholder="password" type="password" />
                         <input name="confirmPass" value={credentials.confirmPass} onChange={handleChange} enterKeyHint="Register" onKeyDown={handleKeydown} className="input input-bordered w-full my-2" placeholder="confirm password" type="password" />
+                    </div>
+                    <div>
+                        <p className="text-center text-base-100 text-xs">By registering, you agree to receive platform-related emails from us.
+                        We&apos;ll never spam you.
+                        </p>
                     </div>
                     <button ref={registerRef} type="submit" onClick={signUp} className="btn btn-info">{registerAccount ? 'Creating Account...' : 'Register'}</button>
                 </div>
