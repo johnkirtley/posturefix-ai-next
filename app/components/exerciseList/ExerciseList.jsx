@@ -28,7 +28,7 @@ export default function ExerciseList() {
             setLoadingStretch(true);
             const shuffled = list.sort(() => 0.5 - Math.random());
             const randomDecimal = Math.random();
-            const randomNumGenerator = Math.floor(randomDecimal * (shuffled.length - 0 + 1) + 0);
+            const randomNumGenerator = Math.floor(randomDecimal * shuffled.length);
             setType(selectedType);
             setExercise(list[randomNumGenerator]);
             setTimeout(() => {
@@ -40,7 +40,7 @@ export default function ExerciseList() {
             setLoadingExercise(true);
             const shuffled = list.sort(() => 0.5 - Math.random());
             const randomDecimal = Math.random();
-            const randomNumGenerator = Math.floor(randomDecimal * (shuffled.length - 0 + 1) + 0);
+            const randomNumGenerator = Math.floor(randomDecimal * shuffled.length);
             setType(selectedType);
             setExercise(list[randomNumGenerator]);
             setTimeout(() => {
@@ -81,9 +81,8 @@ export default function ExerciseList() {
                         <p className="text-lg font-semibold text-center">Short On Time? <br />Let Us Pick A Quick Workout For You!</p>
                         <Image style={{ opacity: '80%' }} src="https://posturepal.s3.us-east-2.amazonaws.com/images/rJ4VktZB_4x.jpeg" alt="penguin random" width={250} height={250} />
                         <div>
-                            <button type="button" htmlFor="my-modal-stretch" className="btn btn-secondary" onClick={() => selectRandomExercise(stretchInfo, 'stretch')}>{loadingStretch ? 'Spinning...' : 'Random Stretch'}</button>
-                            <input checked={stretchChecked} type="checkbox" id="my-modal-shuffle-stretch" className="modal-toggle" />
-                            <div className="modal justify-center items-center text-center">
+                            <button disabled={stretchChecked} type="button" htmlFor="my-modal-stretch" className="btn btn-secondary" onClick={() => selectRandomExercise(stretchInfo, 'stretch')}>{loadingStretch ? 'Spinning...' : 'Random Stretch'}</button>
+                            <div className={stretchChecked ? 'modal-open modal justify-center items-center text-center' : 'modal justify-center items-center text-center"'}>
                                 <div className="modal-box pt-0">
                                     {exercise ? <Image className="mt-2 m-auto" src={exercise && exercise.image} alt={exercise && exercise.name} width={250} height={250} /> : ''}
                                     <h3 className="font-bold text-lg">{exercise && exercise.name}</h3>
@@ -91,7 +90,7 @@ export default function ExerciseList() {
                                     <p><span className="font-semibold text-normal underline">Instructions:</span></p>
                                     <div className="scrollable-div h-48 md:h-40 overflow-auto border border-primary rounded-md px-2 pb-2 mt-2">
                                         {exercise && exercise.description ? exercise.description.map((step, idx) => (
-                                            <div className="flex my-3">
+                                            <div className="flex my-3" key={idx}>
                                                 <div>
                                                     <p className="text-sm bg-info w-7 h-7 mr-2 rounded-full flex justify-center items-center">{idx + 1}</p>
                                                 </div>
@@ -100,7 +99,7 @@ export default function ExerciseList() {
                                                 </div>
                                             </div>
                                         )) : ''}
-                                        {exercise && exercise.tip ? <p className="text-sm bg-info my-3 p-3 w-11/12 m-auto rounded-md"><p><span className="font-semibold">💡 Tip: </span>{exercise.tip}</p></p> : ''}
+                                        {exercise && exercise.tip ? <div className="text-sm bg-info my-3 p-3 w-11/12 m-auto rounded-md"><p><span className="font-semibold">💡 Tip: </span>{exercise.tip}</p></div> : ''}
                                         {exercise && exercise.alternative ? <p className="pt-2"><span className="font-semibold text-normal">Alternative:</span></p> : ''}
                                         <p className="text-sm">{exercise && exercise.alternative ? exercise.alternative : ''}</p>
                                     </div>
@@ -112,8 +111,7 @@ export default function ExerciseList() {
                         </div>
                         <div>
                             <button type="button" htmlFor="my-modal-exercise" className="btn btn-secondary" onClick={() => selectRandomExercise(exerciseInfo, 'exercise')}>{loadingExercise ? 'Spinning...' : 'Random Exercise'}</button>
-                            <input checked={exerciseChecked} type="checkbox" id="my-modal-shuffle-exercise" className="modal-toggle" />
-                            <div className="modal justify-center items-center text-center">
+                            <div className={exerciseChecked ? 'modal-open modal justify-center items-center text-center' : 'modal justify-center items-center text-center"'}>
                                 <div className="modal-box pt-0">
                                     {exercise ? <Image className="mt-2 m-auto" src={exercise && exercise.image} alt={exercise && exercise.name} width={250} height={250} /> : ''}
                                     <h3 className="font-bold text-lg">{exercise && exercise.name}</h3>
@@ -121,7 +119,7 @@ export default function ExerciseList() {
                                     <p><span className="font-semibold text-normal underline">Instructions:</span></p>
                                     <div className="scrollable-div h-48 md:h-40 overflow-auto border border-primary rounded-md px-2 pb-2 mt-2">
                                         {exercise && exercise.description ? exercise.description.map((step, idx) => (
-                                            <div className="flex my-3">
+                                            <div className="flex my-3" key={idx}>
                                                 <div>
                                                     <p className="text-sm bg-info w-7 h-7 mr-2 rounded-full flex justify-center items-center">{idx + 1}</p>
                                                 </div>
@@ -130,7 +128,7 @@ export default function ExerciseList() {
                                                 </div>
                                             </div>
                                         )) : ''}
-                                        {exercise && exercise.tip ? <p className="text-sm bg-info my-3 p-3 w-11/12 m-auto rounded-md"><p><span className="font-semibold">💡 Tip: </span>{exercise.tip}</p></p> : ''}
+                                        {exercise && exercise.tip ? <div className="text-sm bg-info my-3 p-3 w-11/12 m-auto rounded-md"><p><span className="font-semibold">💡 Tip: </span>{exercise.tip}</p></div> : ''}
                                         {exercise && exercise.alternative ? <p className="pt-2"><span className="font-semibold text-normal">Alternative:</span></p> : ''}
                                         <p className="text-sm">{exercise && exercise.alternative ? exercise.alternative : ''}</p>
                                     </div>
