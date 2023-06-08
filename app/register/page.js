@@ -33,6 +33,17 @@ export default function Register() {
 
     const auth = firebaseAuth;
 
+    async function addToEmailOctopus(email) {
+        const response = await fetch(`${process.env.NEXT_PUBLIC_MICROSERVICE_URL}`, {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({ email }),
+        });
+
+        const data = await response.json();
+        return data;
+    }
+
     async function createStripeSubscription(email) {
         const response = await fetch('/api/create-on-register', {
             method: 'POST',
@@ -106,7 +117,7 @@ export default function Register() {
                     },
                 });
                 createStripeSubscription(user.email).then((res) => {
-                    // addToSib(user.email);
+                    addToEmailOctopus(user.email);
                     // posthog.capture('Manual Sign Up', { user: user.email });
                     router.push('/dashboard');
                     console.log(res);
