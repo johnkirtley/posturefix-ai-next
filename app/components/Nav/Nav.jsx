@@ -1,4 +1,3 @@
-/* eslint-disable react/destructuring-assignment */
 /* eslint-disable jsx-a11y/no-noninteractive-tabindex */
 /* eslint-disable jsx-a11y/control-has-associated-label */
 /* eslint-disable import/no-extraneous-dependencies */
@@ -6,12 +5,10 @@
 
 'use client';
 
-import { useContext } from 'react';
 import { signOut } from 'firebase/auth';
 import { useRouter } from 'next/navigation';
 import Link from 'next/link';
 import Image from 'next/image';
-import { UserContext } from '../../Context';
 import { firebaseAuth } from '../../../firebase/clientApp';
 import { useAuth } from '../../Context/AuthContext';
 import { useFirebase } from '../../hooks/useFirebase';
@@ -19,7 +16,6 @@ import { useFirebase } from '../../hooks/useFirebase';
 export default function Nav() {
     const { user } = useAuth();
     const { userInfo } = useFirebase();
-    const userContext = useContext(UserContext);
     const router = useRouter();
 
     const signOutButton = () => signOut(firebaseAuth)
@@ -45,7 +41,7 @@ export default function Nav() {
                                     <ul tabIndex={0} className="menu menu-compact dropdown-content mt-3 p-2 shadow bg-neutral rounded-box w-52">
                                         <li className="my-5">👋 Hey, {userInfo.name}</li>
                                         <li><Link href="/dashboard">Main Program</Link></li>
-                                        <li><Link href="/exercise-library">Exercise Roulette{userContext && userContext.userInfo.currentLevel === 1 ? <span className="text-info text-xs">Unlocked After Level 1</span> : ''}</Link></li>
+                                        <li><Link href="/exercise-library">Exercise Roulette{userInfo && userInfo.currentLevel === 1 ? <span className="text-info text-xs">Unlocked After Level 1</span> : ''}</Link></li>
                                         <li><Link href="/rec-tools">Helpful Tools</Link></li>
                                         <li><Link href="/faq">FAQ</Link></li>
                                         <li><Link href="/account">Account</Link></li>
