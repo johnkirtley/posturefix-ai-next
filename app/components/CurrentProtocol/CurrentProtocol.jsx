@@ -4,7 +4,7 @@
 /* eslint-disable jsx-a11y/no-noninteractive-tabindex */
 /* eslint-disable react/prop-types */
 /* eslint-disable import/prefer-default-export */
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useContext } from 'react';
 import {
     updateDoc, doc, query, where, collection, getDocs,
 } from 'firebase/firestore';
@@ -12,6 +12,7 @@ import { useRouter } from 'next/navigation';
 import { Icon } from '@iconify/react';
 import Image from 'next/image';
 import { useAuth } from '../../Context/AuthContext';
+import { UserContext } from '../../Context';
 import { firestore } from '../../../firebase/clientApp';
 import { exerciseListL1, exerciseListL2, exerciseListL3 } from '../onboarding/exercises';
 import { StatusBar } from './StatusBar';
@@ -26,6 +27,7 @@ export function CurrentProtocol({ userInfo, showOnboard }) {
     const [loading, setLoading] = useState(false);
     const [generateLoading, setGenerateLoading] = useState(false);
     const [showAlert] = useState(false);
+    const { setUserInfo } = useContext(UserContext);
     const [showAdvanceModal, setShowAdvanceModal] = useState(false);
     const [completedProgram, setCompletedProgram] = useState(false);
     const { premiumStatus } = usePremiumStatus(user.email);
@@ -267,6 +269,10 @@ export function CurrentProtocol({ userInfo, showOnboard }) {
                             // setCurProtocol([routine]);
                             setTimeout(() => {
                                 setCurLevel(2);
+                                setUserInfo({
+                                    ...userInfo,
+                                    currentLevel: 2,
+                                });
                                 setShowAdvanceModal(false);
                                 setLoading(false);
                                 setGenerateLoading(false);
@@ -287,6 +293,10 @@ export function CurrentProtocol({ userInfo, showOnboard }) {
                             // setCurProtocol([routine]);
                             setTimeout(() => {
                                 setCurLevel(3);
+                                setUserInfo({
+                                    ...userInfo,
+                                    currentLevel: 3,
+                                });
                                 setShowAdvanceModal(false);
                                 setLoading(false);
                                 setGenerateLoading(false);
@@ -307,6 +317,10 @@ export function CurrentProtocol({ userInfo, showOnboard }) {
                             // setCurProtocol([routine]);
                             setTimeout(() => {
                                 setCurLevel(4);
+                                setUserInfo({
+                                    ...userInfo,
+                                    currentLevel: 4,
+                                });
                                 setShowAdvanceModal(false);
                                 setLoading(false);
                                 setGenerateLoading(false);
