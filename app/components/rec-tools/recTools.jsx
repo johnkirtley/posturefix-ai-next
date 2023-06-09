@@ -19,11 +19,11 @@ export function RecTools() {
                                 </h2>
                                 {tool.recommend ? <div className="badge badge-info p-3">Highly Recommended</div> : ''}
                                 <div className="card-actions justify-center mt-4">
-                                    <a target="_blank" href={tool.link} rel="noreferrer"> <button type="button" className="btn btn-secondary">View</button></a>
+                                    <a target="_blank" href={tool.link} rel="noreferrer"> <button type="button" className="btn btn-secondary w-72">View</button></a>
                                 </div>
-                                <div className="collapse border text-center border-secondary rounded-lg collapse-arrow mt-2 md:w-3/4 m-auto">
+                                <div className="collapse border text-center border-secondary rounded-lg collapse-arrow w-72 mt-2 m-auto">
                                     <input type="checkbox" />
-                                    <div className="collapse-title collapse-plus font-normal w-3/5 m-auto">More Info</div>
+                                    <div className="collapse-title collapse-plus font-normal m-auto">More Info</div>
                                     <div className="collapse-content">
                                         {tool.description.map((text) => (
                                             <p className="text-normal text-left my-3">{text}</p>

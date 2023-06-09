@@ -9,6 +9,7 @@ export function Faq() {
                 <p className="text-lg font-semibold">❓ Frequently Asked Questions</p>
                 {faqContent.map((content) => (
                     <div tabIndex={0} className="collapse collapse-arrow bg-base-100 rounded-box w-full shadow-lg">
+                        <input type="checkbox" />
                         <div className="collapse-title text-md font-medium">
                             {content.title}
                         </div>
