@@ -76,7 +76,7 @@ export default function Plans() {
                                 {premiumStatus.planName === '' ? <button type="button" className="btn btn-info" onClick={() => router.push('/plans')}>Choose a Plan</button> : ''}
                             </div>
                         </div>
-                        <DeleteAccount />
+                        {user.email === 'kirtleyj16@gmail.com' ? <DeleteAccount /> : ''}
                     </div>
                 </div>
             ) : ''}
