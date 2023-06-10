@@ -112,7 +112,7 @@ export default function Onboarding({ setLoading, showOnboard, setShowOnboard }) 
 
                 routine.neck.exercises.push(exercise);
                 routine.neck.count += 1;
-            } else if (exercise.muscleGroup === 'back' && routine.back.count < 2) {
+            } else if (exercise.muscleGroup === 'back' && routine.back.count < 4) {
                 if (userEquipment.length > 0 && userEquipment.includes(exercise.equipmentNeeded)) {
                     routine.back.exercises.push(exercise);
                     routine.back.count += 1;
