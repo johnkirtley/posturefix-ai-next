@@ -136,7 +136,7 @@ export function CurrentProtocol({ userInfo, showOnboard }) {
                             routine.neck.exercises.push(exercise);
                             routine.neck.count += 1;
                         }
-                    } else if (exercise.muscleGroup === 'back' && routine.back.count < 3) {
+                    } else if (exercise.muscleGroup === 'back' && routine.back.count < 4) {
                         if (userEquipment.length > 0 && userEquipment.includes(exercise.equipmentNeeded)) {
                             routine.back.exercises.push(exercise);
                             routine.back.count += 1;
@@ -564,7 +564,7 @@ export function CurrentProtocol({ userInfo, showOnboard }) {
             </div>
         ))}
                             </div>
-                            <div className="pb-5">
+                            {/* <div className="pb-5">
                                 <div className="divider 3xl:divider-horizontal my-8">
                                     <p className="badge badge-info p-4 text-base font-semibold">Neck</p>
                                 </div>
@@ -586,7 +586,7 @@ export function CurrentProtocol({ userInfo, showOnboard }) {
                 </button>
             </div>
         ))}
-                            </div>
+                            </div> */}
                             {premiumStatus.planName === '' ? <button type="button" className="btn btn-warning mt-5 h-20 text-sm w-full" onClick={() => router.push('/plans')}>Please Choose Plan To Log Workout</button>
                                 : '' }
                             {premiumStatus.planName !== '' && curLevel !== 4 ? <button disabled={!!loading || showAlert} type="button" className="btn btn-success mt-5 h-20 text-lg w-full" onClick={completeWorkout}>{loading ? 'Submitting...' : 'Complete Workout'}</button> : ''}
