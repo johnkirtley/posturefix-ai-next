@@ -43,7 +43,6 @@ export function CurrentProtocol({ userInfo, showOnboard }) {
 
     const handleShowDetails = (exercise) => {
         setSelected(exercise);
-        console.log(exercise);
         // eslint-disable-next-line no-undef
         const btn = document.getElementById('my-modal');
         btn.checked = true;
@@ -79,7 +78,18 @@ export function CurrentProtocol({ userInfo, showOnboard }) {
                     break;
                 }
 
-                const shuffled = list.sort(() => 0.5 - Math.random());
+                const fisherYatesShuffle = (arr) => {
+                    for (let i = arr.length - 1; i > 0; i -= 1) {
+                        const j = Math.floor(Math.random() * (i + 1));
+                        // eslint-disable-next-line no-param-reassign
+                        [arr[i], arr[j]] = [arr[j], arr[i]];
+                    }
+
+                    return arr;
+                };
+
+                // const shuffled = list.sort(() => 0.5 - Math.random());
+                const shuffled = fisherYatesShuffle(list);
 
                 const userEquipment = userInfo.equipment.filter((item) => item.isChecked);
                 const equipment = userEquipment.map((item) => item.valName);
@@ -257,7 +267,6 @@ export function CurrentProtocol({ userInfo, showOnboard }) {
         querySnapshot.forEach(async (document) => {
             if (document.data().email === user.email) {
                 const { currentLevel } = document.data();
-                console.log('current level', currentLevel);
 
                 if (currentLevel === 1) {
                     updateDoc(userRef, { currentLevel: 2 }).then(() => {
