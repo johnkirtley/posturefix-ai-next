@@ -15,7 +15,6 @@ export async function POST(req) {
     const { email } = data;
     const customer = await stripe.customers.list({ email });
 
-    console.log('get-subscriber good', customer);
     const sub = await stripe.subscriptions.list({ customer: customer.data[0].id, limit: 1 });
 
     if (sub) {
