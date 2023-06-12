@@ -7,7 +7,7 @@ export const faqContent = [
     },
     {
         title: 'What Makes This App Different From Others',
-        content: ['While most exercise apps include stretches that can help with posture issues, they may not be solely built for posture improvement.', 'PostureFix, on the other hand, is an app specifically designed to improve and maintain healthy posture through targeted strengthening exercises, which can help alleviate posture headaches and other related issues.',
+        content: ['While similar apps include stretches that can help with posture issues, many overlook the importance of strengthening.', 'PostureFix, on the other hand, is a tool specifically designed to improve and maintain healthy posture through targeted strengthening exercises, which can help alleviate posture headaches and other related issues.',
             'We throw some stretching in there to 😊',
         ],
     },
@@ -16,13 +16,17 @@ export const faqContent = [
         content: ['Yes! To maximize the impact of the provided exercises, they are designed to change after completing each level. You will see some exercises carry over from the previous level because of how effective they can be.', 'Once you get to the Maintenance phase, you can generate a new workout each time if you want.',
         ],
     },
+    {
+        title: 'Why Aren\'t There Any Neck Exercises',
+        content: ['You might have heard of popular neck strengthening exercises like Chin Tucks or Cervical Extensions, these are common results when looking up how to improve your posture. However, contrary to popular belief, these exercises can oftentimes cause more harm than good.', 'I felt it was best to leave neck exercises out since you\'ll get the most "bang-for-your-buck" improving your back and core muscles.'],
+    },
     // {
     //     title: 'What Should I Do After Finishing The Main Program',
     //     content: ['If you want to continue improving your posture, we recommend moving onto the Maintenance Phase. This phase allows you to keep working on your posture using our generated posture workouts.', 'While working out alone may not completely fix your posture, incorporating targeted strengthening exercises like the ones in our program can certainly help. With the Maintenance Phase, you have the option to generate a new workout each time or stick with one that you enjoy.'],
     // },
     {
-        title: 'Why Did You Create This App',
-        content: ['As someone who dealt with their own posture issues over the last few years, I know firsthand how much time and effort it can take to figure out what works.', 'Through my research, I discovered that strengthening exercises were the most effective way to fix my posture and reduce posture-related pain. This approach is likely to help many others as well. That\'s why I created this program - to eliminate the research phase and provide the best exercises to fix posture for everyone.', 'With our program, you can jump right into targeted strengthening exercises that will help improve your posture.', 'I also couldn\'t find an existing app like this, so I\'ll be using it myself too 😊'],
+        title: 'Why Did You Create This Tool',
+        content: ['As someone who dealt with their own posture issues over the last few years, I know firsthand how much time and effort it can take to figure out what works.', 'Through my research, I discovered that strengthening exercises were the most effective way to fix my posture and reduce posture-related pain. This approach is likely to help many others as well. That\'s why I created this program - to eliminate the research phase and provide the best exercises to fix posture for everyone.', 'With our program, you can jump right into targeted strengthening exercises that will help improve your posture.', 'I also couldn\'t find an existing tool like this, so I personally use it myself too 😊'],
     },
     {
         title: 'Will This Fix My Posture',
