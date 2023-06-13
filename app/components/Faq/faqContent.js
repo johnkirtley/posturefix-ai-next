@@ -6,7 +6,7 @@ export const faqContent = [
         content: ['To get the most out of this program and improve your posture, we recommend doing a workout 3-4 times a week. On your off days, be sure to continue stretching and incorporating good posture habits into your daily routine.', 'Additionally, paying attention to your posture throughout the day, such as sitting up straight and avoiding slouching, can also help you get good posture.'],
     },
     {
-        title: 'What Makes This App Different From Others',
+        title: 'What Makes This Tool Different From Others',
         content: ['While similar apps include stretches that can help with posture issues, many overlook the importance of strengthening.', 'PostureFix, on the other hand, is a tool specifically designed to improve and maintain healthy posture through targeted strengthening exercises, which can help alleviate posture headaches and other related issues.',
             'We throw some stretching in there to 😊',
         ],
