@@ -11,7 +11,7 @@ export default function Help() {
                     <p>Want To Request a Feature?</p>
                 </div>
                 <div>
-                    <a className="btn btn-info" href="mailto:john@greycloudllc.com">Email Us</a>
+                    <a className="btn btn-info" href="mailto:john@posturefix.io">Email Us</a>
                 </div>
             </div>
         </div>

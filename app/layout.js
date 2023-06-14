@@ -7,6 +7,7 @@ import { useState } from 'react';
 import './globals.css';
 import { Inter } from 'next/font/google';
 import { AuthProvider, UserContext } from './Context';
+import { GoogleAnalytics } from './components/GoogleAnalytics';
 
 const inter = Inter({ subsets: ['latin'] });
 
@@ -43,6 +44,7 @@ export default function RootLayout({ children }) {
                     content="/text-logo-2.png"
                 />
             </Head>
+            <GoogleAnalytics />
             <body className={inter.className}>
                 <div className=" min-h-screen" style={{ backgroundColor: 'rgb(115 56 0 / 5%)' }}>
                     <AuthProvider>
