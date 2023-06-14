@@ -32,8 +32,8 @@ export default function RootLayout({ children }) {
     return (
         <html lang="en">
             <Head>
-                <title>Posture Fix | Tailored Posture Correction Workouts</title>
-                <meta name="description" content="Posture Fix | Fix Your Posture With Tailored Workouts" key="desc" />
+                <title>Posture Fix | Tailored Posture Correction Workouts | App</title>
+                <meta name="description" content="Posture Fix | Fix Your Posture With Tailored Workouts | App" key="desc" />
                 <meta property="og:title" content="Posture Fix" />
                 <meta
                     property="og:description"
