@@ -45,16 +45,17 @@ export default function RootLayout({ children }) {
                     property="og:image"
                     content="/text-logo-2.png"
                 />
-                <PlausibleProvider domain="app.posturefix.io" taggedEvents />
             </Head>
             {/* <GoogleAnalytics /> */}
             <body className={inter.className}>
                 <div className=" min-h-screen" style={{ backgroundColor: 'rgb(115 56 0 / 5%)' }}>
-                    <AuthProvider>
-                        <UserContext.Provider value={{ userInfo, setUserInfo }}>
-                            {children}
-                        </UserContext.Provider>
-                    </AuthProvider>
+                    <PlausibleProvider domain="app.posturefix.io" taggedEvents enabled trackLocalhost>
+                        <AuthProvider>
+                            <UserContext.Provider value={{ userInfo, setUserInfo }}>
+                                {children}
+                            </UserContext.Provider>
+                        </AuthProvider>
+                    </PlausibleProvider>
                 </div>
             </body>
         </html>
