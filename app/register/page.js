@@ -1,3 +1,4 @@
+/* eslint-disable import/no-extraneous-dependencies */
 /* eslint-disable no-undef */
 /* eslint-disable no-alert */
 
@@ -8,6 +9,7 @@ import { useRouter } from 'next/navigation';
 import { createUserWithEmailAndPassword } from 'firebase/auth';
 import { collection, doc, setDoc, serverTimestamp } from 'firebase/firestore';
 import Link from 'next/link';
+import { usePlausible } from 'next-plausible';
 import { firebaseAuth, firestore } from '../../firebase/clientApp';
 
 const defaultCredentials = {
@@ -30,6 +32,7 @@ export default function Register() {
     const [registerAccount, setRegisterAccount] = useState(false);
     const registerRef = useRef(null);
     const router = useRouter();
+    const plausible = usePlausible();
 
     const auth = firebaseAuth;
 
@@ -119,6 +122,7 @@ export default function Register() {
                 createStripeSubscription(user.email).then((res) => {
                     addToEmailOctopus(user.email);
                     // posthog.capture('Manual Sign Up', { user: user.email });
+                    plausible('New User Register', { props: { email: user.email } });
                     router.push('/dashboard');
                     console.log(res);
                     setRegisterAccount(false);

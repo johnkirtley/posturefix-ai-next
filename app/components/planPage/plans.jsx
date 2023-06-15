@@ -1,9 +1,11 @@
+/* eslint-disable import/no-extraneous-dependencies */
 /* eslint-disable jsx-a11y/label-has-associated-control */
 /* eslint-disable import/prefer-default-export */
 
 'use client';
 
 import { useState, useEffect } from 'react';
+import { usePlausible } from 'next-plausible';
 import { useAuth } from '../../Context/AuthContext';
 import usePremiumStatus from '../../../stripe/usePremiumStatus';
 import { generatePortal } from '../../../stripe/createPortal';
@@ -17,6 +19,8 @@ export function PlanPage() {
     const isUserPremium = usePremiumStatus(user && user.email);
     const [clicked, setClicked] = useState(true);
     const [loading, setLoading] = useState(false);
+
+    const plausible = usePlausible();
 
     let plan;
 
@@ -89,12 +93,14 @@ export function PlanPage() {
         if (isUserPremium.premiumStatus.planName === '') {
             createCheckoutSessions(planType, user.email).then((res) => {
                 const { url } = res.session;
+                plausible('New Checkout Session', { props: { email: user.email } });
                 // eslint-disable-next-line no-undef
                 window.location.assign(url);
             });
         } else {
             // posthog.capture('User Visited Stripe Portal', { user: user.email });
             // logger('action', 'User Visited Stripe Portal', { userId: user.uid });
+            plausible('Billing Portal Generated', { props: { email: user.email } });
             generatePortal(user.email);
         }
     };
