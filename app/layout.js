@@ -45,7 +45,7 @@ export default function RootLayout({ children }) {
                     property="og:image"
                     content="/text-logo-2.png"
                 />
-                <PlausibleProvider domain="posturefix.io" taggedEvents />
+                <PlausibleProvider domain="app.posturefix.io" taggedEvents />
             </Head>
             {/* <GoogleAnalytics /> */}
             <body className={inter.className}>
