@@ -1,3 +1,4 @@
+/* eslint-disable import/no-extraneous-dependencies */
 /* eslint-disable jsx-a11y/label-has-associated-control */
 /* eslint-disable no-undef */
 
@@ -7,6 +8,7 @@ import { useState, useRef } from 'react';
 import { signInWithEmailAndPassword, getAuth, sendPasswordResetEmail } from 'firebase/auth';
 import { useRouter } from 'next/navigation';
 import Link from 'next/link';
+import { usePlausible } from 'next-plausible';
 import { firebaseAuth } from '../firebase/clientApp';
 
 const auth = firebaseAuth;
@@ -26,6 +28,7 @@ export default function Login() {
 
     const loginRef = useRef(null);
     const router = useRouter();
+    const plausible = usePlausible();
 
     const signIn = async () => {
         setShowError(false);
@@ -41,6 +44,7 @@ export default function Login() {
             .then((userCredential) => {
                 console.log('userCredential', userCredential);
                 // posthog.capture('Manual Sign In Success', { user: user.email });
+                plausible('Login', { props: { email: username } });
                 router.push('/dashboard');
                 setLoggingIn(false);
             }).catch((error) => {
