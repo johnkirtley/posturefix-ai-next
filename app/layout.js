@@ -1,3 +1,4 @@
+/* eslint-disable import/no-extraneous-dependencies */
 /* eslint-disable react/prop-types */
 
 'use client';
@@ -6,8 +7,9 @@ import Head from 'next/head';
 import { useState } from 'react';
 import './globals.css';
 import { Inter } from 'next/font/google';
+import PlausibleProvider from 'next-plausible';
 import { AuthProvider, UserContext } from './Context';
-import { GoogleAnalytics } from './components/GoogleAnalytics';
+// import { GoogleAnalytics } from './components/GoogleAnalytics';
 
 const inter = Inter({ subsets: ['latin'] });
 
@@ -43,8 +45,9 @@ export default function RootLayout({ children }) {
                     property="og:image"
                     content="/text-logo-2.png"
                 />
+                <PlausibleProvider domain="app.posturefix.io" taggedEvents />
             </Head>
-            <GoogleAnalytics />
+            {/* <GoogleAnalytics /> */}
             <body className={inter.className}>
                 <div className=" min-h-screen" style={{ backgroundColor: 'rgb(115 56 0 / 5%)' }}>
                     <AuthProvider>
