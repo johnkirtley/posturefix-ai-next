@@ -5,6 +5,7 @@ import { useState, useEffect } from 'react';
 import {
     updateDoc, doc, query, where, collection, getDocs,
 } from 'firebase/firestore';
+import { usePlausible } from 'next-plausible';
 import { firestore } from '../../../firebase/clientApp';
 import { useAuth } from '../../Context/AuthContext';
 
@@ -18,6 +19,7 @@ export function AdvanceModal({
 }) {
     const [loading, setLoading] = useState(false);
     const { user } = useAuth();
+    const plausible = usePlausible();
 
     const restartLevel = async () => {
         setLoading(true);
@@ -37,7 +39,7 @@ export function AdvanceModal({
                 setTimeout(() => {
                     setLoading(false);
                     setShowAdvanceModal(false);
-
+                    plausible('Level Restarted', { props: { level: currentLevel } });
                     if (typeof window !== 'undefined') {
                         // eslint-disable-next-line no-undef
                         window.scrollTo({ top: '0', behavior: 'smooth' });
