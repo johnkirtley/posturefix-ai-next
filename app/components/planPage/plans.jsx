@@ -17,7 +17,7 @@ export function PlanPage() {
     const [showTrialText, setShowTrialText] = useState(false);
     const { user } = useAuth();
     const isUserPremium = usePremiumStatus(user && user.email);
-    const [clicked, setClicked] = useState(true);
+    const [clicked, setClicked] = useState(false);
     const [loading, setLoading] = useState(false);
 
     const plausible = usePlausible();
@@ -93,7 +93,7 @@ export function PlanPage() {
         if (isUserPremium.premiumStatus.planName === '') {
             createCheckoutSessions(planType, user.email).then((res) => {
                 const { url } = res.session;
-                plausible('New Checkout Session', { props: { email: user.email } });
+                plausible('New Checkout Session', { props: { email: user.email, plan: planType } });
                 // eslint-disable-next-line no-undef
                 window.location.assign(url);
             });
@@ -124,7 +124,7 @@ export function PlanPage() {
                 <div className="card w-11/12 m-auto rounded-md bg-base-100 shadow-xl">
                     <div className="card-body justify-center items-center gap-3 text-center">
                         <h2 className="card-title text-3xl">{!clicked ? plan[1].name : plan[0].name}</h2>
-                        {showTrialText ? <p className="font-semibold">⏳ 3 day free trial available</p> : ''}
+                        {showTrialText ? <p className="font-semibold">⏳ 7 day free trial available</p> : ''}
                         <p className="text-2xl font-bold">{!clicked ? `$${plan[1].price}` : `$${plan[0].price}`}{!clicked ? <span className="font-medium">/month</span> : <span className="font-medium">/year</span>}</p>
                         <p className="text-sm italic">{clicked ? <div><p className="border bg-warning w-full rounded-md p-1 text-xs">Save Over {plan[0].savings}%</p> <p>Compared To Monthly</p></div> : ''}</p>
                         <ul className="list-disc flex flex-col justify-start items-start gap-4">
