@@ -40,7 +40,7 @@ export async function POST(req) {
             customer: customer.data[0].id,
             allow_promotion_codes: true,
             automatic_tax: { enabled: true },
-            subscription_data: { trial_period_days: 3 },
+            subscription_data: { trial_period_days: 7 },
             line_items: [
                 { price: product, quantity: 1 },
             ],
