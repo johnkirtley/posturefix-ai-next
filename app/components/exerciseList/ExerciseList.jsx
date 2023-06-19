@@ -5,6 +5,7 @@
 /* eslint-disable react/prop-types */
 import { useState, useEffect } from 'react';
 import Image from 'next/image';
+import { usePlausible } from 'next-plausible';
 import { exerciseInfo, stretchInfo } from './exerciseInfo';
 // import List from './List';
 import usePremiumStatus from '../../../stripe/usePremiumStatus';
@@ -22,6 +23,7 @@ export default function ExerciseList() {
     const [stretchChecked, setStretchChecked] = useState(false);
     const [exerciseChecked, setExerciseChecked] = useState(false);
     const { userInfo } = useFirebase();
+    const plausible = usePlausible();
 
     const selectRandomExercise = (list, selectedType) => {
         if (selectedType === 'stretch') {
@@ -31,6 +33,7 @@ export default function ExerciseList() {
             const randomNumGenerator = Math.floor(randomDecimal * shuffled.length);
             setType(selectedType);
             setExercise(list[randomNumGenerator]);
+            plausible('Random Stretch Click');
             setTimeout(() => {
                 setLoadingStretch(false);
             }, 1200);
@@ -43,6 +46,7 @@ export default function ExerciseList() {
             const randomNumGenerator = Math.floor(randomDecimal * shuffled.length);
             setType(selectedType);
             setExercise(list[randomNumGenerator]);
+            plausible('Random Exercise Click');
             setTimeout(() => {
                 setLoadingExercise(false);
             }, 1200);

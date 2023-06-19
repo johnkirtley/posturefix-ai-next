@@ -1,7 +1,16 @@
+'use client';
+
 /* eslint-disable import/prefer-default-export */
+import { usePlausible } from 'next-plausible';
 import { tools } from './tools';
 
 export function RecTools() {
+    const plausible = usePlausible();
+
+    const handleToolClick = (toolName) => {
+        plausible('Tool View Click', { props: { tool: toolName } });
+    };
+
     return (
         <div>
             <div className="text-center flex flex-col gap-4">
@@ -19,7 +28,7 @@ export function RecTools() {
                                 </h2>
                                 {tool.recommend ? <div className="badge badge-info p-3">Highly Recommended</div> : ''}
                                 <div className="card-actions justify-center mt-4">
-                                    <a target="_blank" href={tool.link} rel="noreferrer"> <button type="button" className="btn btn-secondary w-72">View</button></a>
+                                    <a target="_blank" href={tool.link} onClick={() => handleToolClick(tool.name)} rel="noreferrer"> <button type="button" className="btn btn-secondary w-72">View</button></a>
                                 </div>
                                 <div className="collapse border text-center border-secondary rounded-lg collapse-arrow w-72 mt-2 m-auto">
                                     <input type="checkbox" />

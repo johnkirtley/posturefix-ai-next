@@ -1,6 +1,17 @@
+'use client';
+
+import { usePlausible } from 'next-plausible';
 import Nav from '../components/Nav/Nav';
+import { useAuth } from '../Context/AuthContext';
 
 export default function Help() {
+    const { user } = useAuth();
+    const plausible = usePlausible();
+
+    const trackHelpClick = (email) => {
+        plausible('Help Button Click', { props: { email } });
+    };
+
     return (
         <div>
             <Nav />
@@ -11,7 +22,7 @@ export default function Help() {
                     <p>Want To Request a Feature?</p>
                 </div>
                 <div>
-                    <a className="btn btn-info" href="mailto:john@posturefix.io">Email Us</a>
+                    <a className="btn btn-info" href="mailto:john@posturefix.io" onClick={() => trackHelpClick(user.email)}>Email Us</a>
                 </div>
             </div>
         </div>

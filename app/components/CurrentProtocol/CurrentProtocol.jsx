@@ -11,6 +11,7 @@ import {
 import { useRouter } from 'next/navigation';
 import { Icon } from '@iconify/react';
 import Image from 'next/image';
+import { usePlausible } from 'next-plausible';
 import { useAuth } from '../../Context/AuthContext';
 import { firestore } from '../../../firebase/clientApp';
 import { exerciseListL1, exerciseListL2, exerciseListL3 } from '../onboarding/exercises';
@@ -34,6 +35,8 @@ export function CurrentProtocol({ userInfo, showOnboard }) {
     const [curLevel, setCurLevel] = useState(1);
     const [showCompletedBadge, setShowCompletedBadge] = useState(false);
     const [curProtocol, setCurProtocol] = useState([]);
+
+    const plausible = usePlausible();
 
     useEffect(() => {
         setCount(userInfo.progressMade);
@@ -256,6 +259,7 @@ export function CurrentProtocol({ userInfo, showOnboard }) {
                 });
             }
         });
+        plausible('New Routine Generated');
         return routine;
     };
 
@@ -467,6 +471,11 @@ export function CurrentProtocol({ userInfo, showOnboard }) {
         });
     };
 
+    const noPlanClick = () => {
+        plausible('Please Choose Plan - Dashboard', { props: { email: user.email } });
+        router.push('/plans');
+    };
+
     return (
         <div className="flex flex-col justify-center items-center text-center lg:w-1/2 lg:m-auto">
             {showOnboard ? ''
@@ -596,7 +605,7 @@ export function CurrentProtocol({ userInfo, showOnboard }) {
             </div>
         ))}
                             </div> */}
-                            {premiumStatus.planName === '' ? <button type="button" className="btn btn-warning mt-5 h-20 text-sm w-full" onClick={() => router.push('/plans')}>Please Choose Plan To Log Workout</button>
+                            {premiumStatus.planName === '' ? <button type="button" className="btn btn-warning mt-5 h-20 text-sm w-full" onClick={noPlanClick}>Please Choose Plan To Log Workout</button>
                                 : '' }
                             {premiumStatus.planName !== '' && curLevel !== 4 ? <button disabled={!!loading || showAlert} type="button" className="btn btn-success mt-5 h-20 text-lg w-full" onClick={completeWorkout}>{loading ? 'Submitting...' : 'Complete Workout'}</button> : ''}
                             {premiumStatus.planName !== '' && curLevel === 4 ? (
