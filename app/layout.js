@@ -45,6 +45,21 @@ export default function RootLayout({ children }) {
                     property="og:image"
                     content="/text-logo-2.png"
                 />
+                <meta name="theme-color" content="#000" />
+                <meta name="apple-mobile-web-app-status-bar-style" content="default" />
+                <meta name="apple-mobile-web-app-title" content="PostureFix" />
+                <meta name="mobile-web-app-capable" content="yes" />
+
+                <link rel="apple-touch-icon" href="/icon-512x512.png" />
+                <link rel="apple-touch-icon" sizes="152x152" href="/icon-512x512.png" />
+                <link rel="apple-touch-icon" sizes="180x180" href="/icon-512x512.png" />
+                <link rel="apple-touch-icon" sizes="167x167" href="/icon-512x512.png" />
+
+                <link rel="icon" type="image/png" sizes="32x32" href="/favicon.ico" />
+                <link rel="icon" type="image/png" sizes="16x16" href="/favicon.ico" />
+
+                <link rel="shortcut icon" href="/favicon.ico" />
+                <link rel="manifest" href="/manifest.json" />
             </Head>
             {/* <GoogleAnalytics /> */}
             <body className={inter.className}>
