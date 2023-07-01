@@ -24,7 +24,7 @@ const prodPlanInfo = [
         features: ['3 Levels of Progressive Exercise Difficulty', 'Unlimited Maintenance Phase Workout Generations', 'Random Stretch + Exercise Generator'],
         price: 60,
         savings: 25,
-        id: 'price_1NP6u3IEkyn8v16oZGDtrc0e',
+        id: 'price_1NP76rIEkyn8v16oA7hEswGj',
     },
     {
         name: 'Align',
