@@ -1,38 +1,38 @@
 const devPlanInfo = [
     {
-        name: 'Align (Early Bird)',
+        name: 'Align',
         type: 'Yearly',
         features: ['3 Levels of Progressive Exercise Difficulty', 'Unlimited Maintenance Phase Workout Generations', 'Random Stretch + Exercise Generator'],
-        price: 45,
+        price: 60,
         savings: 25,
-        id: 'price_1NEc6VIEkyn8v16oAyghU7DM',
+        id: 'price_1NP6yMIEkyn8v16ovskYUeNh',
     },
     {
-        name: 'Align (Early Bird)',
+        name: 'Align',
         type: 'Monthly',
         features: ['3 Levels of Progressive Exercise Difficulty', 'Unlimited Maintenance Phase Workout Generations', 'Random Stretch + Exercise Generator'],
-        price: 5,
+        price: 7,
         savings: 0,
-        id: 'price_1NEc5yIEkyn8v16oO6PTP823',
+        id: 'price_1NP6xuIEkyn8v16oKp0Z1LZB',
     },
 ];
 
 const prodPlanInfo = [
     {
-        name: 'Align (Early Bird)',
+        name: 'Align',
         type: 'Yearly',
         features: ['3 Levels of Progressive Exercise Difficulty', 'Unlimited Maintenance Phase Workout Generations', 'Random Stretch + Exercise Generator'],
-        price: 45,
+        price: 60,
         savings: 25,
-        id: 'price_1NF3abIEkyn8v16omctzhUZj',
+        id: 'price_1NP6u3IEkyn8v16oZGDtrc0e',
     },
     {
-        name: 'Align (Early Bird)',
+        name: 'Align',
         type: 'Monthly',
         features: ['3 Levels of Progressive Exercise Difficulty', 'Unlimited Maintenance Phase Workout Generations', 'Random Stretch + Exercise Generator'],
-        price: 5,
+        price: 7,
         savings: 0,
-        id: 'price_1NF3aWIEkyn8v16oCCl35osc',
+        id: 'price_1NP6tLIEkyn8v16oz7AQwT0a',
     },
 ];
 
