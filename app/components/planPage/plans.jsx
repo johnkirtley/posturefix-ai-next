@@ -139,7 +139,7 @@ export function PlanPage() {
                         <h2 className="card-title text-3xl">{!clicked ? plan[1].name : plan[0].name}</h2>
                         {showTrialText ? <p className="font-semibold">⏳ 7 day free trial available</p> : ''}
                         <p className="text-2xl font-bold">{!clicked ? `$${plan[1].price}` : `$${plan[0].price}`}{!clicked ? <span className="font-medium">/month</span> : <span className="font-medium">/year</span>}</p>
-                        <p className="text-sm italic">{clicked ? <div><p className="border bg-warning w-full rounded-md p-1 text-xs">Save Over {plan[0].savings}%</p> <p>Compared To Monthly</p></div> : ''}</p>
+                        <p className="text-sm italic">{clicked ? <div><p className="border bg-warning w-full rounded-md p-1 text-xs">Save {plan[0].savings}%</p> <p>Compared To Monthly</p></div> : ''}</p>
                         <ul className="list-disc flex flex-col justify-start items-start gap-4">
                             {plan[0].features.map((feature, idx) => (
                                 <li className="text-left text-sm" key={idx}>{feature}</li>
