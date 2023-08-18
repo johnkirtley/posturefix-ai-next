@@ -22,17 +22,17 @@ const prodPlanInfo = [
         name: 'Align',
         type: 'Yearly',
         features: ['3 Levels of Progressive Exercise Difficulty', 'Unlimited Maintenance Phase Workout Generations', 'Random Stretch + Exercise Generator'],
-        price: 60,
+        price: 45,
         savings: 25,
-        id: 'price_1NP76rIEkyn8v16oA7hEswGj',
+        id: 'price_1NF3abIEkyn8v16omctzhUZj',
     },
     {
         name: 'Align',
         type: 'Monthly',
         features: ['3 Levels of Progressive Exercise Difficulty', 'Unlimited Maintenance Phase Workout Generations', 'Random Stretch + Exercise Generator'],
-        price: 7,
+        price: 5,
         savings: 0,
-        id: 'price_1NP6tLIEkyn8v16oz7AQwT0a',
+        id: 'price_1NF3aWIEkyn8v16oCCl35osc',
     },
 ];
 
